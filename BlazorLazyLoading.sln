@@ -5,24 +5,25 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader", "AssemblyLoader\AssemblyLoader.csproj", "{BA733883-4EB1-4BD3-91EB-6414814196E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader", "src\AssemblyLoader\AssemblyLoader.csproj", "{BA733883-4EB1-4BD3-91EB-6414814196E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader.Wasm", "AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj", "{2E031DBF-19C0-40F1-A77F-39F7429081BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader.Wasm", "src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj", "{2E031DBF-19C0-40F1-A77F-39F7429081BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader.Server", "src\AssemblyLoader.Server\AssemblyLoader.Server.csproj", "{BFC6F53C-1292-48AE-A95D-3D53148AB22B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{747AA1B8-FA3B-4328-B058-3541880F924F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerHost", "..\demo\ServerHost\ServerHost.csproj", "{F853567E-C00A-4D8C-A8F5-E33162EDE769}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerHost", "demo\ServerHost\ServerHost.csproj", "{F853567E-C00A-4D8C-A8F5-E33162EDE769}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmHost", "..\demo\WasmHost\WasmHost.csproj", "{08A0B764-E28C-48CD-BB2F-EEE254C9BD44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmHost", "demo\WasmHost\WasmHost.csproj", "{08A0B764-E28C-48CD-BB2F-EEE254C9BD44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "..\demo\Logger\Logger.csproj", "{3895A6EF-A93A-4277-A92C-79930588CBD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "demo\Logger\Logger.csproj", "{3895A6EF-A93A-4277-A92C-79930588CBD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{593AE082-BD15-4FEB-8DC2-20D4ABA3AFD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLazyLoading.Wasm", "..\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj", "{36FDF188-E5B9-4E1C-8EB7-707DE44AB77F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLazyLoading.Wasm", "nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj", "{36FDF188-E5B9-4E1C-8EB7-707DE44AB77F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader.Server", "AssemblyLoader.Server\AssemblyLoader.Server.csproj", "{BFC6F53C-1292-48AE-A95D-3D53148AB22B}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
