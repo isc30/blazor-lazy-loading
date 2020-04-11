@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IsPackable>true</IsPackable>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Authors>isc30</Authors>
+        <Company>CodeIsc</Company>
+        <PackageId>BlazorLazyLoading.Wasm</PackageId>
+        <Product>BlazorLazyLoading.Wasm</Product>
+        <Title>BlazorLazyLoading.Wasm</Title>
+        <Description>BlazorLazyLoading.Wasm</Description>
+        <PackageTags></PackageTags>
+        <RepositoryUrl>https://github.com/isc30/blazor-lazy-loading</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <Copyright>Ivan Sanz Carasa (isc30)</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="GitVersionTask" Version="5.2.4">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj" />
+    </ItemGroup>
+
+</Project>

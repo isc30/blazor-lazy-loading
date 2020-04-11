@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <RazorLangVersion>3.0</RazorLangVersion>
+    </PropertyGroup>
+
+    <!--<ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0" />
+    </ItemGroup>-->
+
+    <Target Name="CleanBin" BeforeTargets="Clean">
+        <RemoveDir Directories="$(MSBuildProjectDirectory)/wwwroot/_bin" />
+    </Target>
+
+    <Target Name="CopyDependencies" AfterTargets="Build">
+        <ItemGroup>
+            <OutputFiles Include="$(MSBuildProjectDirectory)/$(OutDir)**/*.*" />
+            <OutputFiles Include="@(ReferenceCopyLocalPaths)" />
+        </ItemGroup>
+        
+        <Copy
+            SourceFiles="@(OutputFiles)"
+            DestinationFolder="$(MSBuildProjectDirectory)/wwwroot/_bin"
+            OverwriteReadOnlyFiles="true"
+            SkipUnchangedFiles="false" />
+    </Target>
+
+</Project>

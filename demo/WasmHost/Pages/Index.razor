@@ -1,0 +1,29 @@
+﻿@page "/"
+@using System.Reflection
+@using BlazorLazyLoading.Abstractions
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@code
+{ 
+    [Inject]
+    public IAssemblyLoader AssemblyLoader { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        var a = await AssemblyLoader
+            .LoadAssemblyByNameAsync(new AssemblyName
+            {
+                Name = "Logger",
+                Version = null,
+            });
+
+        a.GetType("MyLogger.Logger").GetMethod("Log").Invoke(null, new[] { "Lazy! Oh Yeah!" });
+    }
+}
