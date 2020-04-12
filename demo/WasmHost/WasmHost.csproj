@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj" PrivateAssets="all" />
+        <PackageReference Include="BlazorLazyLoading.Wasm" Version="0.1.0-nuget.1" PrivateAssets="all" />
         <ProjectReference Include="..\Logger\Logger.csproj" />
     </ItemGroup>
 

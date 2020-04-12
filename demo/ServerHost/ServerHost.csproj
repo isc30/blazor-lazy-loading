@@ -9,7 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\AssemblyLoader.Server\AssemblyLoader.Server.csproj" />
+        <PackageReference Include="BlazorLazyLoading.Server" Version="0.1.0-nuget.1" PrivateAssets="all" />
         <ProjectReference Include="..\WasmHost\WasmHost.csproj" />
     </ItemGroup>
 

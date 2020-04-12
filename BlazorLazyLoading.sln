@@ -4,12 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader", "src\AssemblyLoader\AssemblyLoader.csproj", "{BA733883-4EB1-4BD3-91EB-6414814196E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoader", "src\AssemblyLoader\AssemblyLoader.csproj", "{BA733883-4EB1-4BD3-91EB-6414814196E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader.Wasm", "src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj", "{2E031DBF-19C0-40F1-A77F-39F7429081BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoader.Wasm", "src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj", "{2E031DBF-19C0-40F1-A77F-39F7429081BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoader.Server", "src\AssemblyLoader.Server\AssemblyLoader.Server.csproj", "{BFC6F53C-1292-48AE-A95D-3D53148AB22B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoader.Server", "src\AssemblyLoader.Server\AssemblyLoader.Server.csproj", "{BFC6F53C-1292-48AE-A95D-3D53148AB22B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{747AA1B8-FA3B-4328-B058-3541880F924F}"
 EndProject
@@ -17,13 +20,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerHost", "demo\ServerHo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmHost", "demo\WasmHost\WasmHost.csproj", "{08A0B764-E28C-48CD-BB2F-EEE254C9BD44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "demo\Logger\Logger.csproj", "{3895A6EF-A93A-4277-A92C-79930588CBD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger", "demo\Logger\Logger.csproj", "{3895A6EF-A93A-4277-A92C-79930588CBD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{593AE082-BD15-4FEB-8DC2-20D4ABA3AFD4}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\Directory.Build.props = nuget\Directory.Build.props
+		nuget\NugetCommon.props = nuget\NugetCommon.props
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLazyLoading.Wasm", "nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj", "{36FDF188-E5B9-4E1C-8EB7-707DE44AB77F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Wasm", "nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj", "{36FDF188-E5B9-4E1C-8EB7-707DE44AB77F}"
 EndProject
-
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{AE8E1C15-B862-43CB-AC0E-94B83BE0A250}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Server", "nuget\BlazorLazyLoading.Server\BlazorLazyLoading.Server.csproj", "{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +71,18 @@ Global
 		{2E031DBF-19C0-40F1-A77F-39F7429081BA}.Release|x64.Build.0 = Release|Any CPU
 		{2E031DBF-19C0-40F1-A77F-39F7429081BA}.Release|x86.ActiveCfg = Release|Any CPU
 		{2E031DBF-19C0-40F1-A77F-39F7429081BA}.Release|x86.Build.0 = Release|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|x64.Build.0 = Debug|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|x86.Build.0 = Debug|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|x64.ActiveCfg = Release|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|x64.Build.0 = Release|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|x86.ActiveCfg = Release|Any CPU
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|x86.Build.0 = Release|Any CPU
 		{F853567E-C00A-4D8C-A8F5-E33162EDE769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F853567E-C00A-4D8C-A8F5-E33162EDE769}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F853567E-C00A-4D8C-A8F5-E33162EDE769}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -106,18 +131,18 @@ Global
 		{36FDF188-E5B9-4E1C-8EB7-707DE44AB77F}.Release|x64.Build.0 = Release|Any CPU
 		{36FDF188-E5B9-4E1C-8EB7-707DE44AB77F}.Release|x86.ActiveCfg = Release|Any CPU
 		{36FDF188-E5B9-4E1C-8EB7-707DE44AB77F}.Release|x86.Build.0 = Release|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|x64.Build.0 = Debug|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Debug|x86.Build.0 = Debug|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|x64.ActiveCfg = Release|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|x64.Build.0 = Release|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|x86.ActiveCfg = Release|Any CPU
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B}.Release|x86.Build.0 = Release|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Debug|x64.Build.0 = Debug|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Debug|x86.Build.0 = Debug|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Release|x64.ActiveCfg = Release|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Release|x64.Build.0 = Release|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Release|x86.ActiveCfg = Release|Any CPU
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,11 +150,12 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{BA733883-4EB1-4BD3-91EB-6414814196E3} = {7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}
 		{2E031DBF-19C0-40F1-A77F-39F7429081BA} = {7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}
+		{BFC6F53C-1292-48AE-A95D-3D53148AB22B} = {7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}
 		{F853567E-C00A-4D8C-A8F5-E33162EDE769} = {747AA1B8-FA3B-4328-B058-3541880F924F}
 		{08A0B764-E28C-48CD-BB2F-EEE254C9BD44} = {747AA1B8-FA3B-4328-B058-3541880F924F}
 		{3895A6EF-A93A-4277-A92C-79930588CBD7} = {747AA1B8-FA3B-4328-B058-3541880F924F}
 		{36FDF188-E5B9-4E1C-8EB7-707DE44AB77F} = {593AE082-BD15-4FEB-8DC2-20D4ABA3AFD4}
-		{BFC6F53C-1292-48AE-A95D-3D53148AB22B} = {7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}
+		{B14D3B51-3320-46B7-8815-0FF3F18DBCB3} = {593AE082-BD15-4FEB-8DC2-20D4ABA3AFD4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE945EF4-4832-4073-8FD8-D1517AE90E21}
