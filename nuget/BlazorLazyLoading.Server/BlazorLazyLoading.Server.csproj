@@ -13,7 +13,7 @@
         <PackageId>$(MSBuildProjectName)</PackageId>
         <Product>$(MSBuildProjectName)</Product>
         <Title>$(MSBuildProjectName)</Title>
-        <Description>Full lazy loading support for Blazor!</Description>
+        <Description>Full lazy loading support for Blazor Server!</Description>
     </PropertyGroup>
 
 </Project>

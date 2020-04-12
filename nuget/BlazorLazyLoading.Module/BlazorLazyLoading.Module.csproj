@@ -4,15 +4,15 @@
         <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj" />
-    </ItemGroup>
-
     <PropertyGroup>
         <PackageId>$(MSBuildProjectName)</PackageId>
         <Product>$(MSBuildProjectName)</Product>
         <Title>$(MSBuildProjectName)</Title>
-        <Description>Full lazy loading support for Blazor WebAssembly!</Description>
+        <Description>Build tools for creating a Blazor Lazy Loadable module</Description>
     </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="build/**/*.*" Pack="true" PackagePath="build;buildCrossTargeting;buildMultiTargeting" />
+    </ItemGroup>
 
 </Project>

@@ -96,12 +96,12 @@ namespace BlazorLazyLoading.Server
             branches.Reverse();
             branches.RemoveAt(0);
 
-            yield return $"_content/{contextRoot.AssemblyName.Name}/_bin";
+            yield return $"_content/{contextRoot.AssemblyName.Name}/_lazy";
             yield return $"_framework/_bin";
 
             foreach (var branch in branches)
             {
-                yield return $"_content/{branch.AssemblyName.Name}/_bin";
+                yield return $"_content/{branch.AssemblyName.Name}/_lazy";
             }
         }
     }

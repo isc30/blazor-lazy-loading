@@ -1,0 +1,33 @@
+﻿<Project>
+
+    <Target Name="CreateGitIgnore" BeforeTargets="PrepareForBuild">
+        <WriteLinesToFile
+            Condition="!Exists('$(ModuleWwwRootPath).gitignore')"
+            File="$(ModuleWwwRootPath).gitignore"
+            Lines="$(ModuleLazyDir)/"/>
+    </Target>
+
+    <Target Name="CleanBin" BeforeTargets="Clean;Rebuild">
+        <RemoveDir Directories="$(ModuleLazyPath)" />
+    </Target>
+
+    <Target Name="CopyDependencies" AfterTargets="Build">
+
+        <PropertyGroup>
+            <ProjectOutDir>$(MSBuildProjectDirectory)/$(OutDir)/</ProjectOutDir>
+        </PropertyGroup>
+            
+        <ItemGroup>
+            <OutputFiles Include="$(ProjectOutDir)**/*.*" />
+            <OutputFiles Include="@(ReferenceCopyLocalPaths)" />
+        </ItemGroup>
+
+        <Copy
+            SourceFiles="@(OutputFiles)"
+            DestinationFolder="$(ModuleLazyPath)"
+            OverwriteReadOnlyFiles="true"
+            SkipUnchangedFiles="false" />
+
+    </Target>
+    
+</Project>
