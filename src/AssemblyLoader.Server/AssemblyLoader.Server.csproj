@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Library</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <RootNamespace>BlazorLazyLoading.Server</RootNamespace>
+        <OutputType>Library</OutputType>
         <LangVersion>8.0</LangVersion>
         <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RootNamespace>BlazorLazyLoading.Server</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

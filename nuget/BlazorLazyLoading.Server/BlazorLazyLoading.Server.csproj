@@ -1,18 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <OutputType>Library</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj" />
+        <ProjectReference Include="..\..\src\AssemblyLoader.Server\AssemblyLoader.Server.csproj" />
     </ItemGroup>
 
     <PropertyGroup>
         <PackageId>$(MSBuildProjectName)</PackageId>
         <Product>$(MSBuildProjectName)</Product>
         <Title>$(MSBuildProjectName)</Title>
-        <Description>Full lazy loading support for Blazor WebAssembly!</Description>
+        <Description>Full lazy loading support for Blazor Server!</Description>
     </PropertyGroup>
 
 </Project>

@@ -1,0 +1,9 @@
+﻿<Project>
+
+    <PropertyGroup>
+        <ModuleLazyDir>_lazy</ModuleLazyDir>
+        <ModuleWwwRootPath>$(MSBuildProjectDirectory)/wwwroot/</ModuleWwwRootPath>
+        <ModuleLazyPath>$(ModuleWwwRootPath)$(ModuleLazyDir)/</ModuleLazyPath>
+    </PropertyGroup>
+    
+</Project>

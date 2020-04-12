@@ -1,0 +1,36 @@
+<Project>
+
+    <PropertyGroup>
+        <PackageOutputDir>$(MsBuildThisFileDirectory)..\output</PackageOutputDir>
+        <PackageOutputPath>$(MsBuildThisFileDirectory)..\output</PackageOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Version>0.0.0-dev.1</Version>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IsPackable>true</IsPackable>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Authors>isc30</Authors>
+        <Company>CodeIsc</Company>
+        <PackageId>BlazorLazyLoading._internals.$(MSBuildProjectName)</PackageId>
+        <Product>BlazorLazyLoading._internals.$(MSBuildProjectName)</Product>
+        <Title>BlazorLazyLoading._internals.$(MSBuildProjectName)</Title>
+        <Description>DO NOT REFERENCE THIS PACKAGE DIRECTLY!</Description>
+        <RepositoryUrl>https://github.com/isc30/blazor-lazy-loading</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <Copyright>Ivan Sanz Carasa (isc30)</Copyright>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="GitVersionTask" Version="5.2.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>
