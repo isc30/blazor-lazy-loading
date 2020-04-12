@@ -6,10 +6,10 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0-preview3.20168.3" PrivateAssets="all" />
+        <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Server\BlazorLazyLoading.Server.csproj" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="BlazorLazyLoading.Server" Version="0.1.0-nuget.1" PrivateAssets="all" />
         <ProjectReference Include="..\WasmHost\WasmHost.csproj" />
     </ItemGroup>
 
