@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>$id$</id>
+        <version>$version$</version>
+        <title>$title$</title>
+        <description>$description$</description>
+        <authors>$author$</authors>
+    </metadata>
+    <files>
+        <file src="build\*.*" target="build" />
+        <file src="build\*.*" target="buildMultiTargeting" />
+        <file src="build\*.*" target="buildCrossTargeting" />
+    </files>
+</package>
