@@ -1,14 +1,20 @@
 <Project>
 
+    <ItemGroup>
+        <PackageReference Include="GitVersionTask" Version="5.2.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
     <PropertyGroup>
         <PackageOutputDir>$(MsBuildThisFileDirectory)..\output</PackageOutputDir>
         <PackageOutputPath>$(MsBuildThisFileDirectory)..\output</PackageOutputPath>
     </PropertyGroup>
 
     <PropertyGroup>
-        <Version>0.0.0-dev.1</Version>
+        <Version>0.0.0</Version>
         <NoPackageAnalysis>true</NoPackageAnalysis>
-
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IsPackable>true</IsPackable>
         <IncludeSymbols>true</IncludeSymbols>
@@ -26,11 +32,21 @@
         <Copyright>Ivan Sanz Carasa (isc30)</Copyright>
     </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="GitVersionTask" Version="5.2.4">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
+    <Target Name="SetNuspecProperties" AfterTargets="Build">
+        <PropertyGroup>
+            <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);version=$(Version)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);id=$(PackageId)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);author=$(Authors)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);project=$(MSBuildProjectName)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);PackageProjectUrl=$(PackageProjectUrl)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);Description=$(Description)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);PackageReleaseNotes=$(PackageReleaseNotes)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);Copyright=$(Copyright)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);PackageTags=$(PackageTags)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);RepositoryType=$(RepositoryType)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);RepositoryUrl=$(RepositoryUrl)</NuspecProperties>
+        </PropertyGroup>
+    </Target>
 
 </Project>
