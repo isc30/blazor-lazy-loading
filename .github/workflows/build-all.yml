@@ -12,3 +12,6 @@ jobs:
 
     - name: Run 'build-all'
       uses: ./.github/workflows/build-all
+
+    - name: 0x90
+      run: echo 0x90
