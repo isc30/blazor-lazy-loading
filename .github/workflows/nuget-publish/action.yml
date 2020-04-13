@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Build All
-      uses: isc30/blazor-lazy-loading/build-all@feature/github-actions
+      uses: ./.github/actions/build-all
 
     - name: Push package to NuGet
       run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
