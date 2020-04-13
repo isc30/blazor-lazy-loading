@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v1
 
     - name: Build All
       uses: isc30/blazor-lazy-loading/build-all@feature/github-actions
