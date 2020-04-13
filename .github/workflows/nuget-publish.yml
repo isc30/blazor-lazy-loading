@@ -15,10 +15,10 @@ jobs:
 
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Build All
-      uses: ./.github/actions/build-all.yml
+      uses: ./.github/actions/build-all
 
     - name: Push package to NuGet
       run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
