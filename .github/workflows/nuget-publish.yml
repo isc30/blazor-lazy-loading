@@ -1,6 +1,13 @@
-name: '[trigger] [all branches] Push, PR'
+name: '[trigger] [master] New Release'
 
-on: [push, pull_request]
+on:
+  push:
+    # branches:
+    #   - master
+  release:
+    types: [published, created, edited]
+    # branches:
+    #   - master
 
 env:
   # Workaround for GitVersionTask bug in combination with .NET Core SDK 3.1.200
@@ -34,3 +41,6 @@ jobs:
       with:
         name: output
         path: output
+
+    - name: Push package to NuGet
+      run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
