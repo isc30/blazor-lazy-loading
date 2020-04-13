@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout the repository
-        uses: actions/checkout@v1
+      uses: actions/checkout@v1
 
     - name: Build All
       uses: ./.github/actions/build-all
