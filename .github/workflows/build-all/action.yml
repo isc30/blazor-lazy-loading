@@ -1,7 +1,5 @@
 name: Build all
 
-on: [push, pull_request]
-
 env:
     # Workaround for GitVersionTask bug in combination with .NET Core SDK 3.1.200
     # (see, e.g., https://github.com/dotnet/sdk/issues/10878 and https://github.com/GitTools/GitVersion/issues/2063)
@@ -12,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v1
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -34,6 +30,3 @@ jobs:
       with:
         name: output
         path: output
-
-    #- name: Push package to NuGet
-    #  run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

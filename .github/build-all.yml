@@ -1,0 +1,14 @@
+name: Build all
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    steps:
+
+    - name: Checkout the repository
+      uses: actions/checkout@v1
+
+    - name: Run 'build-all'
+      uses: ./.github/workflows/build-all
