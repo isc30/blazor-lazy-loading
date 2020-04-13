@@ -1,4 +1,4 @@
-name: Build all
+name: task - Build all
 
 env:
     # Workaround for GitVersionTask bug in combination with .NET Core SDK 3.1.200
