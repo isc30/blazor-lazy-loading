@@ -9,13 +9,11 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Checkout the repository
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -23,13 +21,13 @@ jobs:
         dotnet-version: 3.1.200
 
     - name: Build with dotnet
-      run: dotnet build -c Release .\\BlazorLazyLoading.sln
+      run: dotnet build -c Release BlazorLazyLoading.sln
   
     - name: Test with dotnet
-      run: dotnet test .\\BlazorLazyLoading.sln
+      run: dotnet test BlazorLazyLoading.sln
 
     - name: Pack with dotnet
-      run: dotnet pack -c Release .\\BlazorLazyLoading.sln
+      run: dotnet pack -c Release BlazorLazyLoading.sln
 
     #- name: Push package to NuGet
-    #  run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    #  run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
