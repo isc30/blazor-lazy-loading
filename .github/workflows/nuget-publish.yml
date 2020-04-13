@@ -1,13 +1,13 @@
-name: '[trigger] [master] New Release'
+name: '[trigger] new release'
 
 on:
   push:
-    # branches:
-    #   - master
+    branches:
+      - master
   release:
     types: [published, created, edited]
-    # branches:
-    #   - master
+    branches:
+      - master
 
 env:
   # Workaround for GitVersionTask bug in combination with .NET Core SDK 3.1.200
