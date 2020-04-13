@@ -1,4 +1,4 @@
-name: Build all (master)
+name: Nuget publish
 
 on:
   release:
