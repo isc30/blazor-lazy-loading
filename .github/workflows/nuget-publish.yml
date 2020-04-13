@@ -3,8 +3,8 @@ name: Nuget publish
 on:
   release:
     types: [published, created, edited]
-    branches:
-      - master
+    # branches:
+    #   - master
 
 jobs:
   build:
@@ -14,5 +14,5 @@ jobs:
     - name: Build All
       uses: ./.github/actions/build-all
 
-    #- name: Push package to NuGet
-    #  run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    - name: Push package to NuGet
+      run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
