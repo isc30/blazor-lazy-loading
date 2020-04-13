@@ -1,4 +1,4 @@
-name: [trigger] [all branches] Push, PR
+name: '[trigger] [all branches] Push, PR'
 
 on: [push, pull_request]
 
