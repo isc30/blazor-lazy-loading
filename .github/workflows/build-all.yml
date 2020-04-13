@@ -29,5 +29,11 @@ jobs:
     - name: Pack with dotnet
       run: dotnet pack -c Release BlazorLazyLoading.sln
 
+    - name: Upload artifacts
+    - uses: actions/upload-artifact@v1
+      with:
+        name: output
+        path: output
+
     #- name: Push package to NuGet
     #  run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
