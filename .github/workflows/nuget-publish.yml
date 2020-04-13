@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Build All
-      uses: ./.github/actions/build-all
+      uses: ./.github/actions/build-all.yml
 
     - name: Push package to NuGet
       run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
