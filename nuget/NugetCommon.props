@@ -35,7 +35,7 @@
 
     <Target Name="SetNuspecProperties" BeforeTargets="Build">
         <CallTarget Targets="GetVersion" />
-        <Message Importance="high" Text="Stamping MsBuild vars into Nuspec" />
+        <Message Importance="normal" Text="Stamping MsBuild vars into Nuspec" />
         <PropertyGroup>
             <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
