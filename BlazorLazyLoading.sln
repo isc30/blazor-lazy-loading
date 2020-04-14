@@ -25,6 +25,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{593AE082-BD15-4FEB-8DC2-20D4ABA3AFD4}"
 	ProjectSection(SolutionItems) = preProject
 		nuget\Directory.Build.props = nuget\Directory.Build.props
+		GitVersion.yml = GitVersion.yml
 		nuget\NugetCommon.props = nuget\NugetCommon.props
 	EndProjectSection
 EndProject

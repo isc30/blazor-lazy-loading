@@ -33,7 +33,7 @@
         <Copyright>Ivan Sanz Carasa (isc30)</Copyright>
     </PropertyGroup>
 
-    <Target Name="SetNuspecProperties" AfterTargets="Build;Rebuild">
+    <Target Name="SetNuspecProperties" AfterTargets="Build">
         <PropertyGroup>
             <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);version=$(Version)</NuspecProperties>
