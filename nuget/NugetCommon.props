@@ -6,7 +6,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
     </ItemGroup>
-
+    
     <PropertyGroup>
         <PackageOutputDir>$(MsBuildThisFileDirectory)..\output</PackageOutputDir>
         <PackageOutputPath>$(MsBuildThisFileDirectory)..\output</PackageOutputPath>
@@ -16,7 +16,7 @@
         <Version>0.0.0</Version>
         <NoPackageAnalysis>true</NoPackageAnalysis>
 
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <IsPackable>true</IsPackable>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -33,27 +33,12 @@
         <Copyright>Ivan Sanz Carasa (isc30)</Copyright>
     </PropertyGroup>
 
-    <Target Name="SetNuspecProperties" AfterTargets="Build">
+    <Target Name="SetNuspecProperties" BeforeTargets="Build">
+        <CallTarget Targets="GetVersion" />
+        <Message Importance="high" Text="Stamping MsBuild vars into Nuspec" />
         <PropertyGroup>
             <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);version=$(Version)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);id=$(PackageId)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);author=$(Authors)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);project=$(MSBuildProjectName)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);PackageProjectUrl=$(PackageProjectUrl)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);Description=$(Description)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);PackageReleaseNotes=$(PackageReleaseNotes)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);Copyright=$(Copyright)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);PackageTags=$(PackageTags)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);RepositoryType=$(RepositoryType)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);RepositoryUrl=$(RepositoryUrl)</NuspecProperties>
-        </PropertyGroup>
-    </Target>
-
-    <Target Name="SetNuspecProperties2" BeforeTargets="Pack">
-        <PropertyGroup>
-            <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
-            <NuspecProperties>$(NuspecProperties);version=$(Version)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);id=$(PackageId)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);author=$(Authors)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);project=$(MSBuildProjectName)</NuspecProperties>
