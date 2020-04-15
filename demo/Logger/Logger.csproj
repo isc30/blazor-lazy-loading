@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <!-- simulate nuget automatic props/targets -->
+    <PropertyGroup><IsFakeNugetPackage>true</IsFakeNugetPackage></PropertyGroup>
     <ItemGroup><ProjectReference Include="..\..\nuget\BlazorLazyLoading.Module\BlazorLazyLoading.Module.csproj" /></ItemGroup>
     <Import Project="..\..\nuget\BlazorLazyLoading.Module\build\BlazorLazyLoading.Module.props" />
     <Import Project="..\..\nuget\BlazorLazyLoading.Module\build\BlazorLazyLoading.Module.targets" />

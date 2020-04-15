@@ -1,9 +1,14 @@
 ﻿<Project>
 
     <PropertyGroup>
+        <_NugetBuildPath>$(MsBuildThisFileDirectory)../build/</_NugetBuildPath>
+        <_NugetBuildPath Condition="$(IsFakeNugetPackage)">$(MSBuildProjectDirectory)/../../src/ManifestGenerator/bin/$(Configuration)/$(TargetFramework)/</_NugetBuildPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <ModuleLazyDir>_lazy</ModuleLazyDir>
         <ModuleWwwRootPath>$(MSBuildProjectDirectory)/wwwroot/</ModuleWwwRootPath>
         <ModuleLazyPath>$(ModuleWwwRootPath)$(ModuleLazyDir)/</ModuleLazyPath>
     </PropertyGroup>
-    
+
 </Project>
