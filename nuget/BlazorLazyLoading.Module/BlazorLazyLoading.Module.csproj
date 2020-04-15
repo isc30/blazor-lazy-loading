@@ -13,4 +13,8 @@
         <Description>Build tools for creating a Blazor Lazy Loadable module</Description>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\ManifestGenerator\ManifestGenerator.csproj" />
+    </ItemGroup>
+
 </Project>
