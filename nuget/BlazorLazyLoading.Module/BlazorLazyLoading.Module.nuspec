@@ -11,5 +11,9 @@
         <file src="build\*.*" target="build" />
         <file src="build\*.*" target="buildMultiTargeting" />
         <file src="build\*.*" target="buildCrossTargeting" />
+
+        <!-- manifest generator -->
+        <file src="bin\$configuration$\$framework$\*.dll" target="build\bin" />
+        <file src="bin\$configuration$\$framework$\*.pdb" target="build\bin" />
     </files>
 </package>

@@ -1,6 +1,6 @@
 <Project>
 
     <!-- automatically create "Internal" packages -->
-    <Import Project="$(MsBuildThisFileDirectory)../nuget/NugetCommon.props" />
+    <Import Project="$(MSBuildThisFileDirectory)../nuget/NugetCommon.props" />
 
 </Project>

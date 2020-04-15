@@ -8,8 +8,8 @@
     </ItemGroup>
     
     <PropertyGroup>
-        <PackageOutputDir>$(MsBuildThisFileDirectory)..\output</PackageOutputDir>
-        <PackageOutputPath>$(MsBuildThisFileDirectory)..\output</PackageOutputPath>
+        <PackageOutputDir>$(MSBuildThisFileDirectory)..\output</PackageOutputDir>
+        <PackageOutputPath>$(MSBuildThisFileDirectory)..\output</PackageOutputPath>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -42,6 +42,7 @@
             <NuspecProperties>$(NuspecProperties);id=$(PackageId)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);author=$(Authors)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);project=$(MSBuildProjectName)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);framework=$(TargetFramework)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);PackageProjectUrl=$(PackageProjectUrl)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);Description=$(Description)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);PackageReleaseNotes=$(PackageReleaseNotes)</NuspecProperties>

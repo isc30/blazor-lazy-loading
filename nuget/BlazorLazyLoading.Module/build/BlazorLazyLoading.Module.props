@@ -1,9 +1,20 @@
 ﻿<Project>
 
     <PropertyGroup>
-        <ModuleLazyDir>_lazy</ModuleLazyDir>
-        <ModuleWwwRootPath>$(MSBuildProjectDirectory)/wwwroot/</ModuleWwwRootPath>
-        <ModuleLazyPath>$(ModuleWwwRootPath)$(ModuleLazyDir)/</ModuleLazyPath>
+        <_NugetPackageBuildBinDirectory>$(MSBuildThisFileDirectory)../build/bin/</_NugetPackageBuildBinDirectory>
+        <_NugetPackageBuildBinDirectory Condition="$(IsFakeNugetPackage)">$(MSBuildThisFileDirectory)../bin/$(Configuration)/$(TargetFramework)/</_NugetPackageBuildBinDirectory>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     </PropertyGroup>
     
+    <PropertyGroup>
+        <ModuleLazyDirectoryName>_lazy</ModuleLazyDirectoryName>
+        <ModuleWwwRootDirectory>$(MSBuildProjectDirectory)/wwwroot/</ModuleWwwRootDirectory>
+        <ModuleLazyDirectory>$(ModuleWwwRootDirectory)$(ModuleLazyDirectoryName)/</ModuleLazyDirectory>
+        <ModuleManifestPath>$(ModuleWwwRootDirectory)_lazy.json</ModuleManifestPath>
+    </PropertyGroup>
+
 </Project>
