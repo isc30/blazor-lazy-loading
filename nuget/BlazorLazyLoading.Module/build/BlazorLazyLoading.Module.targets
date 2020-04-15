@@ -1,25 +1,28 @@
 ﻿<Project>
 
-    <UsingTask TaskName="BlazorLazyLoading.LoadDLLInfo" AssemblyFile="$(_NugetBuildPath)ManifestGenerator.dll" />
-    
     <Target Name="CreateGitIgnore" BeforeTargets="PrepareForBuild">
         <WriteLinesToFile
-            Condition="!Exists('$(ModuleWwwRootPath).gitignore')"
-            File="$(ModuleWwwRootPath).gitignore"
-            Lines="$(ModuleLazyDir)/"/>
+            Condition="!Exists('$(ModuleWwwRootDirectory).gitignore')"
+            File="$(ModuleWwwRootDirectory).gitignore"
+            Lines="$(ModuleLazyDirectoryName)/;_lazy.json"/>
     </Target>
 
     <Target Name="CleanBin" BeforeTargets="Clean;Rebuild">
-        <RemoveDir Directories="$(ModuleLazyPath)" />
+        <RemoveDir Directories="$(ModuleLazyDirectory)" />
     </Target>
+
+    <UsingTask TaskName="LoadDLLInfo" AssemblyFile="$(_NugetPackageBuildBinDirectory)ManifestGenerator.dll" Condition="Exists('$(_NugetPackageBuildBinDirectory)ManifestGenerator.dll')" />
 
     <Target Name="CopyDependencies" AfterTargets="Build">
 
-        <LoadDLLInfo />
-
         <PropertyGroup>
-            <ProjectOutDir>$(MSBuildProjectDirectory)/$(OutDir)/</ProjectOutDir>
+            <ProjectOutDir>$(MSBuildProjectDirectory)/$(OutDir)</ProjectOutDir>
         </PropertyGroup>
+
+        <LoadDLLInfo
+            AssemblyName="$(MSBuildProjectName)"
+            AssemblyPaths="$(ProjectOutDir);$(_NugetPackageBuildBinDirectory)"
+            JsonManifestPath="$(ModuleManifestPath)" />
 
         <ItemGroup>
             <OutputFiles Include="$(ProjectOutDir)**/*.*" />
@@ -28,7 +31,7 @@
 
         <Copy
             SourceFiles="@(OutputFiles)"
-            DestinationFolder="$(ModuleLazyPath)"
+            DestinationFolder="$(ModuleLazyDirectory)"
             OverwriteReadOnlyFiles="true"
             SkipUnchangedFiles="false" />
 

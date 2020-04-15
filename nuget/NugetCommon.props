@@ -8,8 +8,8 @@
     </ItemGroup>
     
     <PropertyGroup>
-        <PackageOutputDir>$(MsBuildThisFileDirectory)..\output</PackageOutputDir>
-        <PackageOutputPath>$(MsBuildThisFileDirectory)..\output</PackageOutputPath>
+        <PackageOutputDir>$(MSBuildThisFileDirectory)..\output</PackageOutputDir>
+        <PackageOutputPath>$(MSBuildThisFileDirectory)..\output</PackageOutputPath>
     </PropertyGroup>
 
     <PropertyGroup>

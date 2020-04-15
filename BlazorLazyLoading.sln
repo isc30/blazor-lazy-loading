@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Server", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Module", "nuget\BlazorLazyLoading.Module\BlazorLazyLoading.Module.csproj", "{0DE40B36-69C4-4F1C-B419-B9A4DB9CFC8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManifestGenerator", "src\ManifestGenerator\ManifestGenerator.csproj", "{DF18C6BF-F2D7-45B9-BB90-B3E6418AB36C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManifestGenerator", "src\ManifestGenerator\ManifestGenerator.csproj", "{DF18C6BF-F2D7-45B9-BB90-B3E6418AB36C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

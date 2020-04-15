@@ -13,7 +13,7 @@
         <file src="build\*.*" target="buildCrossTargeting" />
 
         <!-- manifest generator -->
-        <file src="bin\$configuration$\$framework$\ManifestGenerator.dll" target="build\bin" />
-        <file src="bin\$configuration$\$framework$\ManifestGenerator.pdb" target="build\bin" />
+        <file src="bin\$configuration$\$framework$\*.dll" target="build\bin" />
+        <file src="bin\$configuration$\$framework$\*.pdb" target="build\bin" />
     </files>
 </package>
