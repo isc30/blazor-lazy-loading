@@ -1,7 +1,7 @@
 ﻿<Project>
 
     <PropertyGroup>
-        <_NugetPackageBuildBinDirectory>$(MSBuildThisFileDirectory)../build/bin/</_NugetPackageBuildBinDirectory>
+        <_BLLNugetPackageBuildBinDirectory>$(MSBuildThisFileDirectory)../build/bin/</_BLLNugetPackageBuildBinDirectory>
     </PropertyGroup>
 
     <PropertyGroup>

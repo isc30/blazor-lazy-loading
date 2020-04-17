@@ -2,4 +2,9 @@
 
     <Import Project="LocalNugetVersion.props" />
 
+    <!-- Convert $(BLLUseLocalNugetPackages) to bool -->
+    <PropertyGroup>
+        <BLLUseLocalNugetPackages Condition="'$(BLLUseLocalNugetPackages)' == ''">false</BLLUseLocalNugetPackages>
+    </PropertyGroup>
+
 </Project>
