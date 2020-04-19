@@ -1,25 +1,24 @@
 ﻿<Project>
 
     <PropertyGroup>
-        <_BLLNugetPackageBuildBinDirectory>$(MSBuildThisFileDirectory)../build/bin/</_BLLNugetPackageBuildBinDirectory>
+        <BLLGenerateLazyManifest Condition="'$(BLLGenerateLazyManifest)' == ''">true</BLLGenerateLazyManifest>
+        <RestoreProjectStyle Condition="'$(RestoreProjectStyle)' == ''">PackageReference</RestoreProjectStyle>
+        <CopyLocalLockFileAssemblies Condition="'$(CopyLocalLockFileAssemblies)' == ''">$(BLLGenerateLazyManifest)</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    </PropertyGroup>
+    <ItemGroup>
+        <BLLManifestGeneratorAssemblyNames Include="$(MSBuildProjectName)" />
+        <BLLManifestGeneratorAssemblyPaths Include="$(_BLLNugetPackageBuildBinDirectory)" />
+    </ItemGroup>
     
     <PropertyGroup>
+        <_BLLNugetPackageBuildBinDirectory>$(MSBuildThisFileDirectory)../build/bin/</_BLLNugetPackageBuildBinDirectory>
+        
         <ModuleLazyDirectoryName>_lazy</ModuleLazyDirectoryName>
         <ModuleLazyManifestFile>_lazy.json</ModuleLazyManifestFile>
         <ModuleWwwRootDirectory>$(MSBuildProjectDirectory)/wwwroot/</ModuleWwwRootDirectory>
         <ModuleLazyDirectory>$(ModuleWwwRootDirectory)$(ModuleLazyDirectoryName)/</ModuleLazyDirectory>
         <ModuleManifestPath>$(ModuleWwwRootDirectory)$(ModuleLazyManifestFile)</ModuleManifestPath>
     </PropertyGroup>
-
-    <ItemGroup>
-        <ManifestGeneratorAssemblyNames Include="$(MSBuildProjectName)" />
-        <ManifestGeneratorAssemblyPaths Include="$(_BLLNugetPackageBuildBinDirectory)" />
-    </ItemGroup>
 
 </Project>

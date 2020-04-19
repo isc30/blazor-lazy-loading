@@ -7,26 +7,23 @@
             Lines="$(ModuleLazyDirectoryName)/;$(ModuleLazyManifestFile)"/>
     </Target>
 
-    <Target Name="CleanBin" BeforeTargets="Clean;Rebuild">
+    <Target Name="CleanBin" BeforeTargets="Clean;Rebuild;Build">
+        <ItemGroup>
+            <FilesToDelete Include="$(ModuleLazyDirectory)**/*.*" />
+            <FilesToDelete Include="$(ModuleManifestPath)" />
+        </ItemGroup>
+        
         <RemoveDir Directories="$(ModuleLazyDirectory)" />
+        <Delete Files="@(FilesToDelete)" />
     </Target>
 
-    <UsingTask TaskName="GenerateManifest" AssemblyFile="$(_BLLNugetPackageBuildBinDirectory)ManifestGenerator.dll" />
+    <!-- Ensure all DLLs and PDBs are available -->
 
     <Target Name="CopyDependencies" AfterTargets="Build">
 
         <PropertyGroup>
             <ProjectOutDir>$(MSBuildProjectDirectory)/$(OutDir)</ProjectOutDir>
         </PropertyGroup>
-
-        <ItemGroup>
-            <ManifestGeneratorAssemblyNames Include="@(ProjectReference->'%(Name)')" />
-        </ItemGroup>
-
-        <GenerateManifest
-            AssemblyNames="@(ManifestGeneratorAssemblyNames)"
-            AssemblyPaths="$(ProjectOutDir);@(ManifestGeneratorAssemblyPaths)"
-            ManifestOutputPath="$(ModuleManifestPath)" />
 
         <ItemGroup>
             <OutputFiles Include="$(ProjectOutDir)**/*.*" />
@@ -38,6 +35,27 @@
             DestinationFolder="$(ModuleLazyDirectory)"
             OverwriteReadOnlyFiles="true"
             SkipUnchangedFiles="false" />
+
+    </Target>
+
+    <!-- Create Lazy Manifest -->
+    
+    <UsingTask TaskName="GenerateManifest" AssemblyFile="$(_BLLNugetPackageBuildBinDirectory)ManifestGenerator.dll" />
+
+    <Target Name="GenerateManifest" AfterTargets="CopyDependencies" Condition="$(BLLGenerateLazyManifest)">
+
+        <PropertyGroup>
+            <ProjectOutDir>$(MSBuildProjectDirectory)/$(OutDir)</ProjectOutDir>
+        </PropertyGroup>
+
+        <ItemGroup>
+            <ManifestGeneratorAssemblyNames Include="@(ProjectReference->'%(Name)')" />
+        </ItemGroup>
+
+        <GenerateManifest
+            AssemblyNames="@(BLLManifestGeneratorAssemblyNames)"
+            AssemblyPaths="$(ProjectOutDir);@(BLLManifestGeneratorAssemblyPaths)"
+            ManifestOutputPath="$(ModuleManifestPath)" />
 
     </Target>
 
