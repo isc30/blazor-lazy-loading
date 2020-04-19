@@ -24,8 +24,10 @@
         <PackageReference Include="System.Net.Http.Json" Version="3.2.0-preview5.20210.3" />
     </ItemGroup>
 
+    <!-- Modules -->
     <ItemGroup>
-        <ProjectReference Include="..\Logger\Logger.csproj" />
+      <ProjectReference Include="..\ModulesHost\ModulesHost.csproj" />
+      <ProjectReference Include="..\Logger\Logger.csproj" />
     </ItemGroup>
 
 </Project>

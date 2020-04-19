@@ -11,9 +11,15 @@
     
     <PropertyGroup>
         <ModuleLazyDirectoryName>_lazy</ModuleLazyDirectoryName>
+        <ModuleLazyManifestFile>_lazy.json</ModuleLazyManifestFile>
         <ModuleWwwRootDirectory>$(MSBuildProjectDirectory)/wwwroot/</ModuleWwwRootDirectory>
         <ModuleLazyDirectory>$(ModuleWwwRootDirectory)$(ModuleLazyDirectoryName)/</ModuleLazyDirectory>
-        <ModuleManifestPath>$(ModuleWwwRootDirectory)_lazy.json</ModuleManifestPath>
+        <ModuleManifestPath>$(ModuleWwwRootDirectory)$(ModuleLazyManifestFile)</ModuleManifestPath>
     </PropertyGroup>
+
+    <ItemGroup>
+        <ManifestGeneratorAssemblyNames Include="$(MSBuildProjectName)" />
+        <ManifestGeneratorAssemblyPaths Include="$(_BLLNugetPackageBuildBinDirectory)" />
+    </ItemGroup>
 
 </Project>
