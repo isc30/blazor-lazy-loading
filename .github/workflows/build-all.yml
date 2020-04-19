@@ -20,8 +20,29 @@ jobs:
       with:
         dotnet-version: 3.1.200
 
-    - name: Build with dotnet
+    - name: Restore library
+      run: dotnet restore BlazorLazyLoading.sln
+
+    - name: Build library
       run: dotnet build -c Release BlazorLazyLoading.sln
   
-    - name: Test with dotnet
-      run: dotnet test BlazorLazyLoading.sln
+    - name: Test library
+      run: dotnet test -c Release BlazorLazyLoading.sln
+
+    - name: Pack library
+      run: dotnet pack -c Release BlazorLazyLoading.sln
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: output
+        path: output
+
+    - name: Restore demo
+      run: dotnet restore -p:BLLUseLocalNugetPackages=true demo/Demo.sln
+
+    - name: Build demo
+      run: dotnet build -c Release -p:BLLUseLocalNugetPackages=true demo/Demo.sln
+
+    - name: Test demo
+      run: dotnet test -c Release demo/Demo.sln

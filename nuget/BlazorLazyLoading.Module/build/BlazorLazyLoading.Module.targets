@@ -11,7 +11,7 @@
         <RemoveDir Directories="$(ModuleLazyDirectory)" />
     </Target>
 
-    <UsingTask TaskName="LoadDLLInfo" AssemblyFile="$(_NugetPackageBuildBinDirectory)ManifestGenerator.dll" Condition="Exists('$(_NugetPackageBuildBinDirectory)ManifestGenerator.dll')" />
+    <UsingTask TaskName="LoadDLLInfo" AssemblyFile="$(_BLLNugetPackageBuildBinDirectory)ManifestGenerator.dll" />
 
     <Target Name="CopyDependencies" AfterTargets="Build">
 
@@ -21,7 +21,7 @@
 
         <LoadDLLInfo
             AssemblyName="$(MSBuildProjectName)"
-            AssemblyPaths="$(ProjectOutDir);$(_NugetPackageBuildBinDirectory)"
+            AssemblyPaths="$(ProjectOutDir);$(_BLLNugetPackageBuildBinDirectory)"
             JsonManifestPath="$(ModuleManifestPath)" />
 
         <ItemGroup>

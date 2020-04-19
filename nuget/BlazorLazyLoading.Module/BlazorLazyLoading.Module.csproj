@@ -19,4 +19,18 @@
       <ProjectReference Include="..\..\src\ManifestGenerator\ManifestGenerator.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Compile Remove="build\bin\**" />
+        <EmbeddedResource Remove="build\bin\**" />
+        <None Remove="build\bin\**" />
+    </ItemGroup>
+
+    <Target Name="CopyBinToBuild" AfterTargets="Build">
+        <Message Importance="high" Text="Copying bin files..." />
+        <ItemGroup>
+            <BinFiles Include="$(MSBuildThisFileDirectory)bin/$(Configuration)/$(TargetFramework)/**/*.*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(MSBuildThisFileDirectory)build/bin/" />
+    </Target>
+
 </Project>

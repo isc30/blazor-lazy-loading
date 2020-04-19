@@ -1,8 +1,7 @@
 ﻿<Project>
 
     <PropertyGroup>
-        <_NugetPackageBuildBinDirectory>$(MSBuildThisFileDirectory)../build/bin/</_NugetPackageBuildBinDirectory>
-        <_NugetPackageBuildBinDirectory Condition="$(IsFakeNugetPackage)">$(MSBuildThisFileDirectory)../bin/$(Configuration)/$(TargetFramework)/</_NugetPackageBuildBinDirectory>
+        <_BLLNugetPackageBuildBinDirectory>$(MSBuildThisFileDirectory)../build/bin/</_BLLNugetPackageBuildBinDirectory>
     </PropertyGroup>
 
     <PropertyGroup>
