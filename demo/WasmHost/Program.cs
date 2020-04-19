@@ -24,7 +24,11 @@ namespace WasmHost
         private static void ConfigureServices(IServiceCollection services, WebAssemblyHostBuilder builder)
         {
             AddHttpClient(services, builder);
-            services.AddLazyLoading();
+
+            services.AddLazyLoading(new LazyLoadingOptions
+            {
+                ModuleHints = new[] { "ModulesHost" }
+            });
         }
 
         private static void AddHttpClient(IServiceCollection services, WebAssemblyHostBuilder builder)

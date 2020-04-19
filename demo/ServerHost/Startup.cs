@@ -20,7 +20,11 @@ namespace ServerHost
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddLazyLoading();
+
+            services.AddLazyLoading(new LazyLoadingOptions
+            {
+                ModuleHints = new[] { "ModulesHost" }
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

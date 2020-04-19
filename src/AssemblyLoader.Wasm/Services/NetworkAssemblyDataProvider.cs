@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -10,21 +9,22 @@ namespace BlazorLazyLoading.Wasm.Services
 {
     public class NetworkAssemblyDataProvider : IAssemblyDataProvider
     {
+        private readonly IAssemblyDataLocator _assemblyDataLocator;
         private readonly HttpClient _httpClient;
-        private readonly NetworkDependencyPathFinder _basePathResolver;
 
-        public NetworkAssemblyDataProvider(HttpClient httpClient)
+        public NetworkAssemblyDataProvider(
+            IAssemblyDataLocator assemblyDataLocator,
+            HttpClient httpClient)
         {
+            _assemblyDataLocator = assemblyDataLocator;
             _httpClient = httpClient;
-            _basePathResolver = new NetworkDependencyPathFinder();
         }
 
         public async Task<AssemblyData?> GetAssemblyDataAsync(
             AssemblyName assemblyName,
             AssemblyLoaderContext context)
         {
-            // TODO: strategy to get possible basePaths based on the AssemblyName and Context
-            var paths = _basePathResolver.GetFindPaths(assemblyName, context);
+            var paths = _assemblyDataLocator.GetFindPaths(assemblyName, context);
 
             foreach (var path in paths)
             {
@@ -73,35 +73,6 @@ namespace BlazorLazyLoading.Wasm.Services
             catch
             {
                 return null;
-            }
-        }
-    }
-
-    public class NetworkDependencyPathFinder
-    {
-        public IEnumerable<string> GetFindPaths(
-            AssemblyName assemblyName,
-            AssemblyLoaderContext context)
-        {
-            List<AssemblyLoaderContext> branches = new List<AssemblyLoaderContext> { context };
-            AssemblyLoaderContext contextRoot = context;
-
-            while (contextRoot.Parent != null)
-            {
-                contextRoot = contextRoot.Parent;
-                branches.Add(contextRoot);
-            }
-
-            branches.Reverse();
-
-            branches.RemoveAt(0);
-
-            yield return $"_content/{contextRoot.AssemblyName.Name}/_lazy";
-            yield return $"_framework/_bin";
-
-            foreach (var branch in branches)
-            {
-                yield return $"_content/{branch.AssemblyName.Name}/_lazy";
             }
         }
     }

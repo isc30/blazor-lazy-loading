@@ -26,7 +26,7 @@
     </ItemGroup>
 
     <Target Name="CopyBinToBuild" AfterTargets="Build">
-        <Message Importance="high" Text="Copying bin files..." />
+        <Message Importance="high" Text="[HACK] Copying bin files..." />
         <ItemGroup>
             <BinFiles Include="$(MSBuildThisFileDirectory)bin/$(Configuration)/$(TargetFramework)/**/*.*" />
         </ItemGroup>

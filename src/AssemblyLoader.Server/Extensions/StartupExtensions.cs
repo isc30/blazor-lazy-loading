@@ -1,4 +1,6 @@
-﻿using System.Net.Mime;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Mime;
 using BlazorLazyLoading.Abstractions;
 using BlazorLazyLoading.Server.Services;
 using BlazorLazyLoading.Services;
@@ -12,17 +14,23 @@ namespace BlazorLazyLoading.Server
     public static class AssemblyLoaderStartupExtensions
     {
         public static IServiceCollection AddLazyLoading(
-            this IServiceCollection services)
+            this IServiceCollection services,
+            LazyLoadingOptions options)
         {
             services.AddScoped<IAssemblyLoader, AssemblyLoader>();
             services.AddSingleton<IAssemblyLoadContextFactory, DisposableAssemblyLoadContextFactory>();
+            services.AddSingleton<IAssemblyDataLocator, AssemblyDataLocator>();
 
-            services.AddSingleton(
-                typeof(IAssemblyDataProvider),
+            services.AddSingleton<ILazyModuleHintsProvider>(
+                p => new LazyModuleHintsProvider(options.ModuleHints));
+
+            services.AddSingleton<IAssemblyDataProvider>(
                 p =>
                 {
                     IWebHostEnvironment env = p.GetRequiredService<IWebHostEnvironment>();
-                    return new FileProviderAssemblyDataProvider(env.WebRootFileProvider);
+                    IAssemblyDataLocator assemblyDataLocator = p.GetRequiredService<IAssemblyDataLocator>();
+
+                    return new FileProviderAssemblyDataProvider(assemblyDataLocator, env.WebRootFileProvider);
                 });
 
             return services;
@@ -41,5 +49,15 @@ namespace BlazorLazyLoading.Server
                 ContentTypeProvider = contentTypeMap,
             });
         }
+    }
+
+    public sealed class LazyLoadingOptions
+    {
+        /// <summary>
+        /// Specifies a list of Module Names (hints) to:
+        ///   - Download DLLs from them
+        ///   - Use their manifest to locate lazy resources
+        /// </summary>
+        public IEnumerable<string> ModuleHints { get; set; } = Array.Empty<string>();
     }
 }

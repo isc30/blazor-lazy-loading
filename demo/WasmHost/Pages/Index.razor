@@ -24,6 +24,12 @@ Welcome to your new app.
                 Version = null,
             });
 
+        if (a == null)
+        {
+            Console.Error.WriteLine("Assembly 'Logger' failed to load");
+            return;
+        }
+
         a.GetType("MyLogger.Logger").GetMethod("Log").Invoke(null, new[] { "Lazy! Oh Yeah!" });
     }
 }
