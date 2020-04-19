@@ -1,3 +1,5 @@
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using BlazorLazyLoading.Wasm;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -12,17 +14,27 @@ namespace WasmHost
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            ConfigureServices(builder.Services);
+            ConfigureServices(builder.Services, builder);
 
             WebAssemblyHost host = builder.Build();
 
             await host.RunAsync();
         }
 
-        private static void ConfigureServices(IServiceCollection services)
+        private static void ConfigureServices(IServiceCollection services, WebAssemblyHostBuilder builder)
         {
-            services.AddBaseAddressHttpClient();
+            AddHttpClient(services, builder);
             services.AddLazyLoading();
+        }
+
+        private static void AddHttpClient(IServiceCollection services, WebAssemblyHostBuilder builder)
+        {
+            services.AddSingleton(
+                typeof(HttpClient),
+                p => new HttpClient
+                {
+                    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+                });
         }
     }
 }
