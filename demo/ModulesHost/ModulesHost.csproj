@@ -7,7 +7,7 @@
 
     <!-- Modules -->
     <ItemGroup>
-        <!--<ProjectReference Include="..\Logger\Logger.csproj" Name="Logger" />-->
+        <ProjectReference Include="..\Logger\Logger.csproj" Name="Logger" />
     </ItemGroup>
 
     <!-- Extra dependencies -->

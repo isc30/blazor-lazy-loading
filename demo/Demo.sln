@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Server", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Wasm", "..\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj", "{B78FC2FE-F107-49AB-95FC-E7F4559C879A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesHost", "ModulesHost\ModulesHost.csproj", "{9B062109-5E21-46CD-BDD1-315529E585E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModulesHost", "ModulesHost\ModulesHost.csproj", "{9B062109-5E21-46CD-BDD1-315529E585E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{2587AE99-7624-47E4-B6B8-79EC67346F67}"
 EndProject

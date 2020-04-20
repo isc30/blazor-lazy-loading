@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RazorLangVersion>3.0</RazorLangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>$(MSBuildProjectName)</PackageId>
+        <Product>$(MSBuildProjectName)</Product>
+        <Title>$(MSBuildProjectName)</Title>
+        <Description>Razor Components for lazy loadable modules</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\LazyComponents\LazyComponents.csproj" />
+    </ItemGroup>
+
+</Project>

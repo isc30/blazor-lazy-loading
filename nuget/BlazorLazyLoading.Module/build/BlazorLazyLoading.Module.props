@@ -7,6 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <BLLManifestGeneratorAssemblyNames Remove="*" />
+        <BLLManifestGeneratorAssemblyPaths Remove="*" />
+        
         <BLLManifestGeneratorAssemblyNames Include="$(MSBuildProjectName)" />
         <BLLManifestGeneratorAssemblyPaths Include="$(_BLLNugetPackageBuildBinDirectory)" />
     </ItemGroup>

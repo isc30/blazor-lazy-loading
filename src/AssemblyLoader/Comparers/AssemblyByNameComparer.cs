@@ -24,8 +24,9 @@ namespace BlazorLazyLoading.Comparers
 
         public int GetHashCode(AssemblyName obj)
         {
-            return HashCode.Combine(
-                obj.Name.ToLowerInvariant());
+            return obj.Name
+                .ToLowerInvariant()
+                .GetHashCode();
         }
     }
 }

@@ -5,7 +5,7 @@ using BlazorLazyLoading.Models;
 
 namespace BlazorLazyLoading.Services
 {
-    public class AssemblyDataLocator : IAssemblyDataLocator
+    public sealed class AssemblyDataLocator : IAssemblyDataLocator
     {
         private readonly ILazyModuleHintsProvider _lazyModuleNamesProvider;
 

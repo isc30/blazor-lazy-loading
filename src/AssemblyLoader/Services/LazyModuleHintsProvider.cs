@@ -3,7 +3,7 @@ using BlazorLazyLoading.Abstractions;
 
 namespace BlazorLazyLoading.Services
 {
-    public class LazyModuleHintsProvider : ILazyModuleHintsProvider
+    public sealed class LazyModuleHintsProvider : ILazyModuleHintsProvider
     {
         public IEnumerable<string> ModuleNameHints { get; }
 

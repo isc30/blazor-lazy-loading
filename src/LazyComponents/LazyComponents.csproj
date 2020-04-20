@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-    
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>8.0</LangVersion>
@@ -12,7 +12,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="System.Reflection.Metadata" Version="1.8.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AssemblyLoader\AssemblyLoader.csproj" />
     </ItemGroup>
 
 </Project>

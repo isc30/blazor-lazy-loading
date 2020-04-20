@@ -20,18 +20,17 @@ namespace BlazorLazyLoading.Server
             services.AddScoped<IAssemblyLoader, AssemblyLoader>();
             services.AddSingleton<IAssemblyLoadContextFactory, DisposableAssemblyLoadContextFactory>();
             services.AddSingleton<IAssemblyDataLocator, AssemblyDataLocator>();
+            services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
 
-            services.AddSingleton<ILazyModuleHintsProvider>(
-                p => new LazyModuleHintsProvider(options.ModuleHints));
-
-            services.AddSingleton<IAssemblyDataProvider>(
+            services.AddSingleton<IContentFileReader>(
                 p =>
                 {
                     IWebHostEnvironment env = p.GetRequiredService<IWebHostEnvironment>();
-                    IAssemblyDataLocator assemblyDataLocator = p.GetRequiredService<IAssemblyDataLocator>();
-
-                    return new FileProviderAssemblyDataProvider(assemblyDataLocator, env.WebRootFileProvider);
+                    return new FileProviderContentFileReader(env.WebRootFileProvider);
                 });
+
+            services.AddSingleton<ILazyModuleHintsProvider>(
+                p => new LazyModuleHintsProvider(options.ModuleHints));
 
             return services;
         }

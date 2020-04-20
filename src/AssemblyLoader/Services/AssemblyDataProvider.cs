@@ -1,28 +1,25 @@
 ﻿using System.Diagnostics;
-using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using BlazorLazyLoading.Abstractions;
 using BlazorLazyLoading.Models;
 
-namespace BlazorLazyLoading.Wasm.Services
+namespace BlazorLazyLoading.Services
 {
-    public class NetworkAssemblyDataProvider : IAssemblyDataProvider
+    public sealed class AssemblyDataProvider : IAssemblyDataProvider
     {
         private readonly IAssemblyDataLocator _assemblyDataLocator;
-        private readonly HttpClient _httpClient;
+        private readonly IContentFileReader _contentFileReader;
 
-        public NetworkAssemblyDataProvider(
+        public AssemblyDataProvider(
             IAssemblyDataLocator assemblyDataLocator,
-            HttpClient httpClient)
+            IContentFileReader contentFileReader)
         {
             _assemblyDataLocator = assemblyDataLocator;
-            _httpClient = httpClient;
+            _contentFileReader = contentFileReader;
         }
 
-        public async Task<AssemblyData?> GetAssemblyDataAsync(
-            AssemblyName assemblyName,
-            AssemblyLoaderContext context)
+        public async Task<AssemblyData?> GetAssemblyDataAsync(AssemblyName assemblyName, AssemblyLoaderContext context)
         {
             var paths = _assemblyDataLocator.GetFindPaths(assemblyName, context);
 
@@ -43,10 +40,10 @@ namespace BlazorLazyLoading.Wasm.Services
             AssemblyName assemblyName,
             string basePath)
         {
-            Task<byte[]?> dll = FetchBytesOrNull(basePath, $"{assemblyName.Name}.dll");
+            Task<byte[]?> dll = _contentFileReader.ReadBytesOrNullAsync(basePath, $"{assemblyName.Name}.dll");
 
             Task<byte[]?> pdb = Debugger.IsAttached
-                ? FetchBytesOrNull(basePath, $"{assemblyName.Name}.pdb")
+                ? _contentFileReader.ReadBytesOrNullAsync(basePath, $"{assemblyName.Name}.pdb")
                 : Task.FromResult<byte[]?>(null);
 
             await Task.WhenAll(dll, pdb).ConfigureAwait(false);
@@ -60,20 +57,6 @@ namespace BlazorLazyLoading.Wasm.Services
             }
 
             return new AssemblyData(dllBytes, pdbBytes);
-        }
-
-        private async Task<byte[]?> FetchBytesOrNull(string basePath, string fileName)
-        {
-            try
-            {
-                return await _httpClient
-                    .GetByteArrayAsync($"{basePath}/{fileName}")
-                    .ConfigureAwait(false);
-            }
-            catch
-            {
-                return null;
-            }
         }
     }
 }
