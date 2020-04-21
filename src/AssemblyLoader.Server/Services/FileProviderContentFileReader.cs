@@ -19,9 +19,14 @@ namespace BlazorLazyLoading.Server.Services
         {
             basePath = basePath.TrimEnd('/');
 
+            return ReadBytesOrNullAsync($"{basePath}/{fileName}");
+        }
+
+        public Task<byte[]?> ReadBytesOrNullAsync(string filePath)
+        {
             try
             {
-                using var fileStream = _fileProvider.GetFileInfo($"{basePath}/{fileName}").CreateReadStream();
+                using var fileStream = _fileProvider.GetFileInfo(filePath).CreateReadStream();
                 using var memoryStream = new MemoryStream();
 
                 fileStream.CopyTo(memoryStream);

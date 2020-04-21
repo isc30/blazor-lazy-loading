@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorLazyLoading.Server
 {
-    public static class AssemblyLoaderStartupExtensions
+    public static class BLLServerStartupExtensions
     {
         public static IServiceCollection AddLazyLoading(
             this IServiceCollection services,
@@ -31,6 +31,9 @@ namespace BlazorLazyLoading.Server
 
             services.AddSingleton<ILazyModuleHintsProvider>(
                 p => new LazyModuleHintsProvider(options.ModuleHints));
+
+            services.AddSingleton<IManifestLocator, ManifestLocator>();
+            services.AddSingleton<IManifestRepository, ManifestRepository>();
 
             return services;
         }

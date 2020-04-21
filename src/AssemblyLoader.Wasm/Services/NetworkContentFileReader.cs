@@ -14,14 +14,19 @@ namespace BlazorLazyLoading.Wasm.Services
             _httpClient = httpClient;
         }
 
-        public async Task<byte[]?> ReadBytesOrNullAsync(string basePath, string fileName)
+        public Task<byte[]?> ReadBytesOrNullAsync(string basePath, string fileName)
         {
             basePath = basePath.TrimEnd('/');
 
+            return ReadBytesOrNullAsync($"{basePath}/{fileName}");
+        }
+
+        public async Task<byte[]?> ReadBytesOrNullAsync(string filePath)
+        {
             try
             {
                 return await _httpClient
-                    .GetByteArrayAsync($"{basePath}/{fileName}")
+                    .GetByteArrayAsync(filePath)
                     .ConfigureAwait(false);
             }
             catch

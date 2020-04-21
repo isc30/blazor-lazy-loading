@@ -47,9 +47,9 @@ namespace BlazorLazyLoading
             {
                 try
                 {
-                    Debug($"Generating manifest for {assemblyName}");
+                    LogDebug($"Generating manifest for {assemblyName}");
                     Assembly assembly = dllMetadataContext.LoadFromAssemblyName(assemblyName);
-                    Debug($"Assembly loaded: {assemblyName}");
+                    LogDebug($"Assembly loaded: {assemblyName}");
 
                     Dictionary<string, object> manifestSections = ExecuteManifestGenerators(assembly);
                     manifest.Add(assemblyName, manifestSections);
@@ -57,11 +57,11 @@ namespace BlazorLazyLoading
                     var manifestDescriptions = manifestSections.Select(s =>
                         "'" + s.Key + "'" + (s.Value is ICollection c ? ": " + c.Count : string.Empty) + "");
 
-                    Info($"Lazy Module '{assemblyName}' generated with: {{ {string.Join(", ", manifestDescriptions)} }}");
+                    LogInfo($"Lazy Module '{assemblyName}' generated with: {{ {string.Join(", ", manifestDescriptions)} }}");
                 }
                 catch (Exception ex)
                 {
-                    Error(ex.Message);
+                    LogError(ex.Message);
                     return false;
                 }
             }
@@ -127,17 +127,17 @@ namespace BlazorLazyLoading
             return manifestSections;
         }
 
-        private void Debug(string message, params object[] args)
+        private void LogDebug(string message, params object[] args)
         {
             Log.LogMessage(MessageImportance.Normal, message, args);
         }
 
-        private void Info(string message, params object[] args)
+        private void LogInfo(string message, params object[] args)
         {
             Log.LogMessage(MessageImportance.High, message, args);
         }
 
-        private void Error(string message, params object[] args)
+        private void LogError(string message, params object[] args)
         {
             Log.LogError(message, args);
         }

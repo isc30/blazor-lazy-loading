@@ -7,5 +7,7 @@ namespace BlazorLazyLoading.Abstractions
         Task<byte[]?> ReadModuleBytesOrNullAsync(string moduleName, string fileName);
 
         Task<byte[]?> ReadBytesOrNullAsync(string basePath, string fileName);
+
+        Task<byte[]?> ReadBytesOrNullAsync(string filePath);
     }
 }
