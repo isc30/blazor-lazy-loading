@@ -49,9 +49,11 @@
         </PropertyGroup>
 
         <ItemGroup>
-            <ManifestGeneratorAssemblyNames Include="@(ProjectReference->'%(Name)')" />
+            <BLLManifestGeneratorAssemblyNames Include="@(ProjectReference->'%(Name)')" />
         </ItemGroup>
 
+        <Message Importance="normal" Text="BLLManifestGeneratorAssemblyNames: @(BLLManifestGeneratorAssemblyNames)" />
+        
         <GenerateManifest
             AssemblyNames="@(BLLManifestGeneratorAssemblyNames)"
             AssemblyPaths="$(ProjectOutDir);@(BLLManifestGeneratorAssemblyPaths)"

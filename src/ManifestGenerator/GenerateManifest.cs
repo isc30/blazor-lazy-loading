@@ -40,18 +40,30 @@ namespace BlazorLazyLoading
 
             var manifest = new Dictionary<string, IDictionary>();
 
-            using var dllMetadataContext = CreateDllMetadataContext(ResolveAvailableDlls());
+            var dlls = ResolveAvailableDlls().ToList();
+            using var dllMetadataContext = CreateDllMetadataContext(dlls);
 
             foreach (string assemblyName in AssemblyNames)
             {
-                Assembly assembly = dllMetadataContext.LoadFromAssemblyName(assemblyName);
-                Dictionary<string, object> manifestSections = ExecuteManifestGenerators(assembly);
-                manifest.Add(assemblyName, manifestSections);
+                try
+                {
+                    LogDebug($"Generating manifest for {assemblyName}");
+                    Assembly assembly = dllMetadataContext.LoadFromAssemblyName(assemblyName);
+                    LogDebug($"Assembly loaded: {assemblyName}");
 
-                var manifestDescriptions = manifestSections.Select(s =>
-                    "'" + s.Key + "'" + (s.Value is ICollection c ? ": " + c.Count : string.Empty) + "");
+                    Dictionary<string, object> manifestSections = ExecuteManifestGenerators(assembly);
+                    manifest.Add(assemblyName, manifestSections);
 
-                Info($"Lazy Module '{assemblyName}' generated with: {{ {string.Join(", ", manifestDescriptions)} }}");
+                    var manifestDescriptions = manifestSections.Select(s =>
+                        "'" + s.Key + "'" + (s.Value is ICollection c ? ": " + c.Count : string.Empty) + "");
+
+                    LogInfo($"Lazy Module '{assemblyName}' generated with: {{ {string.Join(", ", manifestDescriptions)} }}");
+                }
+                catch (Exception ex)
+                {
+                    LogError(ex.Message);
+                    return false;
+                }
             }
 
             string manifestJson = JsonConvert.SerializeObject(manifest);
@@ -69,6 +81,7 @@ namespace BlazorLazyLoading
                 .ToArray();
 
             AssemblyNames = AssemblyNames
+                .Where(n => !string.IsNullOrWhiteSpace(n))
                 .Distinct()
                 .ToArray();
         }
@@ -82,6 +95,7 @@ namespace BlazorLazyLoading
             return coreDlls
                 .Concat(runtimeDlls)
                 .Concat(moduleDlls)
+                .Distinct()
                 .ToList();
         }
 
@@ -113,9 +127,19 @@ namespace BlazorLazyLoading
             return manifestSections;
         }
 
-        private void Info(string message, params object[] args)
+        private void LogDebug(string message, params object[] args)
+        {
+            Log.LogMessage(MessageImportance.Normal, message, args);
+        }
+
+        private void LogInfo(string message, params object[] args)
         {
             Log.LogMessage(MessageImportance.High, message, args);
+        }
+
+        private void LogError(string message, params object[] args)
+        {
+            Log.LogError(message, args);
         }
     }
 }

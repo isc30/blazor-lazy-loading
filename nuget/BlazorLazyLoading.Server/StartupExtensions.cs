@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorLazyLoading.Server
 {
-    public static class AssemblyLoaderStartupExtensions
+    public static class BLLServerStartupExtensions
     {
         public static IServiceCollection AddLazyLoading(
             this IServiceCollection services,
@@ -20,18 +20,20 @@ namespace BlazorLazyLoading.Server
             services.AddScoped<IAssemblyLoader, AssemblyLoader>();
             services.AddSingleton<IAssemblyLoadContextFactory, DisposableAssemblyLoadContextFactory>();
             services.AddSingleton<IAssemblyDataLocator, AssemblyDataLocator>();
+            services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
+
+            services.AddSingleton<IContentFileReader>(
+                p =>
+                {
+                    IWebHostEnvironment env = p.GetRequiredService<IWebHostEnvironment>();
+                    return new FileProviderContentFileReader(env.WebRootFileProvider);
+                });
 
             services.AddSingleton<ILazyModuleHintsProvider>(
                 p => new LazyModuleHintsProvider(options.ModuleHints));
 
-            services.AddSingleton<IAssemblyDataProvider>(
-                p =>
-                {
-                    IWebHostEnvironment env = p.GetRequiredService<IWebHostEnvironment>();
-                    IAssemblyDataLocator assemblyDataLocator = p.GetRequiredService<IAssemblyDataLocator>();
-
-                    return new FileProviderAssemblyDataProvider(assemblyDataLocator, env.WebRootFileProvider);
-                });
+            services.AddSingleton<IManifestLocator, ManifestLocator>();
+            services.AddSingleton<IManifestRepository, ManifestRepository>();
 
             return services;
         }

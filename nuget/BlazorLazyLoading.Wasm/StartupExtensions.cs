@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorLazyLoading.Wasm
 {
-    public static class AssemblyLoaderStartupExtensions
+    public static class BLLWasmStartupExtensions
     {
         public static IServiceCollection AddLazyLoading(
             this IServiceCollection services,
@@ -15,8 +15,12 @@ namespace BlazorLazyLoading.Wasm
         {
             services.AddSingleton<IAssemblyLoader, AssemblyLoader>();
             services.AddSingleton<IAssemblyLoadContextFactory, AppDomainAssemblyLoadContextFactory>();
-            services.AddSingleton<IAssemblyDataProvider, NetworkAssemblyDataProvider>();
             services.AddSingleton<IAssemblyDataLocator, AssemblyDataLocator>();
+            services.AddSingleton<IContentFileReader, NetworkContentFileReader>();
+            services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
+
+            services.AddSingleton<IManifestLocator, ManifestLocator>();
+            services.AddSingleton<IManifestRepository, ManifestRepository>();
 
             services.AddSingleton<ILazyModuleHintsProvider>(
                 p => new LazyModuleHintsProvider(options.ModuleHints));

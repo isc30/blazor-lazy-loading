@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using BlazorLazyLoading.Helpers;
 
 namespace BlazorLazyLoading.Comparers
 {

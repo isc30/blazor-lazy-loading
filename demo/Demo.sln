@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Server", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Wasm", "..\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj", "{B78FC2FE-F107-49AB-95FC-E7F4559C879A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModulesHost", "ModulesHost\ModulesHost.csproj", "{9B062109-5E21-46CD-BDD1-315529E585E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModulesHost", "ModulesHost\ModulesHost.csproj", "{9B062109-5E21-46CD-BDD1-315529E585E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{2587AE99-7624-47E4-B6B8-79EC67346F67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Components", "..\nuget\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj", "{83419656-8137-4AEB-9A5B-74C7B85621F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,18 @@ Global
 		{9B062109-5E21-46CD-BDD1-315529E585E8}.Release|x64.Build.0 = Release|Any CPU
 		{9B062109-5E21-46CD-BDD1-315529E585E8}.Release|x86.ActiveCfg = Release|Any CPU
 		{9B062109-5E21-46CD-BDD1-315529E585E8}.Release|x86.Build.0 = Release|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Debug|x64.Build.0 = Debug|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Debug|x86.Build.0 = Debug|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Release|x64.ActiveCfg = Release|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Release|x64.Build.0 = Release|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{83419656-8137-4AEB-9A5B-74C7B85621F6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,6 +149,7 @@ Global
 		{6C5945E8-44F9-4898-AB78-FF0D85F5515B} = {2DFA918F-9417-49B8-9FDA-E2231179978C}
 		{B78FC2FE-F107-49AB-95FC-E7F4559C879A} = {2DFA918F-9417-49B8-9FDA-E2231179978C}
 		{9B062109-5E21-46CD-BDD1-315529E585E8} = {2587AE99-7624-47E4-B6B8-79EC67346F67}
+		{83419656-8137-4AEB-9A5B-74C7B85621F6} = {2DFA918F-9417-49B8-9FDA-E2231179978C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B979A335-AE81-406A-AADA-F236549D23D3}

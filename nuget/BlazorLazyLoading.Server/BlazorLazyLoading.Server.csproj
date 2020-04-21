@@ -7,6 +7,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\AssemblyLoader.Server\AssemblyLoader.Server.csproj" />
+        <ProjectReference Include="..\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" />
     </ItemGroup>
 
     <PropertyGroup>

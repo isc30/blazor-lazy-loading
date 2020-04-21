@@ -6,6 +6,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj" />
+        <ProjectReference Include="..\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" />
     </ItemGroup>
 
     <PropertyGroup>

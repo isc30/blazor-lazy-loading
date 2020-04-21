@@ -119,9 +119,9 @@ namespace BlazorLazyLoading.Services
         {
             var assemblyLoadingTaskSource = new TaskCompletionSource<Assembly?>();
 
-            if (!_loadingAssemblies.TryAdd(assemblyName, assemblyLoadingTaskSource.Task))
+            if (!TryActionRepeteadly(() => _loadingAssemblies.TryAdd(assemblyName, assemblyLoadingTaskSource.Task), 5))
             {
-                throw new InvalidOperationException($"Unable to Load Assembly '{assemblyName}': Concurrency error");
+                throw new InvalidOperationException($"Unable to Load Assembly '{assemblyName}': Concurrency error (adding)");
             }
 
             Debug.WriteLine($"Loading Assembly: '{assemblyName}'");
@@ -138,7 +138,11 @@ namespace BlazorLazyLoading.Services
             }
 
             assemblyLoadingTaskSource.SetResult(assembly);
-            _loadingAssemblies.Remove(assemblyName, out var _);
+
+            if (!TryActionRepeteadly(() => _loadingAssemblies.TryRemove(assemblyName, out var _), 5))
+            {
+                throw new InvalidOperationException($"Unable to Load Assembly '{assemblyName}': Concurrency error (removing)");
+            }
 
             return assembly;
         }
@@ -239,6 +243,19 @@ namespace BlazorLazyLoading.Services
 
             // Until we can properly version DLL names, versions will not be taken into consideration
             return AssemblyByNameComparer.Default;
+        }
+
+        private static bool TryActionRepeteadly(Func<bool> action, int retry)
+        {
+            for (var i = 0; i < retry; ++i)
+            {
+                if (action.Invoke())
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

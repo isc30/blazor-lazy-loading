@@ -25,10 +25,13 @@ namespace BlazorLazyLoading.ManifestGenerators
         {
             public string TypeFullName { get; }
 
+            public string Name { get; }
+
             public ComponentManifest(
                 string typeFullName)
             {
                 TypeFullName = typeFullName;
+                Name = typeFullName;
             }
         }
     }
