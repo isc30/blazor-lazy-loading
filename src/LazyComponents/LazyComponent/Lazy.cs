@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -35,41 +36,62 @@ namespace BlazorLazyLoading
             // dirty stuff, enough for V1
             var manifests = (await ManifestRepository.GetAllAsync().ConfigureAwait(false))
                 .Where(m => m.ManifestSections.ContainsKey("Components"))
-                .Select(m => new
-                {
-                    Manifest = m,
-                    Matches = m.ManifestSections["Components"]
-                                .Children<JObject>()
-                                .Select(o => o.Value<string?>("Name"))
-                                .NotNull()
-                                .Where(n => n == Name)
-                                .ToList(),
-                })
-                .Where(i => i.Matches.Any());
+                .DistinctBy(m => m.ModuleName)
+                .SelectMany(m => m.ManifestSections["Components"]
+                    .Children<JObject>()
+                    .Select(o => new
+                    {
+                        TypeFullName = o.Value<string?>("TypeFullName"),
+                        Name = o.Value<string?>("Name"),
+                    })
+                    .Where(i => !string.IsNullOrWhiteSpace(i.Name) && !string.IsNullOrWhiteSpace(i.TypeFullName))
+                    .Select(o => new
+                    {
+                        TypeFullName = o.TypeFullName!,
+                        Name = o.Name!,
+                    })
+                    .Where(n => n.Name.EndsWith(Name) || n.TypeFullName == Name)
+                    .Select(n => new
+                    {
+                        Match = n,
+                        Score = n.TypeFullName == Name
+                            ? 3
+                            : n.Name == Name
+                                ? 2
+                                : n.Name.EndsWith(Name)
+                                    ? 1
+                                    : 0,
+                        Manifest = m,
+                    }));
 
-            var match = manifests.FirstOrDefault();
+            var bestMatches = manifests
+                .GroupBy(i => i.Score)
+                .OrderByDescending(i => i.Key)
+                .FirstOrDefault()
+                ?.ToList();
 
-            if (match == null)
+            if (bestMatches == null || !bestMatches.Any())
             {
+                Debug.WriteLine($"Unable to find lazy component '{Name}'");
                 return;
             }
 
-            if (match.Matches.Count > 1)
+            if (bestMatches.Count > 1)
             {
                 throw new NotSupportedException($"Multiple matches for Component with name '{Name}'");
             }
 
-            await Task.Delay(1000);
+            var bestMatch = bestMatches.First();
 
             Assembly? componentAssembly = await AssemblyLoader
                 .LoadAssemblyByNameAsync(new AssemblyName
                 {
-                    Name = match.Manifest.ModuleName,
+                    Name = bestMatch.Manifest.ModuleName,
                     Version = null,
                 })
                 .ConfigureAwait(false);
 
-            Type = componentAssembly?.GetType(match.Matches.First());
+            Type = componentAssembly?.GetType(bestMatch.Match.TypeFullName);
             ShouldRender();
         }
 
@@ -109,6 +131,15 @@ namespace BlazorLazyLoading
             where T : class
         {
             return source.Where(i => i != null).Cast<T>();
+        }
+
+        public static IEnumerable<T> DistinctBy<T, TOut>(
+            this IEnumerable<T> source,
+            Func<T, TOut> selector)
+        {
+            return source
+                .GroupBy(m => selector(m))
+                .Select(g => g.First());
         }
     }
 }
