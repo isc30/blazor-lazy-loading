@@ -16,7 +16,7 @@
         <Version>0.0.0</Version>
         <NoPackageAnalysis>true</NoPackageAnalysis>
 
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <IsPackable>true</IsPackable>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -33,7 +33,7 @@
         <Copyright>Ivan Sanz Carasa (isc30)</Copyright>
     </PropertyGroup>
 
-    <Target Name="SetNuspecProperties" BeforeTargets="Build">
+    <Target Name="SetNuspecProperties" BeforeTargets="Build;Pack;Restore">
         <CallTarget Targets="GetVersion" />
         <Message Importance="normal" Text="Stamping MsBuild vars into Nuspec" />
         <PropertyGroup>
