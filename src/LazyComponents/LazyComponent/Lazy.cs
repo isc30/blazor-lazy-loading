@@ -17,7 +17,7 @@ namespace BlazorLazyLoading
         public string Name { get; set; } = null!;
 
         [Parameter]
-        public Type? Fallback { get; set; } = null;
+        public RenderFragment? ChildContent { get; set; } = null;
 
         [Inject]
         public IAssemblyLoader AssemblyLoader { get; set; } = null!;
@@ -44,13 +44,12 @@ namespace BlazorLazyLoading
                         TypeFullName = o.Value<string?>("TypeFullName"),
                         Name = o.Value<string?>("Name"),
                     })
-                    .Where(i => !string.IsNullOrWhiteSpace(i.Name) && !string.IsNullOrWhiteSpace(i.TypeFullName))
+                    .Where(i => !string.IsNullOrWhiteSpace(i.TypeFullName))
                     .Select(o => new
                     {
                         TypeFullName = o.TypeFullName!,
-                        Name = o.Name!,
+                        Name = o.Name,
                     })
-                    .Where(n => n.Name.EndsWith(Name) || n.TypeFullName == Name)
                     .Select(n => new
                     {
                         Match = n,
@@ -58,7 +57,7 @@ namespace BlazorLazyLoading
                             ? 3
                             : n.Name == Name
                                 ? 2
-                                : n.Name.EndsWith(Name)
+                                : n.TypeFullName.EndsWith(Name)
                                     ? 1
                                     : 0,
                         Manifest = m,
@@ -78,7 +77,7 @@ namespace BlazorLazyLoading
 
             if (bestMatches.Count > 1)
             {
-                throw new NotSupportedException($"Multiple matches for Component with name '{Name}'");
+                throw new NotSupportedException($"Multiple matches for Component with name '{Name}': '{string.Join(";", bestMatches.Select(m => m.Match.TypeFullName))}'");
             }
 
             var bestMatch = bestMatches.First();
@@ -97,6 +96,8 @@ namespace BlazorLazyLoading
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
+            base.BuildRenderTree(builder);
+
             if (Type == null)
             {
                 BuildFallbackComponent(builder);
@@ -110,11 +111,9 @@ namespace BlazorLazyLoading
 
         private void BuildFallbackComponent(RenderTreeBuilder builder)
         {
-            if (Fallback != null)
+            if (ChildContent != null)
             {
-                builder.OpenComponent(0, Fallback);
-                builder.CloseComponent();
-
+                ChildContent.Invoke(builder);
                 return;
             }
 

@@ -11,9 +11,22 @@ namespace BlazorLazyLoading.ManifestGenerators
             var componentTypes = assembly.GetTypes()
                 .Where(t => t.BaseType.FullName == "Microsoft.AspNetCore.Components.ComponentBase");
 
-            var components = componentTypes
-                .Select(t => new ComponentManifest(t.FullName))
-                .ToList();
+            var components = new List<ComponentManifest>();
+
+            foreach (var component in componentTypes)
+            {
+                var lazyNameAttribute = component.GetCustomAttributesData()
+                    .SingleOrDefault(a => a.AttributeType.FullName == "BlazorLazyLoading.LazyNameAttribute");
+
+                if (lazyNameAttribute == null)
+                {
+                    components.Add(new ComponentManifest(component.FullName, null));
+                    continue;
+                }
+
+                var lazyName = (string)lazyNameAttribute.ConstructorArguments[0].Value;
+                components.Add(new ComponentManifest(component.FullName, lazyName));
+            }
 
             return new Dictionary<string, object>
             {
@@ -25,13 +38,14 @@ namespace BlazorLazyLoading.ManifestGenerators
         {
             public string TypeFullName { get; }
 
-            public string Name { get; }
+            public string? Name { get; }
 
             public ComponentManifest(
-                string typeFullName)
+                string typeFullName,
+                string? lazyName)
             {
                 TypeFullName = typeFullName;
-                Name = typeFullName;
+                Name = lazyName;
             }
         }
     }

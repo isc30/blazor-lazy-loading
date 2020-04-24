@@ -6,7 +6,11 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-<Lazy Name="Component1" />
+<Lazy Name="SimpleComponent">
+    <div>LOADING SIMPLECOMPONENT...</div>
+</Lazy>
+
+<Lazy Name="NamedComponent" />
 
 @code {
     private int currentCount = 0;
