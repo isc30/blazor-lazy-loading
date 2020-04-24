@@ -6,12 +6,12 @@
 
     <!-- Use Local NuGet package -->
     <ItemGroup Condition="$(BLLUseLocalNugetPackages)">
-        <PackageReference Include="BlazorLazyLoading.Server" Version="$(BLLVersion)" PrivateAssets="all" />
+        <PackageReference Include="BlazorLazyLoading.Server" Version="$(BLLVersion)" />
     </ItemGroup>
 
     <!-- Use Project reference -->
     <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
-        <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Server\BlazorLazyLoading.Server.csproj" PrivateAssets="all" />
+        <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Server\BlazorLazyLoading.Server.csproj" />
     </ItemGroup>
 
     <!-- Extra dependencies -->

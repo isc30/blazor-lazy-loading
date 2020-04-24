@@ -8,12 +8,12 @@
 
     <!-- Use Local NuGet package -->
     <ItemGroup Condition="$(BLLUseLocalNugetPackages)">
-        <PackageReference Include="BlazorLazyLoading.Wasm" Version="$(BLLVersion)" PrivateAssets="all" />
+        <PackageReference Include="BlazorLazyLoading.Wasm" Version="$(BLLVersion)" />
     </ItemGroup>
 
     <!-- Use Project reference -->
     <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
-        <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj" PrivateAssets="all" />
+        <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj" />
     </ItemGroup>
 
     <!-- Extra dependencies -->
