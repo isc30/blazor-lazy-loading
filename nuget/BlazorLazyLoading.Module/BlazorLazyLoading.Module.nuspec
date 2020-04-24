@@ -6,6 +6,9 @@
         <title>$title$</title>
         <description>$description$</description>
         <authors>$author$</authors>
+        <dependencies>
+            <dependency id="BlazorLazyLoading.Components" version="$version$" />
+        </dependencies>
     </metadata>
     <files>
         <file src="build\*.*" target="build" />
