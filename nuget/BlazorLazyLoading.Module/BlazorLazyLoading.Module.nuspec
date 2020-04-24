@@ -7,6 +7,9 @@
         <description>$description$</description>
         <authors>$author$</authors>
     </metadata>
+    <dependencies>
+        <dependency id="BlazorLazyLoading.Components" version="$version$" />
+    </dependencies>
     <files>
         <file src="build\*.*" target="build" />
         <file src="build\*.*" target="buildMultiTargeting" />

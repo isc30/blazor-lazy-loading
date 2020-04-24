@@ -16,7 +16,7 @@
         <Version>0.0.0</Version>
         <NoPackageAnalysis>true</NoPackageAnalysis>
 
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <IsPackable>true</IsPackable>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>

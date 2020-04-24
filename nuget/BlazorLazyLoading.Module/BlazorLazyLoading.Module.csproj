@@ -6,6 +6,10 @@
         <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     </PropertyGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\ManifestGenerator\ManifestGenerator.csproj" />
+    </ItemGroup>
+
     <PropertyGroup>
         <IncludeSymbols>false</IncludeSymbols>
         <NuspecFile>$(MSBuildProjectName).nuspec</NuspecFile>
@@ -14,11 +18,6 @@
         <Title>$(MSBuildProjectName)</Title>
         <Description>Build tools for creating a Blazor Lazy Loadable module</Description>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\ManifestGenerator\ManifestGenerator.csproj" />
-      <ProjectReference Include="..\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
         <Compile Remove="build\bin\**" />
