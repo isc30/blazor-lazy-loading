@@ -1,7 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
 using BlazorLazyLoading.Abstractions;
+using BlazorLazyLoading.Comparers;
 using BlazorLazyLoading.Models;
 
 namespace BlazorLazyLoading.Services
@@ -11,24 +14,36 @@ namespace BlazorLazyLoading.Services
         private readonly IAssemblyDataLocator _assemblyDataLocator;
         private readonly IContentFileReader _contentFileReader;
 
+        private readonly ConcurrentDictionary<AssemblyName, AssemblyData?> _assemblyDataCache;
+
         public AssemblyDataProvider(
             IAssemblyDataLocator assemblyDataLocator,
             IContentFileReader contentFileReader)
         {
             _assemblyDataLocator = assemblyDataLocator;
             _contentFileReader = contentFileReader;
+            _assemblyDataCache = new ConcurrentDictionary<AssemblyName, AssemblyData?>(AssemblyByNameAndVersionComparer.Default);
         }
 
-        public async Task<AssemblyData?> GetAssemblyDataAsync(AssemblyName assemblyName, AssemblyLoaderContext context)
+        public async Task<AssemblyData?> GetAssemblyDataAsync(
+            AssemblyName assemblyName,
+            AssemblyLoaderContext context)
         {
+            if (_assemblyDataCache.TryGetValue(assemblyName, out AssemblyData? data))
+            {
+                return data;
+            }
+
             var paths = _assemblyDataLocator.GetFindPaths(assemblyName, context);
 
             foreach (var path in paths)
             {
-                AssemblyData? data = await GetAssemblyDataAsync(assemblyName, path).ConfigureAwait(false);
+                data = await GetAssemblyDataAsync(assemblyName, path).ConfigureAwait(false);
 
                 if (data != null)
                 {
+                    _assemblyDataCache.TryAdd(assemblyName, data);
+
                     return data;
                 }
             }
