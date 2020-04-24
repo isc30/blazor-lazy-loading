@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" />
         <ProjectReference Include="..\..\src\ManifestGenerator\ManifestGenerator.csproj" />
     </ItemGroup>
 
