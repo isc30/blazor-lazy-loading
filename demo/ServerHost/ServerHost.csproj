@@ -16,7 +16,7 @@
 
     <!-- Extra dependencies -->
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0-preview4.20210.8" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0-preview5.20216.8" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
