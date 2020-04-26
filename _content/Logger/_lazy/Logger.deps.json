@@ -24,7 +24,7 @@
     ".NETStandard,Version=v2.1": {
       "Logger/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Module": "0.1.0-github-pages.47",
+          "BlazorLazyLoading.Module": "0.1.0-PullRequest0029.48",
           "Microsoft.Win32.Primitives": "4.0.3.0",
           "mscorlib": "4.0.0.0",
           "netstandard": "2.1.0.0",
@@ -756,21 +756,21 @@
           "System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "BlazorLazyLoading.Components/0.1.0-github-pages.47": {
+      "BlazorLazyLoading.Components/0.1.0-PullRequest0029.48": {
         "dependencies": {
-          "BlazorLazyLoading._internals.LazyComponents": "0.1.0-github-pages.47",
-          "BlazorLazyLoading._internals.ManifestReader": "0.1.0-github-pages.47"
+          "BlazorLazyLoading._internals.LazyComponents": "0.1.0-PullRequest0029.48",
+          "BlazorLazyLoading._internals.ManifestReader": "0.1.0-PullRequest0029.48"
         },
         "compile": {
           "lib/netstandard2.0/BlazorLazyLoading.Components.dll": {}
         }
       },
-      "BlazorLazyLoading.Module/0.1.0-github-pages.47": {
+      "BlazorLazyLoading.Module/0.1.0-PullRequest0029.48": {
         "dependencies": {
-          "BlazorLazyLoading.Components": "0.1.0-github-pages.47"
+          "BlazorLazyLoading.Components": "0.1.0-PullRequest0029.48"
         }
       },
-      "BlazorLazyLoading._internals.AssemblyLoader/0.1.0-github-pages.47": {
+      "BlazorLazyLoading._internals.AssemblyLoader/0.1.0-PullRequest0029.48": {
         "dependencies": {
           "System.Reflection.Metadata": "1.8.0"
         },
@@ -778,10 +778,10 @@
           "lib/netstandard2.0/AssemblyLoader.dll": {}
         }
       },
-      "BlazorLazyLoading._internals.LazyComponents/0.1.0-github-pages.47": {
+      "BlazorLazyLoading._internals.LazyComponents/0.1.0-PullRequest0029.48": {
         "dependencies": {
-          "BlazorLazyLoading._internals.AssemblyLoader": "0.1.0-github-pages.47",
-          "BlazorLazyLoading._internals.ManifestReader": "0.1.0-github-pages.47",
+          "BlazorLazyLoading._internals.AssemblyLoader": "0.1.0-PullRequest0029.48",
+          "BlazorLazyLoading._internals.ManifestReader": "0.1.0-PullRequest0029.48",
           "Microsoft.AspNetCore.Components": "3.0.0",
           "Microsoft.AspNetCore.Components.Web": "3.0.0"
         },
@@ -789,9 +789,9 @@
           "lib/netstandard2.0/LazyComponents.dll": {}
         }
       },
-      "BlazorLazyLoading._internals.ManifestReader/0.1.0-github-pages.47": {
+      "BlazorLazyLoading._internals.ManifestReader/0.1.0-PullRequest0029.48": {
         "dependencies": {
-          "BlazorLazyLoading._internals.AssemblyLoader": "0.1.0-github-pages.47",
+          "BlazorLazyLoading._internals.AssemblyLoader": "0.1.0-PullRequest0029.48",
           "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
@@ -1302,7 +1302,7 @@
     ".NETStandard,Version=v2.1/": {
       "Logger/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Module": "0.1.0-github-pages.47",
+          "BlazorLazyLoading.Module": "0.1.0-PullRequest0029.48",
           "Microsoft.Win32.Primitives": "4.0.3.0",
           "mscorlib": "4.0.0.0",
           "netstandard": "2.1.0.0",
@@ -1429,57 +1429,57 @@
           "Logger.dll": {}
         }
       },
-      "BlazorLazyLoading.Components/0.1.0-github-pages.47": {
+      "BlazorLazyLoading.Components/0.1.0-PullRequest0029.48": {
         "dependencies": {
-          "BlazorLazyLoading._internals.LazyComponents": "0.1.0-github-pages.47",
-          "BlazorLazyLoading._internals.ManifestReader": "0.1.0-github-pages.47"
+          "BlazorLazyLoading._internals.LazyComponents": "0.1.0-PullRequest0029.48",
+          "BlazorLazyLoading._internals.ManifestReader": "0.1.0-PullRequest0029.48"
         },
         "runtime": {
           "lib/netstandard2.0/BlazorLazyLoading.Components.dll": {
-            "assemblyVersion": "0.1.0.47",
-            "fileVersion": "0.1.0.47"
+            "assemblyVersion": "0.1.0.48",
+            "fileVersion": "0.1.0.48"
           }
         }
       },
-      "BlazorLazyLoading.Module/0.1.0-github-pages.47": {
+      "BlazorLazyLoading.Module/0.1.0-PullRequest0029.48": {
         "dependencies": {
-          "BlazorLazyLoading.Components": "0.1.0-github-pages.47"
+          "BlazorLazyLoading.Components": "0.1.0-PullRequest0029.48"
         }
       },
-      "BlazorLazyLoading._internals.AssemblyLoader/0.1.0-github-pages.47": {
+      "BlazorLazyLoading._internals.AssemblyLoader/0.1.0-PullRequest0029.48": {
         "dependencies": {
           "System.Reflection.Metadata": "1.8.0"
         },
         "runtime": {
           "lib/netstandard2.0/AssemblyLoader.dll": {
-            "assemblyVersion": "0.1.0.47",
-            "fileVersion": "0.1.0.47"
+            "assemblyVersion": "0.1.0.48",
+            "fileVersion": "0.1.0.48"
           }
         }
       },
-      "BlazorLazyLoading._internals.LazyComponents/0.1.0-github-pages.47": {
+      "BlazorLazyLoading._internals.LazyComponents/0.1.0-PullRequest0029.48": {
         "dependencies": {
-          "BlazorLazyLoading._internals.AssemblyLoader": "0.1.0-github-pages.47",
-          "BlazorLazyLoading._internals.ManifestReader": "0.1.0-github-pages.47",
+          "BlazorLazyLoading._internals.AssemblyLoader": "0.1.0-PullRequest0029.48",
+          "BlazorLazyLoading._internals.ManifestReader": "0.1.0-PullRequest0029.48",
           "Microsoft.AspNetCore.Components": "3.0.0",
           "Microsoft.AspNetCore.Components.Web": "3.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/LazyComponents.dll": {
-            "assemblyVersion": "0.1.0.47",
-            "fileVersion": "0.1.0.47"
+            "assemblyVersion": "0.1.0.48",
+            "fileVersion": "0.1.0.48"
           }
         }
       },
-      "BlazorLazyLoading._internals.ManifestReader/0.1.0-github-pages.47": {
+      "BlazorLazyLoading._internals.ManifestReader/0.1.0-PullRequest0029.48": {
         "dependencies": {
-          "BlazorLazyLoading._internals.AssemblyLoader": "0.1.0-github-pages.47",
+          "BlazorLazyLoading._internals.AssemblyLoader": "0.1.0-PullRequest0029.48",
           "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/ManifestReader.dll": {
-            "assemblyVersion": "0.1.0.47",
-            "fileVersion": "0.1.0.47"
+            "assemblyVersion": "0.1.0.48",
+            "fileVersion": "0.1.0.48"
           }
         }
       },
@@ -2161,40 +2161,40 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BlazorLazyLoading.Components/0.1.0-github-pages.47": {
+    "BlazorLazyLoading.Components/0.1.0-PullRequest0029.48": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-iT6DfZ8HxseUIVIkwmvtxwAhj3ya2ecSq4INcr1gP9tTozN9WUjE2Bo505xlbiUnW5HVGtUbBwdz1UE4Xzs7zw==",
-      "path": "blazorlazyloading.components/0.1.0-github-pages.47",
-      "hashPath": "blazorlazyloading.components.0.1.0-github-pages.47.nupkg.sha512"
+      "sha512": "sha512-qmG84ofAiBltQ1YHXiynqielkgrM9xD2MSCFImd1GLsc5ptu/GnxQKl/ScAaU292EaEqkURo4pYQZujsCXawQw==",
+      "path": "blazorlazyloading.components/0.1.0-pullrequest0029.48",
+      "hashPath": "blazorlazyloading.components.0.1.0-pullrequest0029.48.nupkg.sha512"
     },
-    "BlazorLazyLoading.Module/0.1.0-github-pages.47": {
+    "BlazorLazyLoading.Module/0.1.0-PullRequest0029.48": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-M7mIlTew7ZIM/uS3R/HOiOsw8lmP/RzUWelaQHth8o2/PaT1OLwglLrrh9M8zxIqkUdYXBQwgoOaFW1CKUY1ow==",
-      "path": "blazorlazyloading.module/0.1.0-github-pages.47",
-      "hashPath": "blazorlazyloading.module.0.1.0-github-pages.47.nupkg.sha512"
+      "sha512": "sha512-5vmft9S/EUvI6WDJoGaQrzsTH86YlBNhEDkY1uDCT0bMPGyf6QdepTvGOxp3s2qwkkqquWJseC5/rNTn46HhUg==",
+      "path": "blazorlazyloading.module/0.1.0-pullrequest0029.48",
+      "hashPath": "blazorlazyloading.module.0.1.0-pullrequest0029.48.nupkg.sha512"
     },
-    "BlazorLazyLoading._internals.AssemblyLoader/0.1.0-github-pages.47": {
+    "BlazorLazyLoading._internals.AssemblyLoader/0.1.0-PullRequest0029.48": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-6wL3jgoZDi6CXT4V9rCFSsj5/63sLl/dUNZiZyj3tF1HMfP7GZNvoaX3uQWxY9B6X94BhwiqNXQiIQPm336iWQ==",
-      "path": "blazorlazyloading._internals.assemblyloader/0.1.0-github-pages.47",
-      "hashPath": "blazorlazyloading._internals.assemblyloader.0.1.0-github-pages.47.nupkg.sha512"
+      "sha512": "sha512-C58CUYBzIg0HvQBBQV7h219pkEURtseEW2ZuEwSqpp48+r5sYkDW66d7RcgY2ZAPziBfj8adBhiqgfODW0dJ0Q==",
+      "path": "blazorlazyloading._internals.assemblyloader/0.1.0-pullrequest0029.48",
+      "hashPath": "blazorlazyloading._internals.assemblyloader.0.1.0-pullrequest0029.48.nupkg.sha512"
     },
-    "BlazorLazyLoading._internals.LazyComponents/0.1.0-github-pages.47": {
+    "BlazorLazyLoading._internals.LazyComponents/0.1.0-PullRequest0029.48": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-e02LUb0XMjCS7ab8F+DJ52/HSS/a+pXW52bAgC/1eHQn6htNa3QsaSHIejw2gr3Na2dsdz+5FpbOVlGanysCLg==",
-      "path": "blazorlazyloading._internals.lazycomponents/0.1.0-github-pages.47",
-      "hashPath": "blazorlazyloading._internals.lazycomponents.0.1.0-github-pages.47.nupkg.sha512"
+      "sha512": "sha512-mKmBmzLhu5wslM6Sbv/DW9K9cnPXQWYs4dIFHPtfxZFwbxeYdFmDsAWMBS+PUrIDTzr3EGSLru/LXJ3gG49edw==",
+      "path": "blazorlazyloading._internals.lazycomponents/0.1.0-pullrequest0029.48",
+      "hashPath": "blazorlazyloading._internals.lazycomponents.0.1.0-pullrequest0029.48.nupkg.sha512"
     },
-    "BlazorLazyLoading._internals.ManifestReader/0.1.0-github-pages.47": {
+    "BlazorLazyLoading._internals.ManifestReader/0.1.0-PullRequest0029.48": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-b29wNits/vUa7sQg4FbszS9NSskf5NoDwLtcPSYdikvMVk5oGmW07Y8IelFcuwVaMn8DZdPBl+u9nNKhpsF3yw==",
-      "path": "blazorlazyloading._internals.manifestreader/0.1.0-github-pages.47",
-      "hashPath": "blazorlazyloading._internals.manifestreader.0.1.0-github-pages.47.nupkg.sha512"
+      "sha512": "sha512-F7h3qfR763l0QL7MbsyupVmlssCP/Klj2N/hrp2/PNq6XRbP8JqhXnBkZkTup12aBFM3E14L02/FH5YoXKkabQ==",
+      "path": "blazorlazyloading._internals.manifestreader/0.1.0-pullrequest0029.48",
+      "hashPath": "blazorlazyloading._internals.manifestreader.0.1.0-pullrequest0029.48.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization/3.0.0": {
       "type": "package",
