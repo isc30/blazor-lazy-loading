@@ -54,6 +54,13 @@ jobs:
     - name: Push package to NuGet
       run: dotnet nuget push output/nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
+    - name: Deploy demo to Github Pages
+      uses: output/demo/wwwroot
+      with:
+        username: isc30
+        password: ${{ secrets.pages }}
+        remote_url: https://github.com/appleboy/gh-pages-action.git
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
