@@ -50,7 +50,7 @@ jobs:
       run: dotnet test demo/Demo.sln -c Release
 
     - name: Prepare for Github Pages deployment
-      run: find . -name ".gitignore" -type f -delete
+      run: rm -r .gitignore
 
     - name: Deploy demo to Github Pages
       uses: jamesives/github-pages-deploy-action@3.4.8
