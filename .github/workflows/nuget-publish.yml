@@ -20,7 +20,12 @@ jobs:
 
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Fetch all branches (used by GitVersion)
+      run: git fetch --prune --unshallow
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -55,11 +60,11 @@ jobs:
       run: dotnet nuget push output/nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Deploy demo to Github Pages
-      uses: appleboy/gh-pages-action@v0.0.2
+      uses: jamesives/github-pages-deploy-action@3.4.8
       with:
         FOLDER: output/demo/wwwroot
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: master
+        BRANCH: gh-pages
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1

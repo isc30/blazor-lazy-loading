@@ -50,11 +50,11 @@ jobs:
       run: dotnet test demo/Demo.sln -c Release
 
     - name: Deploy demo to Github Pages
-      uses: JamesIves/github-pages-deploy-action@3.4.8
+      uses: jamesives/github-pages-deploy-action@3.4.8
       with:
         FOLDER: output/demo/wwwroot
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: docs
+        BRANCH: gh-pages
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
