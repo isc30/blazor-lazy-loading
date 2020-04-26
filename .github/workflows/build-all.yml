@@ -49,7 +49,7 @@ jobs:
       with:
         FOLDER: output/demo/wwwroot
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: feature/github-pages
+        BRANCH: docs
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
