@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BlazorLazyLoading.Wasm;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using ModulesHost.Components;
 
 namespace WasmHost
 {
@@ -24,6 +25,8 @@ namespace WasmHost
         private static void ConfigureServices(IServiceCollection services, WebAssemblyHostBuilder builder)
         {
             AddHttpClient(services, builder);
+
+            Type x = typeof(SimplePage);
 
             services.AddLazyLoading(new LazyLoadingOptions
             {
