@@ -34,17 +34,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Module", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManifestGenerator", "src\ManifestGenerator\ManifestGenerator.csproj", "{DF18C6BF-F2D7-45B9-BB90-B3E6418AB36C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLazyLoading.Components", "nuget\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj", "{D5DC7943-2F45-4EDE-AF78-592A6A153671}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Components", "nuget\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj", "{D5DC7943-2F45-4EDE-AF78-592A6A153671}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyComponents", "src\LazyComponents\LazyComponents.csproj", "{4265A87B-BD94-413F-8883-BA3D1A3C0BC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LazyComponents", "src\LazyComponents\LazyComponents.csproj", "{4265A87B-BD94-413F-8883-BA3D1A3C0BC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManifestReader", "src\ManifestReader\ManifestReader.csproj", "{10AB33A5-80F4-4D02-9DBE-0484C3BB6954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManifestReader", "src\ManifestReader\ManifestReader.csproj", "{10AB33A5-80F4-4D02-9DBE-0484C3BB6954}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AssemblyLoading", "AssemblyLoading", "{9E765815-21C8-4920-B6C4-B072C5A5DEE3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{43806489-02DC-4E72-A983-40B4B6113D27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Manifest", "Manifest", "{2B3516BB-63DC-46FA-ADE9-A1A4BF05F513}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{38184F2E-7DDA-4F92-B730-85637350E56F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerHost", "demo\ServerHost\ServerHost.csproj", "{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmHost", "demo\WasmHost\WasmHost.csproj", "{D2DF44FE-098D-48EF-925B-F71DFDD7134D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -176,6 +182,30 @@ Global
 		{10AB33A5-80F4-4D02-9DBE-0484C3BB6954}.Release|x64.Build.0 = Release|Any CPU
 		{10AB33A5-80F4-4D02-9DBE-0484C3BB6954}.Release|x86.ActiveCfg = Release|Any CPU
 		{10AB33A5-80F4-4D02-9DBE-0484C3BB6954}.Release|x86.Build.0 = Release|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|x64.Build.0 = Debug|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|x86.Build.0 = Debug|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|x64.ActiveCfg = Release|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|x64.Build.0 = Release|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|x86.ActiveCfg = Release|Any CPU
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|x86.Build.0 = Release|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|x64.Build.0 = Debug|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|x64.ActiveCfg = Release|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|x64.Build.0 = Release|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -194,6 +224,8 @@ Global
 		{9E765815-21C8-4920-B6C4-B072C5A5DEE3} = {7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}
 		{43806489-02DC-4E72-A983-40B4B6113D27} = {7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}
 		{2B3516BB-63DC-46FA-ADE9-A1A4BF05F513} = {7A7C9856-CA0D-4655-8AF9-4BF60D997ACB}
+		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899} = {38184F2E-7DDA-4F92-B730-85637350E56F}
+		{D2DF44FE-098D-48EF-925B-F71DFDD7134D} = {38184F2E-7DDA-4F92-B730-85637350E56F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE945EF4-4832-4073-8FD8-D1517AE90E21}

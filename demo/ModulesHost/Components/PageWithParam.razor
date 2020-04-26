@@ -1,0 +1,8 @@
+﻿@page "/page-with-param/{text}"
+
+<h1>PARAMTER IS @Text!</h1>
+
+@code {
+    [Parameter]
+    public string Text { get; set; } = "???";
+}
