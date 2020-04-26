@@ -21,31 +21,31 @@ jobs:
         dotnet-version: 3.1.200
 
     - name: Restore library
-      run: dotnet restore -p:BLLUseLocalNugetPackages=true BlazorLazyLoading.sln
+      run: dotnet restore BlazorLazyLoading.sln -p:BLLUseLocalNugetPackages=true
 
     - name: Build library
-      run: dotnet build -c Release -p:BLLUseLocalNugetPackages=true BlazorLazyLoading.sln
+      run: dotnet build BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
   
     - name: Test library
-      run: dotnet test -c Release -p:BLLUseLocalNugetPackages=true BlazorLazyLoading.sln
+      run: dotnet test BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Pack library
-      run: dotnet pack -c Release -p:BLLUseLocalNugetPackages=true BlazorLazyLoading.sln
+      run: dotnet pack BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
+
+    - name: Restore demo
+      run: dotnet restore demo/Demo.sln -p:BLLUseLocalNugetPackages=true
+
+    - name: Build demo
+      run: dotnet build demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true
+
+    - name: Publish demo
+      run: dotnet publish demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true -o output/demo
+
+    - name: Test demo
+      run: dotnet test demo/Demo.sln -c Release
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
         name: output
         path: output
-
-    - name: Restore demo
-      run: dotnet restore -p:BLLUseLocalNugetPackages=true demo/Demo.sln
-
-    - name: Build demo
-      run: dotnet build -c Release -p:BLLUseLocalNugetPackages=true demo/Demo.sln
-
-    - name: Publish demo
-      run: dotnet publish -c Release -o output/demo -p:BLLUseLocalNugetPackages=true demo/Demo.sln
-
-    - name: Test demo
-      run: dotnet test -c Release demo/Demo.sln
