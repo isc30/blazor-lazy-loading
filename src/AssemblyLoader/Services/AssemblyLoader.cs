@@ -41,6 +41,18 @@ namespace BlazorLazyLoading.Services
             }
         }
 
+        public Assembly? GetLoadedAssemblyByName(AssemblyName assemblyName)
+        {
+            IAssemblyComparer comparer = GetAssemblyNameComparer(assemblyName);
+
+            if (TryGetAlreadyLoadedAssembly(assemblyName, comparer, out var alreadyLoadedAssembly))
+            {
+                return alreadyLoadedAssembly;
+            }
+
+            return null;
+        }
+
         public Task<Assembly?> LoadAssemblyByNameAsync(AssemblyName assemblyName)
         {
             return LoadAssemblyByNameAsync(assemblyName, null);

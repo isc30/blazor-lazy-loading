@@ -5,6 +5,8 @@ namespace BlazorLazyLoading.Abstractions
 {
     public interface IAssemblyLoader
     {
+        Assembly? GetLoadedAssemblyByName(AssemblyName assemblyName);
+
         Task<Assembly?> LoadAssemblyByNameAsync(AssemblyName assemblyName);
     }
 }

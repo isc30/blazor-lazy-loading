@@ -96,8 +96,6 @@ namespace BlazorLazyLoading
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
-            base.BuildRenderTree(builder);
-
             if (Type == null)
             {
                 BuildFallbackComponent(builder);
