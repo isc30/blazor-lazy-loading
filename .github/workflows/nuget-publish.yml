@@ -55,11 +55,11 @@ jobs:
       run: dotnet nuget push output/nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Deploy demo to Github Pages
-      uses: output/demo/wwwroot
+      uses: appleboy/gh-pages-action@v0.0.2
       with:
-        username: isc30
-        password: ${{ secrets.pages }}
-        remote_url: https://github.com/appleboy/gh-pages-action.git
+        FOLDER: output/demo/wwwroot
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: master
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1

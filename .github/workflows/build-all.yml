@@ -45,11 +45,11 @@ jobs:
       run: dotnet test demo/Demo.sln -c Release
 
     - name: Deploy demo to Github Pages
-      uses: output/demo/wwwroot
+      uses: appleboy/gh-pages-action@v0.0.2
       with:
-        username: isc30
-        password: ${{ secrets.pages }}
-        remote_url: https://github.com/appleboy/gh-pages-action.git
+        FOLDER: output/demo/wwwroot
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: feature/github-pages
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
