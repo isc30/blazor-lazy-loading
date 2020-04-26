@@ -13,7 +13,12 @@ jobs:
 
     steps:
     - name: Checkout the repository
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Fetch all branches (used by GitVersion)
+      run: git fetch --prune --unshallow
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
@@ -21,28 +26,41 @@ jobs:
         dotnet-version: 3.1.200
 
     - name: Restore library
-      run: dotnet restore BlazorLazyLoading.sln
+      run: dotnet restore BlazorLazyLoading.sln -p:BLLUseLocalNugetPackages=true
 
     - name: Build library
-      run: dotnet build -c Release BlazorLazyLoading.sln
+      run: dotnet build BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
   
     - name: Test library
-      run: dotnet test -c Release BlazorLazyLoading.sln
+      run: dotnet test BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Pack library
-      run: dotnet pack -c Release BlazorLazyLoading.sln
+      run: dotnet pack BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
+
+    - name: Restore demo
+      run: dotnet restore demo/Demo.sln -p:BLLUseLocalNugetPackages=true
+
+    - name: Build demo
+      run: dotnet build demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true
+
+    - name: Publish demo
+      run: dotnet publish demo/ServerHost/ServerHost.csproj -c Release -p:BLLUseLocalNugetPackages=true -o output/demo
+
+    - name: Test demo
+      run: dotnet test demo/Demo.sln -c Release
+
+    - name: Prepare for Github Pages deployment
+      run: find output/demo -name "*.gitignore" -type f -print0 | xargs -0 /bin/rm -f
+
+    - name: Deploy demo to Github Pages
+      uses: jamesives/github-pages-deploy-action@3.4.8
+      with:
+        FOLDER: output/demo/wwwroot
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
         name: output
         path: output
-
-    - name: Restore demo
-      run: dotnet restore -p:BLLUseLocalNugetPackages=true demo/Demo.sln
-
-    - name: Build demo
-      run: dotnet build -c Release -p:BLLUseLocalNugetPackages=true demo/Demo.sln
-
-    - name: Test demo
-      run: dotnet test -c Release demo/Demo.sln

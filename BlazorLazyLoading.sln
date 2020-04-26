@@ -25,7 +25,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{AE8E1C15-B862-43CB-AC0E-94B83BE0A250}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		GitVersion.yml = GitVersion.yml
+		nuget.config = nuget.config
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Server", "nuget\BlazorLazyLoading.Server\BlazorLazyLoading.Server.csproj", "{B14D3B51-3320-46B7-8815-0FF3F18DBCB3}"
@@ -183,29 +186,17 @@ Global
 		{10AB33A5-80F4-4D02-9DBE-0484C3BB6954}.Release|x86.ActiveCfg = Release|Any CPU
 		{10AB33A5-80F4-4D02-9DBE-0484C3BB6954}.Release|x86.Build.0 = Release|Any CPU
 		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|x64.Build.0 = Debug|Any CPU
 		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Debug|x86.Build.0 = Debug|Any CPU
 		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|x64.ActiveCfg = Release|Any CPU
-		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|x64.Build.0 = Release|Any CPU
 		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|x86.ActiveCfg = Release|Any CPU
-		{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}.Release|x86.Build.0 = Release|Any CPU
 		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|x64.Build.0 = Debug|Any CPU
 		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Debug|x86.Build.0 = Debug|Any CPU
 		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|x64.ActiveCfg = Release|Any CPU
-		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|x64.Build.0 = Release|Any CPU
 		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|x86.ActiveCfg = Release|Any CPU
-		{D2DF44FE-098D-48EF-925B-F71DFDD7134D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
