@@ -49,16 +49,6 @@ jobs:
     - name: Test demo
       run: dotnet test demo/Demo.sln -c Release
 
-    - name: Prepare for Github Pages deployment
-      run: find output/demo -name "*.gitignore" -type f -print0 | xargs -0 /bin/rm -f
-
-    - name: Deploy demo to Github Pages
-      uses: jamesives/github-pages-deploy-action@3.4.8
-      with:
-        FOLDER: output/demo/wwwroot
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
