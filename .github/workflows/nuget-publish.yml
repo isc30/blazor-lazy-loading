@@ -59,6 +59,9 @@ jobs:
     - name: Push package to NuGet
       run: dotnet nuget push output/nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
+    - name: Prepare for Github Pages deployment
+      run: find . -name ".gitignore" -type f -delete
+
     - name: Deploy demo to Github Pages
       uses: jamesives/github-pages-deploy-action@3.4.8
       with:
