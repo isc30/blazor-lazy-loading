@@ -49,6 +49,7 @@ jobs:
       with:
         FOLDER: output/demo/wwwroot
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        REPOSITORY_NAME: isc30/blazor-lazy-loading
         BRANCH: docs
 
     - name: Upload artifacts
