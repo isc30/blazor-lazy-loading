@@ -7,10 +7,24 @@
     <title>WasmHost</title>
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
+    <base href="/" />
 </head>
 
 <body>
     <app>Loading...</app>
+
+    <script type="text/javascript">
+        // if domain ends with .github.io, fix <base href ...>
+        if (window.location.host.endsWith(".github.io"))
+        {
+            var base = window.location.protocol
+                + "//" + window.location.host
+                + "/" + window.location.pathname.split("/")[1] + "/";
+
+            baseElement = document.getElementsByTagName("head")[0].getElementsByTagName("base")[0];
+            baseElement.href = base;
+        }
+    </script>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
