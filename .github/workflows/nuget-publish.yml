@@ -28,16 +28,16 @@ jobs:
         dotnet-version: 3.1.200
 
     - name: Restore library
-      run: dotnet restore BlazorLazyLoading.sln
+      run: dotnet restore -p:BLLUseLocalNugetPackages=true BlazorLazyLoading.sln
 
     - name: Build library
-      run: dotnet build -c Release BlazorLazyLoading.sln
+      run: dotnet build -c Release -p:BLLUseLocalNugetPackages=true BlazorLazyLoading.sln
 
     - name: Test library
-      run: dotnet test -c Release BlazorLazyLoading.sln
+      run: dotnet test -c Release -p:BLLUseLocalNugetPackages=true BlazorLazyLoading.sln
 
     - name: Pack library
-      run: dotnet pack -c Release BlazorLazyLoading.sln
+      run: dotnet pack -c Release -p:BLLUseLocalNugetPackages=true BlazorLazyLoading.sln
 
     - name: Restore demo
       run: dotnet restore -p:BLLUseLocalNugetPackages=true demo/Demo.sln
@@ -45,11 +45,14 @@ jobs:
     - name: Build demo
       run: dotnet build -c Release -p:BLLUseLocalNugetPackages=true demo/Demo.sln
 
+    - name: Publish demo
+      run: dotnet publish -c Release -o output/demo -p:BLLUseLocalNugetPackages=true demo/Demo.sln
+
     - name: Test demo
       run: dotnet test -c Release demo/Demo.sln
 
     - name: Push package to NuGet
-      run: dotnet nuget push output/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push output/nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1

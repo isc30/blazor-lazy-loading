@@ -5,4 +5,9 @@
         <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
     </PropertyGroup>
 
+    <!-- Convert $(BLLUseLocalNugetPackages) to bool -->
+    <PropertyGroup>
+        <BLLUseLocalNugetPackages Condition="'$(BLLUseLocalNugetPackages)' == ''">false</BLLUseLocalNugetPackages>
+    </PropertyGroup>
+
 </Project>
