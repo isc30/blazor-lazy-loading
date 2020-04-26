@@ -67,7 +67,7 @@
         </ItemGroup>
         
         <WriteLinesToFile
-            File="$(SolutionDir)demo/LocalNugetVersion.props"
+            File="../demo/LocalNugetVersion.props"
             Lines="@(LocalNugetVersionProps)"
             Overwrite="true" />
     </Target>

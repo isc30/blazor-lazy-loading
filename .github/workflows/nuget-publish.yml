@@ -46,7 +46,7 @@ jobs:
       run: dotnet build demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Publish demo
-      run: dotnet publish demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true -o output/demo
+      run: dotnet publish demo/ServerHost/ServerHost.csproj -c Release -p:BLLUseLocalNugetPackages=true -o output/demo
 
     - name: Test demo
       run: dotnet test demo/Demo.sln -c Release
