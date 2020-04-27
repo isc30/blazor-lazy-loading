@@ -2,36 +2,44 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-
-    <base href="/" />
+    <base id="base" href="/" />
     <script type="text/javascript">
         // if domain ends with .github.io, fix <base href ...>
-        if (window.location.host.endsWith(".github.io"))
-        {
-            var base = window.location.protocol
+        if (window.location.host.endsWith(".github.io")) {
+            var baseHref = window.location.protocol
                 + "//" + window.location.host
                 + "/" + window.location.pathname.split("/")[1] + "/";
 
-            baseElement = document.getElementsByTagName("head")[0].getElementsByTagName("base")[0];
-            baseElement.href = base;
+            window.base.href = baseHref;
         }
     </script>
 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>BlazorLazyLoading</title>
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/site.css" rel="stylesheet" />
+
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/global.css" rel="stylesheet" />
+    <link href="css/loader.css" rel="stylesheet" />
 </head>
 
 <body>
-    <app>Loading...</app>
+    <app>
+        <div class="pureCenter">
+            <div class="loader"></div>
+        </div>
+    </app>
+
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 
