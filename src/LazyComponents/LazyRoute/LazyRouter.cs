@@ -27,7 +27,9 @@ namespace BlazorLazyLoading
 
         [Inject] private IAssemblyLoader _assemblyLoader { get; set; } = null!;
 
-        [Parameter] public RenderFragment<string> Loading { get; set; } = null!;
+        [Parameter] public RenderFragment<string?> Loading { get; set; } = null!;
+
+        private bool isFirstRender = true;
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,6 +79,7 @@ namespace BlazorLazyLoading
             _renderHandle = renderHandle;
             _baseUri = NavigationManager.BaseUri;
             _locationAbsolute = NavigationManager.Uri;
+
             NavigationManager.LocationChanged += OnLocationChanged;
         }
 
@@ -113,7 +116,8 @@ namespace BlazorLazyLoading
                 throw new InvalidOperationException($"The {nameof(LazyRouter)} component requires a value for the parameter {nameof(NotFound)}.");
             }
 
-            await RefreshRouteTable().ConfigureAwait(true); // only render thread
+            await PerformInitialRouting();
+            await RefreshLazyRouteTableAsync();
         }
 
         public void Dispose()
@@ -163,7 +167,7 @@ namespace BlazorLazyLoading
 
             if (lazyPageAssembly == null)
             {
-                _renderHandle.Render(Loading(moduleName)); // show loading RenderFragment
+                Render(Loading(moduleName)); // show loading RenderFragment
 
                 lazyPageAssembly = await _assemblyLoader
                     .LoadAssemblyByNameAsync(new AssemblyName
@@ -183,12 +187,23 @@ namespace BlazorLazyLoading
                 ? new[] { lazyPageAssembly }
                 : AdditionalAssemblies.Concat(new[] { lazyPageAssembly });
 
-            await RefreshRouteTable(); // from render thread
+            await RefreshLazyRouteTableAsync();
         }
 
-        private async Task RefreshRouteTable()
+        private Task PerformInitialRouting()
         {
-            var createLazyRoutesTask = GetLazyRoutes().ConfigureAwait(true); // continue in render thread
+            var assemblies = AdditionalAssemblies == null
+                ? new[] { AppAssembly }
+                : new[] { AppAssembly }.Concat(AdditionalAssemblies);
+
+            Routes = RouteTableFactory.Create(assemblies);
+
+            return PerformNavigationAsync(isNavigationIntercepted: false); // from render thread
+        }
+
+        private async Task RefreshLazyRouteTableAsync()
+        {
+            var createLazyRoutesTask = GetLazyRoutes(); // continue in render thread
 
             var assemblies = AdditionalAssemblies == null
                 ? new[] { AppAssembly }
@@ -258,7 +273,7 @@ namespace BlazorLazyLoading
                             typeHandler,
                             context.Parameters ?? _emptyParametersDictionary);
 
-                        _renderHandle.Render(Found(routeData));
+                        Render(Found(routeData));
                         return Task.CompletedTask;
                     }
 
@@ -270,19 +285,26 @@ namespace BlazorLazyLoading
                 }
             }
 
-            if (!isNavigationIntercepted)
+            if (isFirstRender)
             {
-                // We did not find a Component that matches the route.
-                // Only show the NotFound content if the application developer programatically got us here i.e we did not
-                // intercept the navigation. In all other cases, force a browser navigation since this could be non-Blazor content.
-                _renderHandle.Render(NotFound);
-            }
-            else
-            {
-                NavigationManager.NavigateTo(_locationAbsolute, forceLoad: true);
+                Render(Loading(null));
+                return Task.CompletedTask;
             }
 
+            if (!isNavigationIntercepted)
+            {
+                Render(NotFound);
+            }
+
+            NavigationManager.NavigateTo(_locationAbsolute, forceLoad: true);
+
             return Task.CompletedTask;
+        }
+
+        private void Render(RenderFragment fragment)
+        {
+            _renderHandle.Render(fragment);
+            isFirstRender = false;
         }
     }
 
