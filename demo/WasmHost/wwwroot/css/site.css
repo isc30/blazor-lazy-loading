@@ -1,7 +1,7 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Roboto, sans-serif;
 }
 
 a, .btn-link {
@@ -31,7 +31,7 @@ app {
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
+        background-color: rgb(109, 94, 172);
         border-bottom: 1px solid #d6d5d5;
         justify-content: flex-end;
     }
@@ -47,11 +47,12 @@ app {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-color: #3f4a59;
+    color: rgb(255, 255, 255);
 }
 
     .sidebar .top-row {
-        background-color: rgba(0,0,0,0.4);
+        background-color: #6d5eac;
     }
 
     .sidebar .navbar-brand {
@@ -59,46 +60,46 @@ app {
     }
 
     .sidebar .oi {
-        width: 2rem;
         font-size: 1.1rem;
         vertical-align: text-top;
         top: -2px;
+        margin-right: 1rem;
     }
 
     .sidebar .nav-item {
         font-size: 0.9rem;
-        padding-bottom: 0.5rem;
     }
 
-        .sidebar .nav-item:first-of-type {
+        /*.sidebar .nav-item:first-of-type {
             padding-top: 1rem;
         }
 
         .sidebar .nav-item:last-of-type {
             padding-bottom: 1rem;
-        }
+        }*/
 
         .sidebar .nav-item a {
-            color: #d7d7d7;
-            border-radius: 4px;
-            height: 3rem;
+            color: rgb(255, 255, 255);
+            height: 4rem;
             display: flex;
             align-items: center;
             line-height: 3rem;
         }
 
             .sidebar .nav-item a.active {
-                background-color: rgba(255,255,255,0.25);
-                color: white;
+                background-color: #239b8f;
             }
 
             .sidebar .nav-item a:hover {
-                background-color: rgba(255,255,255,0.1);
-                color: white;
+                background-color: rgba(0,0,0,0.1);
+            }
+
+            .sidebar .nav-item a.active:hover {
+                background-color: #239b8f;
             }
 
 .content {
-    padding-top: 1.1rem;
+    padding-top: 1.5rem;
 }
 
 .navbar-toggler {
