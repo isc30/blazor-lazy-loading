@@ -285,15 +285,13 @@ namespace BlazorLazyLoading
                 }
             }
 
-            if (isFirstRender)
-            {
-                Render(Loading(null));
-                return Task.CompletedTask;
-            }
-
             if (!isNavigationIntercepted)
             {
-                Render(NotFound);
+                Render(isFirstRender
+                    ? Loading(null)
+                    : NotFound);
+
+                return Task.CompletedTask;
             }
 
             NavigationManager.NavigateTo(_locationAbsolute, forceLoad: true);
