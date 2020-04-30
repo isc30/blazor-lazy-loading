@@ -1,7 +1,9 @@
 <LazyRouter AppAssembly="@typeof(Program).Assembly">
     <Loading Context="moduleName">
         <LayoutView Layout="@typeof(MainLayout)">
-            <p>Loading... please wait</p>
+            <div class="pureCenter full light">
+                <div class="loader light"></div>
+            </div>
         </LayoutView>
     </Loading>
     <Found Context="routeData">

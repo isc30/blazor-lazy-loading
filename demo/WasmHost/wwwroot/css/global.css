@@ -15,6 +15,34 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.85);
-    color: #212529;
 }
+
+    .overlay.dark {
+        background-color: black;
+        color: white;
+    }
+
+    .overlay.light {
+        background-color: white;
+        color: black;
+    }
+
+.full {
+    position: absolute;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+    color: white;
+}
+
+    .full.dark {
+        background-color: black;
+        color: white;
+    }
+
+    .full.light {
+        background-color: white;
+        color: black;
+    }

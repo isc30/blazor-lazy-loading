@@ -1,13 +1,21 @@
 ﻿.loader {
-    border: 3px solid black;
+    border: 3px solid;
     border-radius: 50%;
-    border-top: 1.5em solid black;
+    border-top: 1.5em solid;
     width: 3em;
     height: 3em;
 
     -webkit-animation: spin 1.5s cubic-bezier(.68,-0.55,.27,1.55) infinite; /* Safari */
     animation: spin 1.5s cubic-bezier(.68,-0.55,.27,1.55) infinite;
 }
+
+    .loader.light {
+        color: black;
+    }
+
+    .loader.dark {
+        color: white;
+    }
 
 /* Safari */
 @-webkit-keyframes spin {

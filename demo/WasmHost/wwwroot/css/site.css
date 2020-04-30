@@ -28,6 +28,7 @@ app {
 
 .main {
     flex: 1;
+    position: relative;
 }
 
     .main .top-row {
