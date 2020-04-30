@@ -150,6 +150,11 @@ app {
     .main .top-row a, .main .top-row .btn-link {
         margin-left: 0;
     }
+
+    .main .full {
+        position: relative;
+        margin-top: calc(50vh - 80px - 1.5em);
+    }
 }
 
 @media (min-width: 768px) {
