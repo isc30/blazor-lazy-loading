@@ -1,20 +1,28 @@
 ﻿@page "/counter"
 
-    <div class="pureCenter full light fadein">
-        <div class="loader"></div>
-    </div>
+@*<div class="pureCenter full light fadein">
+    <div class="loader"></div>
+</div>*@
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
 <Lazy Name="SimpleComponent">
-    <div class="loader light"></div>
+    <div class="placeholder">
+        <div class="pureCenter">
+            <div class="loader"></div>
+        </div>
+    </div>
 </Lazy>
 
-<Lazy Name="NamedComponent" />
+<Lazy Name="NamedComponent">
+    <div class="placeholder">
+        <div class="pureCenter">
+            <div class="loader"></div>
+        </div>
+    </div>
+</Lazy>
 
 @code {
     private int currentCount = 0;
