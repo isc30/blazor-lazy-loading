@@ -5,7 +5,6 @@
     width: 3em;
     height: 3em;
 
-    -webkit-animation: spin 1.5s cubic-bezier(.68,-0.55,.27,1.55) infinite; /* Safari */
     animation: spin 1.5s cubic-bezier(.68,-0.55,.27,1.55) infinite;
 }
 
@@ -17,17 +16,6 @@
         color: white;
     }
 
-/* Safari */
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -36,4 +24,18 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+.fadein {
+    animation: fadein ease;
+    animation-duration: 2s;
+}
+
+.fadein.fast {
+    animation-duration: 0.3s;
+}
+
+@keyframes fadein {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

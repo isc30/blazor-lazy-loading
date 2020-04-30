@@ -1,13 +1,15 @@
 <LazyRouter AppAssembly="@typeof(Program).Assembly">
     <Loading Context="moduleName">
         <LayoutView Layout="@typeof(MainLayout)">
-            <div class="pureCenter full light">
+            <div class="pureCenter full light fadein">
                 <div class="loader light"></div>
             </div>
         </LayoutView>
     </Loading>
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <LayoutView Layout="@typeof(MainLayout)">
+            <RouteView RouteData="@routeData" />
+        </LayoutView>
     </Found>
     <NotFound>
         <LayoutView Layout="@typeof(MainLayout)">
