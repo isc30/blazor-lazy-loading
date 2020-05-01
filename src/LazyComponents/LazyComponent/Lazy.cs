@@ -27,7 +27,7 @@ namespace BlazorLazyLoading
 
         public Type? Type { get; protected set; } = null;
 
-        public ComponentBase? Instance { get; private set; } = null;
+        public IComponent? Instance { get; private set; } = null;
 
         [Inject]
         private IAssemblyLoader _assemblyLoader { get; set; } = null!;
@@ -97,13 +97,12 @@ namespace BlazorLazyLoading
                 })
                 .ConfigureAwait(false);
 
-            Type = componentAssembly?.GetType(bestMatch.Match.TypeFullName);
-
             if (OnBeforeLoadAsync != null)
             {
                 await OnBeforeLoadAsync(this);
             }
 
+            Type = componentAssembly?.GetType(bestMatch.Match.TypeFullName);
             StateHasChanged();
         }
 
@@ -118,7 +117,7 @@ namespace BlazorLazyLoading
             builder.OpenComponent(0, Type);
             builder.AddComponentReferenceCapture(1, (componentRef) =>
             {
-                Instance = (ComponentBase)componentRef;
+                Instance = (IComponent)componentRef;
                 OnAfterLoad?.Invoke(this);
             });
             builder.CloseComponent();

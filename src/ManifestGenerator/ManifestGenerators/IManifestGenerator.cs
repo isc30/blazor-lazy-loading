@@ -5,6 +5,6 @@ namespace BlazorLazyLoading
 {
     public interface IManifestGenerator
     {
-        public Dictionary<string, object> GenerateManifest(Assembly assembly);
+        public Dictionary<string, object>? GenerateManifest(Assembly assembly);
     }
 }

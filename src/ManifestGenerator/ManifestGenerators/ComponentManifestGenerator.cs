@@ -6,10 +6,10 @@ namespace BlazorLazyLoading.ManifestGenerators
 {
     public sealed class ComponentManifestGenerator : IManifestGenerator
     {
-        public Dictionary<string, object> GenerateManifest(Assembly assembly)
+        public Dictionary<string, object>? GenerateManifest(Assembly assembly)
         {
             var componentTypes = assembly.GetTypes()
-                .Where(t => t.BaseType.FullName == "Microsoft.AspNetCore.Components.ComponentBase");
+                .Where(t => t.GetInterfaces().Any(i => i.FullName == "Microsoft.AspNetCore.Components.IComponent"));
 
             var components = new List<ComponentManifest>();
 
@@ -26,6 +26,11 @@ namespace BlazorLazyLoading.ManifestGenerators
 
                 var lazyName = (string)lazyNameAttribute.ConstructorArguments[0].Value;
                 components.Add(new ComponentManifest(component.FullName, lazyName));
+            }
+
+            if (!components.Any())
+            {
+                return null;
             }
 
             return new Dictionary<string, object>

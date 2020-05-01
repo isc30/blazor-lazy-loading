@@ -51,7 +51,14 @@ namespace BlazorLazyLoading
                     Assembly assembly = dllMetadataContext.LoadFromAssemblyName(assemblyName);
                     LogDebug($"Assembly loaded: {assemblyName}");
 
-                    Dictionary<string, object> manifestSections = ExecuteManifestGenerators(assembly);
+                    Dictionary<string, object>? manifestSections = ExecuteManifestGenerators(assembly);
+
+                    if (manifestSections == null)
+                    {
+                        LogDebug($"Skipping Lazy Module '{assemblyName}' as it has no relevant manifest sections");
+                        continue;
+                    }
+
                     manifest.Add(assemblyName, manifestSections);
 
                     var manifestDescriptions = manifestSections.Select(s =>
@@ -105,13 +112,18 @@ namespace BlazorLazyLoading
             return new MetadataLoadContext(resolver);
         }
 
-        private Dictionary<string, object> ExecuteManifestGenerators(Assembly assembly)
+        private Dictionary<string, object>? ExecuteManifestGenerators(Assembly assembly)
         {
             var manifestSections = new Dictionary<string, object>();
 
             foreach (var manifestGenerator in _manifestGenerators)
             {
                 var manifestSection = manifestGenerator.GenerateManifest(assembly);
+
+                if (manifestSection == null)
+                {
+                    continue;
+                }
 
                 foreach (var keyValue in manifestSection)
                 {
@@ -124,7 +136,9 @@ namespace BlazorLazyLoading
                 }
             }
 
-            return manifestSections;
+            return manifestSections.Any()
+                ? manifestSections
+                : null;
         }
 
         private void LogDebug(string message, params object[] args)

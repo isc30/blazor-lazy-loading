@@ -6,15 +6,20 @@ namespace BlazorLazyLoading.ManifestGenerators
 {
     public sealed class RouteManifestGenerator : IManifestGenerator
     {
-        public Dictionary<string, object> GenerateManifest(Assembly assembly)
+        public Dictionary<string, object>? GenerateManifest(Assembly assembly)
         {
             var componentTypes = assembly.GetTypes()
-                .Where(t => t.BaseType.FullName == "Microsoft.AspNetCore.Components.ComponentBase");
+                .Where(t => t.GetInterfaces().Any(i => i.FullName == "Microsoft.AspNetCore.Components.IComponent"));
 
             var routes = componentTypes.SelectMany(t => t.GetCustomAttributesData()
                 .Where(a => a.AttributeType.FullName == "Microsoft.AspNetCore.Components.RouteAttribute")
                 .Select(a => new RouteManifest((string)a.ConstructorArguments[0].Value, t.FullName)))
                 .ToList();
+
+            if (!routes.Any())
+            {
+                return null;
+            }
 
             return new Dictionary<string, object>
             {
