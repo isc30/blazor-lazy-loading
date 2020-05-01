@@ -19,5 +19,9 @@
     <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
         <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" PrivateAssets="all" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
 
 </Project>

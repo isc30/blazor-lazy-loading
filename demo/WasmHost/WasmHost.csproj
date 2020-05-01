@@ -30,8 +30,8 @@
 
     <!-- Modules -->
     <ItemGroup>
+      <ProjectReference Include="..\Core\Core.csproj" />
       <ProjectReference Include="..\ModulesHost\ModulesHost.csproj" />
-      <ProjectReference Include="..\Logger\Logger.csproj" />
     </ItemGroup>
 
 </Project>

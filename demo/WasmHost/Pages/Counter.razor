@@ -8,20 +8,12 @@
 <p>Current count: @currentCount</p>
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-<Lazy Name="SimpleComponent" OnBeforeLoadAsync="Delay(350, 2500)">
-    <div class="placeholder">
-        <div class="pureCenter">
-            <div class="loader"></div>
-        </div>
-    </div>
+<Lazy Name="SimpleComponent" OnBeforeLoadAsync="Delay(500, 2500)">
+    <LazyPlaceholder />
 </Lazy>
 
-<Lazy Name="NamedComponent" OnBeforeLoadAsync="Delay(350, 2500)">
-    <div class="placeholder">
-        <div class="pureCenter">
-            <div class="loader"></div>
-        </div>
-    </div>
+<Lazy Name="NamedComponent" OnBeforeLoadAsync="Delay(500, 2500)">
+    <LazyPlaceholder />
 </Lazy>
 
 @code {
