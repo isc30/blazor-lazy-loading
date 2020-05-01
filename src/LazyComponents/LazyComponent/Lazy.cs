@@ -30,17 +30,18 @@ namespace BlazorLazyLoading
         public ComponentBase? Instance { get; private set; } = null;
 
         [Inject]
-        private IAssemblyLoader AssemblyLoader { get; set; } = null!;
+        private IAssemblyLoader _assemblyLoader { get; set; } = null!;
 
         [Inject]
-        private IManifestRepository ManifestRepository { get; set; } = null!;
+        private IManifestRepository _manifestRepository { get; set; } = null!;
 
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync().ConfigureAwait(false);
 
-            // dirty stuff, enough for V1
-            var manifests = (await ManifestRepository.GetAllAsync().ConfigureAwait(false))
+            var allManifests = await _manifestRepository.GetAllAsync().ConfigureAwait(false);
+
+            var manifests = allManifests
                 .Where(m => m.ManifestSections.ContainsKey("Components"))
                 .DistinctBy(m => m.ModuleName)
                 .SelectMany(m => m.ManifestSections["Components"]
@@ -88,7 +89,7 @@ namespace BlazorLazyLoading
 
             var bestMatch = bestMatches.First();
 
-            Assembly? componentAssembly = await AssemblyLoader
+            Assembly? componentAssembly = await _assemblyLoader
                 .LoadAssemblyByNameAsync(new AssemblyName
                 {
                     Name = bestMatch.Manifest.ModuleName,

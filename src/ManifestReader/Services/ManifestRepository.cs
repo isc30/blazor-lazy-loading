@@ -14,7 +14,9 @@ namespace BlazorLazyLoading.Services
         private readonly IManifestLocator _manifestLocator;
         private readonly IContentFileReader _fileReader;
 
-        private readonly ConcurrentDictionary<string, ModuleManifest> _loadedManifests;
+        private Task? _fetching = null;
+        private readonly ConcurrentDictionary<string, byte[]?> _loadedPaths = new ConcurrentDictionary<string, byte[]?>();
+        private readonly ConcurrentDictionary<string, ModuleManifest> _loadedModules = new ConcurrentDictionary<string, ModuleManifest>();
 
         public ManifestRepository(
             IManifestLocator manifestLocator,
@@ -22,33 +24,53 @@ namespace BlazorLazyLoading.Services
         {
             _manifestLocator = manifestLocator;
             _fileReader = fileReader;
-
-            _loadedManifests = new ConcurrentDictionary<string, ModuleManifest>();
         }
 
         public async Task<ICollection<ModuleManifest>> GetAllAsync()
         {
-            await ReadAllManifests().ConfigureAwait(false);
+            await FetchAllManifests().ConfigureAwait(false);
 
-            return _loadedManifests.Values;
+            return _loadedModules.Values.ToList();
         }
 
         public async Task<ModuleManifest?> GetByModuleNameAsync(string moduleName)
         {
-            if (_loadedManifests.TryGetValue(moduleName, out var manifest))
+            if (_loadedModules.TryGetValue(moduleName, out var manifest))
             {
                 return manifest;
             }
 
+            await FetchAllManifests().ConfigureAwait(false);
+
+            if (_loadedModules.TryGetValue(moduleName, out manifest))
+            {
+                return manifest;
+            }
+
+            return null;
+        }
+
+        private async Task FetchAllManifests()
+        {
+            if (_fetching != null)
+            {
+                await _fetching.ConfigureAwait(false);
+                return;
+            }
+
+            var manifestFetchingTaskSource = new TaskCompletionSource<byte>();
+            _fetching = manifestFetchingTaskSource.Task;
+
             await ReadAllManifests().ConfigureAwait(false);
 
-            return _loadedManifests.SingleOrDefault(m => m.Value.ModuleName == moduleName).Value;
+            manifestFetchingTaskSource.SetResult(0x90);
+            _fetching = null;
         }
 
         private async Task ReadAllManifests()
         {
-            var manifestPaths = _manifestLocator.GetManifestPaths().Except(_loadedManifests.Keys);
             var manifestDataTasks = new Dictionary<string, Task<byte[]?>>();
+            var manifestPaths = _manifestLocator.GetManifestPaths();
 
             foreach (var path in manifestPaths)
             {
@@ -59,10 +81,13 @@ namespace BlazorLazyLoading.Services
 
             var manifestData = manifestDataTasks
                 .Select(i => new { Path = i.Key, Data = i.Value.Result })
+                .ToList();
+
+            var manifestModels = manifestData
                 .Where(i => i.Data != null)
                 .ToDictionary(i => i.Path, i => JObject.Parse(Encoding.UTF8.GetString(i.Data!)));
 
-            foreach (var keyValue in manifestData)
+            foreach (var keyValue in manifestModels)
             {
                 foreach (var module in keyValue.Value)
                 {
@@ -71,7 +96,7 @@ namespace BlazorLazyLoading.Services
                         continue;
                     }
 
-                    _loadedManifests.TryAdd(keyValue.Key, new ModuleManifest(module.Key, (JObject)module.Value));
+                    _loadedModules.TryAdd(module.Key, new ModuleManifest(module.Key, (JObject)module.Value));
                 }
             }
         }

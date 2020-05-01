@@ -9,14 +9,6 @@
     <ItemGroup>
         <ProjectReference Include="..\Logger\Logger.csproj" Name="Logger" />
     </ItemGroup>
-
-    <!-- Extra dependencies -->
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.0.0" />
-    </ItemGroup>
-    
-    <!-- BLAZOR LAZY LOADING REFERENCES -->
     
     <!-- Use Local NuGet package -->
     <ItemGroup Condition="$(BLLUseLocalNugetPackages)">

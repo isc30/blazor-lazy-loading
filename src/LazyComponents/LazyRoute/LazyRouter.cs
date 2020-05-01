@@ -219,7 +219,9 @@ namespace BlazorLazyLoading
 
         private async Task<RouteTable> GetLazyRoutes()
         {
-            var manifests = (await _manifestRepository.GetAllAsync().ConfigureAwait(false))
+            var allManifests = await _manifestRepository.GetAllAsync().ConfigureAwait(false);
+
+            var manifests = allManifests
                 .Where(m => m.ManifestSections.ContainsKey("Routes"))
                 .DistinctBy(m => m.ModuleName)
                 .SelectMany(m => m.ManifestSections["Routes"]
