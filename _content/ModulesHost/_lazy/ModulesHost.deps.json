@@ -24,7 +24,7 @@
     ".NETStandard,Version=v2.1": {
       "ModulesHost/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Module": "0.1.0-beta.50",
+          "BlazorLazyLoading.Module": "0.1.0-beta.51",
           "Logger": "1.0.0",
           "Microsoft.Win32.Primitives": "4.0.3.0",
           "mscorlib": "4.0.0.0",
@@ -757,7 +757,7 @@
           "System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "BlazorLazyLoading.Module/0.1.0-beta.50": {},
+      "BlazorLazyLoading.Module/0.1.0-beta.51": {},
       "Microsoft.AspNetCore.Authorization/3.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Metadata": "3.0.0",
@@ -927,7 +927,7 @@
     ".NETStandard,Version=v2.1/": {
       "ModulesHost/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Module": "0.1.0-beta.50",
+          "BlazorLazyLoading.Module": "0.1.0-beta.51",
           "Logger": "1.0.0",
           "Microsoft.Win32.Primitives": "4.0.3.0",
           "mscorlib": "4.0.0.0",
@@ -1055,7 +1055,7 @@
           "ModulesHost.dll": {}
         }
       },
-      "BlazorLazyLoading.Module/0.1.0-beta.50": {},
+      "BlazorLazyLoading.Module/0.1.0-beta.51": {},
       "Microsoft.AspNetCore.Authorization/3.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Metadata": "3.0.0",
@@ -1303,12 +1303,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BlazorLazyLoading.Module/0.1.0-beta.50": {
+    "BlazorLazyLoading.Module/0.1.0-beta.51": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MwoZWvazWk1BlVeDWG5Zvm43VfSNELnnIgtVyE+sWPFWWjswkB5j3QGqtx8oV9WT+HAqS8FJQIkTSsvlZwJoZw==",
-      "path": "blazorlazyloading.module/0.1.0-beta.50",
-      "hashPath": "blazorlazyloading.module.0.1.0-beta.50.nupkg.sha512"
+      "sha512": "sha512-4hqPJwEE3kqCAXaSq8NW3wk7Bi9XdOLLW3S4YIMxBtNXPMUQNrxGEum23pewDZgoxqxOC5NHr0vqvGmrQR67nQ==",
+      "path": "blazorlazyloading.module/0.1.0-beta.51",
+      "hashPath": "blazorlazyloading.module.0.1.0-beta.51.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization/3.0.0": {
       "type": "package",
