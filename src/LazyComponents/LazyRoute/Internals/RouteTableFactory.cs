@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using BlazorLazyLoading.Helpers;
+//using BlazorLazyLoading.Helpers;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorLazyLoading.LazyRoute.Internals
