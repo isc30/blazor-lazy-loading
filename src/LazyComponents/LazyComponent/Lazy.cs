@@ -19,15 +19,21 @@ namespace BlazorLazyLoading
         [Parameter]
         public RenderFragment? ChildContent { get; set; } = null;
 
-        [Inject]
-        public IAssemblyLoader AssemblyLoader { get; set; } = null!;
+        [Parameter]
+        public Func<Lazy, Task>? OnBeforeLoadAsync { get; set; } = null;
 
-        [Inject]
-        public IManifestRepository ManifestRepository { get; set; } = null!;
+        [Parameter]
+        public Action<Lazy>? OnAfterLoad { get; set; } = null;
 
         public Type? Type { get; protected set; } = null;
 
         public ComponentBase? Instance { get; private set; } = null;
+
+        [Inject]
+        private IAssemblyLoader AssemblyLoader { get; set; } = null!;
+
+        [Inject]
+        private IManifestRepository ManifestRepository { get; set; } = null!;
 
         protected override async Task OnInitializedAsync()
         {
@@ -91,7 +97,13 @@ namespace BlazorLazyLoading
                 .ConfigureAwait(false);
 
             Type = componentAssembly?.GetType(bestMatch.Match.TypeFullName);
-            ShouldRender();
+
+            if (OnBeforeLoadAsync != null)
+            {
+                await OnBeforeLoadAsync(this);
+            }
+
+            StateHasChanged();
         }
 
         protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -103,7 +115,11 @@ namespace BlazorLazyLoading
             }
 
             builder.OpenComponent(0, Type);
-            builder.AddComponentReferenceCapture(1, (componentRef) => Instance = (ComponentBase)componentRef);
+            builder.AddComponentReferenceCapture(1, (componentRef) =>
+            {
+                Instance = (ComponentBase)componentRef;
+                OnAfterLoad?.Invoke(this);
+            });
             builder.CloseComponent();
         }
 
