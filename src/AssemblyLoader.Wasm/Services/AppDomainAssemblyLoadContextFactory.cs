@@ -2,7 +2,7 @@
 
 namespace BlazorLazyLoading.Wasm.Services
 {
-    public sealed class AppDomainAssemblyLoadContextFactory : IAssemblyLoadContextFactory
+    internal sealed class AppDomainAssemblyLoadContextFactory : IAssemblyLoadContextFactory
     {
         public IAssemblyLoadContext Create(string name)
         {

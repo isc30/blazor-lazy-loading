@@ -11,13 +11,27 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorLazyLoading.Server
 {
+    /// <summary>
+    /// Server startup extensions for BlazorLazyLoading
+    /// </summary>
     public static class BLLServerStartupExtensions
     {
+        /// <summary>
+        /// Registers BlazorLazyLoading services
+        /// </summary>
         public static IServiceCollection AddLazyLoading(
             this IServiceCollection services,
             LazyLoadingOptions options)
         {
-            services.AddScoped<IAssemblyLoader, AssemblyLoader>();
+            if (options.UseAssemblyIsolation)
+            {
+                services.AddScoped<IAssemblyLoader, AssemblyLoader>();
+            }
+            else
+            {
+                services.AddSingleton<IAssemblyLoader, AssemblyLoader>();
+            }
+
             services.AddSingleton<IAssemblyLoadContextFactory, DisposableAssemblyLoadContextFactory>();
             services.AddSingleton<IAssemblyDataLocator, AssemblyDataLocator>();
             services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
@@ -38,6 +52,9 @@ namespace BlazorLazyLoading.Server
             return services;
         }
 
+        /// <summary>
+        /// Configures the host to use BlazorLazyLoading
+        /// </summary>
         public static void UseLazyLoading(
             this IApplicationBuilder app)
         {
@@ -53,13 +70,23 @@ namespace BlazorLazyLoading.Server
         }
     }
 
+    /// <summary>
+    /// BlazorLazyLoading options
+    /// </summary>
     public sealed class LazyLoadingOptions
     {
         /// <summary>
-        /// Specifies a list of Module Names (hints) to:
-        ///   - Download DLLs from them
-        ///   - Use their manifest to locate lazy resources
+        /// <br>Specifies a list of Module Names (hints) to:</br>
+        /// <br>  - Download DLLs from them</br>
+        /// <br>  - Use their manifest to locate lazy resources</br>
         /// </summary>
         public IEnumerable<string> ModuleHints { get; set; } = Array.Empty<string>();
+
+        /// <summary>
+        /// <br>Configures assembly isolation level. Do NOT set this to 'false' unless you want to share 'static' fields between users.</br>
+        /// <br>Keeping this enabled ensures that the server can be scaled horizontally.</br>
+        /// <br>default: true</br>
+        /// </summary>
+        public bool UseAssemblyIsolation { get; set; } = true;
     }
 }

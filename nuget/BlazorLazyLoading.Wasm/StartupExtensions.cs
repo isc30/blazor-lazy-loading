@@ -7,8 +7,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorLazyLoading.Wasm
 {
+    /// <summary>
+    /// WebAssembly startup extensions for BlazorLazyLoading
+    /// </summary>
     public static class BLLWasmStartupExtensions
     {
+        /// <summary>
+        /// Registers BlazorLazyLoading services
+        /// </summary>
         public static IServiceCollection AddLazyLoading(
             this IServiceCollection services,
             LazyLoadingOptions options)
@@ -29,12 +35,15 @@ namespace BlazorLazyLoading.Wasm
         }
     }
 
+    /// <summary>
+    /// BlazorLazyLoading options
+    /// </summary>
     public sealed class LazyLoadingOptions
     {
         /// <summary>
-        /// Specifies a list of Module Names (hints) to:
-        ///   - Download DLLs from them
-        ///   - Use their manifest to locate lazy resources
+        /// <br>Specifies a list of Module Names (hints) to:</br>
+        /// <br>  - Download DLLs from them</br>
+        /// <br>  - Use their manifest to locate lazy resources</br>
         /// </summary>
         public IEnumerable<string> ModuleHints { get; set; } = Array.Empty<string>();
     }
