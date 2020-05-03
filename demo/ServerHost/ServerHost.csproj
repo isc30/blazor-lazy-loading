@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\WasmHost\WasmHost.csproj" />
+        <ProjectReference Include="..\WasmHost\WasmHost.csproj" PrivateAssets="all" />
     </ItemGroup>
 
 </Project>

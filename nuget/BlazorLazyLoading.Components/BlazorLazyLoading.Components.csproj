@@ -13,8 +13,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\LazyComponents\LazyComponents.csproj" />
-      <ProjectReference Include="..\..\src\ManifestReader\ManifestReader.csproj" />
+        <ProjectReference Include="..\..\src\LazyComponents\LazyComponents.csproj" />
+        <ProjectReference Include="..\..\src\ManifestReader\ManifestReader.csproj" />
     </ItemGroup>
 
 </Project>

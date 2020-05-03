@@ -12,7 +12,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AssemblyLoader\AssemblyLoader.csproj" />
+        <ProjectReference Include="..\AssemblyLoader\AssemblyLoader.csproj" />
     </ItemGroup>
 
     <ItemGroup>
