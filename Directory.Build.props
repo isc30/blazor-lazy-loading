@@ -7,7 +7,7 @@
 
     <!-- Convert $(BLLUseLocalNugetPackages) to bool -->
     <PropertyGroup>
-        <BLLUseLocalNugetPackages Condition="'$(BLLUseLocalNugetPackages)' == ''">true</BLLUseLocalNugetPackages>
+        <BLLUseLocalNugetPackages Condition="'$(BLLUseLocalNugetPackages)' == ''">false</BLLUseLocalNugetPackages>
     </PropertyGroup>
 
 </Project>
