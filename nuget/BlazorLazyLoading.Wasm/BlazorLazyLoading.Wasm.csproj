@@ -9,8 +9,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" />
         <ProjectReference Include="..\..\src\AssemblyLoader.Wasm\AssemblyLoader.Wasm.csproj" />
+        <ProjectReference Include="..\..\src\ManifestReader\ManifestReader.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" PrivateAssets="all" />
     </ItemGroup>
 
     <PropertyGroup>

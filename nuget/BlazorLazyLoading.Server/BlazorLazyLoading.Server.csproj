@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,10 +10,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" />
         <ProjectReference Include="..\..\src\AssemblyLoader.Server\AssemblyLoader.Server.csproj" />
+        <ProjectReference Include="..\..\src\ManifestReader\ManifestReader.csproj" />
     </ItemGroup>
-
+        
     <PropertyGroup>
         <PackageId>$(MSBuildProjectName)</PackageId>
         <Product>$(MSBuildProjectName)</Product>

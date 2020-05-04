@@ -16,7 +16,7 @@
         <Version>0.0.0</Version>
         <NoPackageAnalysis>true</NoPackageAnalysis>
 
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild Condition="!$(BLLUseLocalNugetPackages)">true</GeneratePackageOnBuild>
         <IsPackable>true</IsPackable>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -53,7 +53,7 @@
         </PropertyGroup>
     </Target>
 
-    <Target Name="SetDemoNugetVersion" AfterTargets="Build">
+    <Target Name="SetDemoNugetVersion" AfterTargets="Build;Pack;Restore">
         <CallTarget Targets="GetVersion" />
         <ItemGroup>
             <LocalNugetVersionProps Remove="*" />
