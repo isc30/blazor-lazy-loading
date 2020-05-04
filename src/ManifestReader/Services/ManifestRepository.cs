@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlazorLazyLoading.Abstractions;
+using BlazorLazyLoading.Extensions;
 using BlazorLazyLoading.Models;
 using Newtonsoft.Json.Linq;
 
@@ -70,7 +71,7 @@ namespace BlazorLazyLoading.Services
         private async Task ReadAllManifests()
         {
             var manifestDataTasks = new Dictionary<string, Task<byte[]?>>();
-            var manifestPaths = _manifestLocator.GetManifestPaths();
+            var manifestPaths = _manifestLocator.GetManifestPaths().Except(_loadedPaths.Keys);
 
             foreach (var path in manifestPaths)
             {
@@ -79,11 +80,16 @@ namespace BlazorLazyLoading.Services
 
             await Task.WhenAll(manifestDataTasks.Values.ToArray()).ConfigureAwait(false);
 
-            var manifestData = manifestDataTasks
+            var pathData = manifestDataTasks
                 .Select(i => new { Path = i.Key, Data = i.Value.Result })
                 .ToList();
 
-            var manifestModels = manifestData
+            foreach (var path in pathData)
+            {
+                _loadedPaths.TryAdd(path.Path, path.Data);
+            }
+
+            var manifestModels = pathData
                 .Where(i => i.Data != null)
                 .ToDictionary(i => i.Path, i => JObject.Parse(Encoding.UTF8.GetString(i.Data!)));
 

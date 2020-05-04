@@ -7,15 +7,21 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BlazorLazyLoading.Wasm
 {
+    /// <summary>
+    /// WebAssembly startup extensions for BlazorLazyLoading
+    /// </summary>
     public static class BLLWasmStartupExtensions
     {
+        /// <summary>
+        /// Registers BlazorLazyLoading services
+        /// </summary>
         public static IServiceCollection AddLazyLoading(
             this IServiceCollection services,
             LazyLoadingOptions options)
         {
             services.AddSingleton<IAssemblyLoader, AssemblyLoader>();
             services.AddSingleton<IAssemblyLoadContextFactory, AppDomainAssemblyLoadContextFactory>();
-            services.AddSingleton<IAssemblyDataLocator, AssemblyDataLocator>();
+            services.AddSingleton(typeof(IAssemblyDataLocator), options.AssemblyDataLocator ?? typeof(AssemblyDataLocator));
             services.AddSingleton<IContentFileReader, NetworkContentFileReader>();
             services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
 
@@ -29,13 +35,19 @@ namespace BlazorLazyLoading.Wasm
         }
     }
 
+    /// <summary>
+    /// BlazorLazyLoading options
+    /// </summary>
     public sealed class LazyLoadingOptions
     {
         /// <summary>
-        /// Specifies a list of Module Names (hints) to:
-        ///   - Download DLLs from them
-        ///   - Use their manifest to locate lazy resources
+        /// Specifies a list of Module Names (hints) to download DLLs from them and use their manifest to locate lazy resources
         /// </summary>
         public IEnumerable<string> ModuleHints { get; set; } = Array.Empty<string>();
+
+        /// <summary>
+        /// Configures a custom AssemblyDataLocator. The type must implement IAssemblyDataLocator.
+        /// </summary>
+        public Type? AssemblyDataLocator { get; set; } = null;
     }
 }

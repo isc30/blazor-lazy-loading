@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using BlazorLazyLoading.Abstractions;
+using BlazorLazyLoading.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Newtonsoft.Json.Linq;
@@ -17,7 +17,13 @@ namespace BlazorLazyLoading
         public string Name { get; set; } = null!;
 
         [Parameter]
-        public RenderFragment? ChildContent { get; set; } = null;
+        public bool Required { get; set; } = false;
+
+        [Parameter]
+        public RenderFragment? Loading { get; set; } = null;
+
+        [Parameter]
+        public RenderFragment? Error { get; set; } = null;
 
         [Parameter]
         public Func<Lazy, Task>? OnBeforeLoadAsync { get; set; } = null;
@@ -35,9 +41,22 @@ namespace BlazorLazyLoading
         [Inject]
         private IManifestRepository _manifestRepository { get; set; } = null!;
 
+        private RenderFragment? _currentFallbackBuilder = null;
+
+        protected override void OnInitialized()
+        {
+            _currentFallbackBuilder = Loading;
+            base.OnInitialized(); // trigger initial render
+        }
+
         protected override async Task OnInitializedAsync()
         {
             await base.OnInitializedAsync().ConfigureAwait(false);
+
+            if (OnBeforeLoadAsync != null)
+            {
+                await OnBeforeLoadAsync(this);
+            }
 
             var allManifests = await _manifestRepository.GetAllAsync().ConfigureAwait(false);
 
@@ -71,6 +90,7 @@ namespace BlazorLazyLoading
                     }));
 
             var bestMatches = manifests
+                .Where(i => i.Score > 0)
                 .GroupBy(i => i.Score)
                 .OrderByDescending(i => i.Key)
                 .FirstOrDefault()
@@ -78,13 +98,16 @@ namespace BlazorLazyLoading
 
             if (bestMatches == null || !bestMatches.Any())
             {
-                Debug.WriteLine($"Unable to find lazy component '{Name}'");
+                DisplayErrorView();
+                ThrowIfRequired($"Unable to find lazy component '{Name}'. Required: {(Required ? "true" : "false")}");
                 return;
             }
 
             if (bestMatches.Count > 1)
             {
-                throw new NotSupportedException($"Multiple matches for Component with name '{Name}': '{string.Join(";", bestMatches.Select(m => m.Match.TypeFullName))}'");
+                DisplayErrorView();
+                ThrowIfRequired($"Multiple matches for Component with name '{Name}': '{string.Join(";", bestMatches.Select(m => m.Match.TypeFullName))}'");
+                return;
             }
 
             var bestMatch = bestMatches.First();
@@ -97,12 +120,13 @@ namespace BlazorLazyLoading
                 })
                 .ConfigureAwait(false);
 
-            if (OnBeforeLoadAsync != null)
+            Type = componentAssembly?.GetType(bestMatch.Match.TypeFullName);
+
+            if (Type == null)
             {
-                await OnBeforeLoadAsync(this);
+                DisplayErrorView(false);
             }
 
-            Type = componentAssembly?.GetType(bestMatch.Match.TypeFullName);
             StateHasChanged();
         }
 
@@ -125,34 +149,25 @@ namespace BlazorLazyLoading
 
         private void BuildFallbackComponent(RenderTreeBuilder builder)
         {
-            if (ChildContent != null)
+            _currentFallbackBuilder?.Invoke(builder);
+        }
+
+        private void DisplayErrorView(bool render = true)
+        {
+            _currentFallbackBuilder = Error;
+            if (render) StateHasChanged();
+        }
+
+        private void ThrowIfRequired(string errorMessage)
+        {
+            if (Required)
             {
-                ChildContent.Invoke(builder);
-                return;
+                throw new NotSupportedException(errorMessage);
             }
-
-            builder.OpenElement(0, "div");
-            builder.AddAttribute(1, "class", "bll-loading");
-            builder.AddContent(2, "Loading...");
-            builder.CloseElement();
-        }
-    }
-
-    public static class X
-    {
-        public static IEnumerable<T> NotNull<T>(this IEnumerable<T?> source)
-            where T : class
-        {
-            return source.Where(i => i != null).Cast<T>();
-        }
-
-        public static IEnumerable<T> DistinctBy<T, TOut>(
-            this IEnumerable<T> source,
-            Func<T, TOut> selector)
-        {
-            return source
-                .GroupBy(m => selector(m))
-                .Select(g => g.First());
+            else
+            {
+                Debug.WriteLine(errorMessage);
+            }
         }
     }
 }

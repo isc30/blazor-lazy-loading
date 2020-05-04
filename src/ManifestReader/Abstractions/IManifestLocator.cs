@@ -2,6 +2,9 @@
 
 namespace BlazorLazyLoading.Abstractions
 {
+    /// <summary>
+    /// Locates _lazy.json manifests
+    /// </summary>
     public interface IManifestLocator
     {
         /// <summary>

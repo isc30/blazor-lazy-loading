@@ -9,11 +9,18 @@
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 <Lazy Name="SimpleComponent" OnBeforeLoadAsync="Delay(500, 2500)">
-    <LazyPlaceholder />
+    <Loading>
+        <LazyPlaceholder />
+    </Loading>
+    <Error>
+        <h2>Component loading errored...</h2>
+    </Error>
 </Lazy>
 
-<Lazy Name="NamedComponent" OnBeforeLoadAsync="Delay(500, 2500)">
-    <LazyPlaceholder />
+<Lazy Name="NamedComponent" Required="true" OnBeforeLoadAsync="Delay(500, 2500)">
+    <Loading>
+        <LazyPlaceholder />
+    </Loading>
 </Lazy>
 
 @code {

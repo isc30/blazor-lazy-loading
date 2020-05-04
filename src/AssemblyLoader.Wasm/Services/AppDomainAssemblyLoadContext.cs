@@ -9,7 +9,7 @@ using BlazorLazyLoading.Models;
 
 namespace BlazorLazyLoading.Wasm.Services
 {
-    public sealed class AppDomainAssemblyLoadContext : IAssemblyLoadContext
+    internal sealed class AppDomainAssemblyLoadContext : IAssemblyLoadContext
     {
         private readonly object _domainLock = new object();
         private readonly AppDomain _baseDomain;

@@ -5,16 +5,21 @@ using BlazorLazyLoading.Models;
 
 namespace BlazorLazyLoading.Services
 {
+    /// <summary>
+    /// Locates assembly DLLs based on context and hints
+    /// </summary>
     public sealed class AssemblyDataLocator : IAssemblyDataLocator
     {
         private readonly ILazyModuleHintsProvider _lazyModuleNamesProvider;
 
+        /// <inheritdoc/>
         public AssemblyDataLocator(
             ILazyModuleHintsProvider lazyModuleProvider)
         {
             _lazyModuleNamesProvider = lazyModuleProvider;
         }
 
+        /// <inheritdoc/>
         public IEnumerable<string> GetFindPaths(
             AssemblyName assemblyName,
             AssemblyLoaderContext context)
