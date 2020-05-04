@@ -6,7 +6,8 @@ namespace BlazorLazyLoading.Extensions
 {
     public static class EnumerableExtensions
     {
-        public static IEnumerable<T> NotNull<T>(this IEnumerable<T?> source)
+        public static IEnumerable<T> NotNull<T>(
+            this IEnumerable<T?> source)
             where T : class
         {
             return source.Where(i => i != null).Cast<T>();

@@ -76,9 +76,7 @@ namespace BlazorLazyLoading.Server
     public sealed class LazyLoadingOptions
     {
         /// <summary>
-        /// <br>Specifies a list of Module Names (hints) to:</br>
-        /// <br>  - Download DLLs from them</br>
-        /// <br>  - Use their manifest to locate lazy resources</br>
+        /// Specifies a list of Module Names (hints) to download DLLs from them and use their manifest to locate lazy resources
         /// </summary>
         public IEnumerable<string> ModuleHints { get; set; } = Array.Empty<string>();
 

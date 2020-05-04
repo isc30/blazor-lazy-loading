@@ -8,7 +8,7 @@ namespace BlazorLazyLoading.Services
     /// <summary>
     /// Locates assembly DLLs based on context and hints
     /// </summary>
-    public class AssemblyDataLocator : IAssemblyDataLocator
+    public sealed class AssemblyDataLocator : IAssemblyDataLocator
     {
         private readonly ILazyModuleHintsProvider _lazyModuleNamesProvider;
 
@@ -20,7 +20,7 @@ namespace BlazorLazyLoading.Services
         }
 
         /// <inheritdoc/>
-        public virtual IEnumerable<string> GetFindPaths(
+        public IEnumerable<string> GetFindPaths(
             AssemblyName assemblyName,
             AssemblyLoaderContext context)
         {
