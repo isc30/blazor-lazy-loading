@@ -33,8 +33,8 @@ namespace BlazorLazyLoading.Server
             }
 
             services.AddSingleton<IAssemblyLoadContextFactory, DisposableAssemblyLoadContextFactory>();
-            services.AddSingleton<IAssemblyDataLocator, AssemblyDataLocator>();
             services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
+            services.AddSingleton(typeof(IAssemblyDataLocator), options.AssemblyDataLocator ?? typeof(AssemblyDataLocator));
 
             services.AddSingleton<IContentFileReader>(
                 p =>
@@ -88,5 +88,10 @@ namespace BlazorLazyLoading.Server
         /// <br>default: true</br>
         /// </summary>
         public bool UseAssemblyIsolation { get; set; } = true;
+
+        /// <summary>
+        /// Configures a custom AssemblyDataLocator. The type must implement IAssemblyDataLocator.
+        /// </summary>
+        public Type? AssemblyDataLocator { get; set; } = null;
     }
 }

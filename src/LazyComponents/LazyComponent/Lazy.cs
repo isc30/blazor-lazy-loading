@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using BlazorLazyLoading.Abstractions;
+using BlazorLazyLoading.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Newtonsoft.Json.Linq;
@@ -135,24 +135,6 @@ namespace BlazorLazyLoading
             builder.AddAttribute(1, "class", "bll-loading");
             builder.AddContent(2, "Loading...");
             builder.CloseElement();
-        }
-    }
-
-    public static class X
-    {
-        public static IEnumerable<T> NotNull<T>(this IEnumerable<T?> source)
-            where T : class
-        {
-            return source.Where(i => i != null).Cast<T>();
-        }
-
-        public static IEnumerable<T> DistinctBy<T, TOut>(
-            this IEnumerable<T> source,
-            Func<T, TOut> selector)
-        {
-            return source
-                .GroupBy(m => selector(m))
-                .Select(g => g.First());
         }
     }
 }
