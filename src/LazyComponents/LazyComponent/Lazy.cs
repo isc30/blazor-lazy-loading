@@ -51,12 +51,12 @@ namespace BlazorLazyLoading
 
         protected override async Task OnInitializedAsync()
         {
+            await base.OnInitializedAsync().ConfigureAwait(false);
+
             if (OnBeforeLoadAsync != null)
             {
                 await OnBeforeLoadAsync(this);
             }
-
-            await base.OnInitializedAsync().ConfigureAwait(false);
 
             var allManifests = await _manifestRepository.GetAllAsync().ConfigureAwait(false);
 
