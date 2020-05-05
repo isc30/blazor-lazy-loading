@@ -1,4 +1,6 @@
-![logo](doc/logo.png?raw=true)
+<p align="center">
+  <img src="doc/logo.png?raw=true" />
+</p>
 
 ![Release Build](https://img.shields.io/github/workflow/status/isc30/blazor-lazy-loading/[trigger]%20new%20release/master?logo=github&color=brightgreen)
 [![NuGet stable](https://img.shields.io/nuget/v/BlazorLazyLoading.Components?color=brightgreen&label=stable&logo=nuget)](https://www.nuget.org/packages?q=BlazorLazyLoading&prerel=false)
