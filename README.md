@@ -7,5 +7,4 @@
 
 Automatic Lazy Loading support for Blazor WebAssembly and Blazor Server!
 
-* [Documentation / Wiki](https://github.com/isc30/blazor-lazy-loading/wiki)
-* [Playground](https://isc30.github.io/blazor-lazy-loading/)
+[![Documentation / Wiki](doc/documentation.png?raw=true)](https://github.com/isc30/blazor-lazy-loading/wiki)
