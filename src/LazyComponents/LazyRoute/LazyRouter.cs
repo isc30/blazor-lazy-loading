@@ -102,9 +102,9 @@ namespace BlazorLazyLoading
                 throw new InvalidOperationException($"The {nameof(LazyRouter)} component requires a value for the parameter {nameof(Found)}.");
             }
 
-            // Loading content is mandatory, because even though we could use something like <RouteView ...> as a
+            // Loading content is mandatory, because even though we could use something like 'null' as a
             // reasonable default, if it's not declared explicitly in the template then people will have no way
-            // to discover how to customize this (e.g., to add authorization).
+            // to discover how to customize this.
             if (Loading == null)
             {
                 throw new InvalidOperationException($"The {nameof(LazyRouter)} component requires a value for the parameter {nameof(Loading)}.");
