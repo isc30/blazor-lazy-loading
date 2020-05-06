@@ -19,15 +19,17 @@ using RouteTableFactory = BlazorLazyLoading.LazyRoute.Internals.RouteTableFactor
 namespace BlazorLazyLoading
 {
     /// <summary>
-    /// A component that supplies route data corresponding to the current navigation state.
+    /// Provides SPA navigation for Pages and Routes in Lazy Modules. It is a direct replacement of &lt;Router&gt;
     /// </summary>
     public class LazyRouter : IComponent, IHandleAfterRender, IDisposable
     {
-
         [Inject] private IManifestRepository _manifestRepository { get; set; } = null!;
 
         [Inject] private IAssemblyLoader _assemblyLoader { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies a custom 'Loading' screen.
+        /// </summary>
         [Parameter] public RenderFragment<string?> Loading { get; set; } = null!;
 
         private bool isFirstRender = true;
