@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/isc30/blazor-lazy-loading">
-    <img src="doc/logo.png?raw=true" />
+    <img src="doc/img/logo.png?raw=true" />
   </a>
 </p>
 <p align="center">
@@ -12,4 +12,4 @@
 
 Automatic Lazy Loading support for Blazor WebAssembly and Blazor Server!
 
-[![Documentation / Wiki](doc/documentation.png?raw=true)](https://github.com/isc30/blazor-lazy-loading/wiki)
+[![Documentation / Wiki](doc/img/documentation.png?raw=true)](https://github.com/isc30/blazor-lazy-loading/wiki)

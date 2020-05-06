@@ -50,6 +50,7 @@
             <NuspecProperties>$(NuspecProperties);PackageTags=$(PackageTags)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);RepositoryType=$(RepositoryType)</NuspecProperties>
             <NuspecProperties>$(NuspecProperties);RepositoryUrl=$(RepositoryUrl)</NuspecProperties>
+            <NuspecProperties>$(NuspecProperties);icon=$(PackageIcon)</NuspecProperties>
         </PropertyGroup>
     </Target>
 

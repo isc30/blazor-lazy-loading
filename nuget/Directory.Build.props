@@ -11,4 +11,12 @@
     <!-- automatically create packages -->
     <Import Project="$(MSBuildThisFileDirectory)NugetCommon.props" />
 
+    <!-- set package icon -->
+    <PropertyGroup>
+        <PackageIcon>icon.png</PackageIcon>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)icon.png" Pack="true" PackagePath="" />
+    </ItemGroup>
+
 </Project>

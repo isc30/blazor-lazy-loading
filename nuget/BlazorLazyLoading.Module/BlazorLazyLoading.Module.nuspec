@@ -6,6 +6,7 @@
         <title>$title$</title>
         <description>$description$</description>
         <authors>$author$</authors>
+        <icon>$icon$</icon>
     </metadata>
     <files>
         <file src="build\*.*" target="build" />
@@ -15,5 +16,8 @@
         <!-- manifest generator -->
         <file src="bin\$configuration$\$framework$\*.dll" target="build\bin" />
         <file src="bin\$configuration$\$framework$\*.pdb" target="build\bin" />
+
+        <!-- icon -->
+        <file src="..\icon.png" target="\" />
     </files>
 </package>
