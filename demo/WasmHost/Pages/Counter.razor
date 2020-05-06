@@ -13,7 +13,7 @@
         <LazyPlaceholder />
     </Loading>
     <Error>
-        <h2>Component loading errored...</h2>
+        <h2 style="color:red">Component loading errored...</h2>
     </Error>
 </Lazy>
 
@@ -21,6 +21,38 @@
     <Loading>
         <LazyPlaceholder />
     </Loading>
+</Lazy>
+
+<Lazy
+      Name="Parametrized"
+      Parameters='new Dictionary<string, object> { { "Name", "Ivan" }, { "Adjective", "awesome" } }'
+      OnBeforeLoadAsync="Delay(500, 2500)">
+
+    <Loading>
+        <LazyPlaceholder />
+    </Loading>
+    <Error>
+        <h2 style="color:red">Component loading errored...</h2>
+    </Error>
+
+</Lazy>
+
+<Lazy Name="ErrorLol" Required="false" OnBeforeLoadAsync="Delay(500, 2500)">
+    <Loading>
+        <LazyPlaceholder />
+    </Loading>
+    <Error>
+        <h2 style="color:darkorange">(expected) Component loading errored...</h2>
+    </Error>
+</Lazy>
+
+<Lazy ModuleName="WasmHost" Name="WasmHost.Shared.SurveyPrompt" Required="true" OnBeforeLoadAsync="Delay(500, 2500)">
+    <Loading>
+        <LazyPlaceholder />
+    </Loading>
+    <Error>
+        <h2 style="color:red">Component loading errored...</h2>
+    </Error>
 </Lazy>
 
 @code {
@@ -33,6 +65,9 @@
 
     private Func<Lazy, Task> Delay(int minMs, int maxMs)
     {
-        return (Lazy c) => Task.Delay(new Random().Next(minMs, maxMs));
+        return (Lazy c) =>
+        {
+            return Task.Delay(new Random().Next(minMs, maxMs));
+        };
     }
 }

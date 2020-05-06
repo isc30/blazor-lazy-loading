@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{E503BF43
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LazyAreas", "LazyAreas", "{566D14F1-B2FB-463C-A627-C5EB23B763B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{DB1AE536-72C2-4CCD-A7D9-0A79AAEEDA54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{DB1AE536-72C2-4CCD-A7D9-0A79AAEEDA54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

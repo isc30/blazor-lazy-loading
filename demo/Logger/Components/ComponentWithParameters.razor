@@ -1,0 +1,11 @@
+﻿@attribute [LazyName("Parametrized")]
+
+<h3>Hello @Name, you are @Adjective</h3>
+
+@code {
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Adjective { get; set; }
+}
