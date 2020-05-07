@@ -51,7 +51,7 @@ namespace BlazorLazyLoading
             {
                 try
                 {
-                    _logger.Debug($"Generating manifest for {assemblyName}");
+                    _logger.Debug($"Generating Manifest file for '{assemblyName}':");
                     Assembly assembly = metadataLoadContext.LoadFromAssemblyName(assemblyName);
                     _logger.Debug($"Assembly loaded: {assemblyName}");
 
@@ -68,7 +68,7 @@ namespace BlazorLazyLoading
                     var manifestDescriptions = manifestSections.Select(s =>
                         "'" + s.Key + "'" + (s.Value is ICollection c ? ": " + c.Count : string.Empty) + "");
 
-                    _logger.Info($"Lazy Module '{assemblyName}' generated with: {{ {string.Join(", ", manifestDescriptions)} }}");
+                    _logger.Info($"Manifest for '{assemblyName}' generated containing: {{ {string.Join(", ", manifestDescriptions)} }}");
                 }
                 catch (Exception ex)
                 {

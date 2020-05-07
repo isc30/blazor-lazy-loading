@@ -48,7 +48,7 @@
             <ProjectOutDir>$(MSBuildProjectDirectory)/$(OutDir)</ProjectOutDir>
         </PropertyGroup>
 
-        <Message Importance="high" Text="Generating manifest for: @(BLLManifestAssemblies)" />
+        <Message Importance="normal" Text="Generating manifest for: @(BLLManifestAssemblies)" />
         
         <GenerateManifest
             AssemblyNames="@(BLLManifestAssemblies)"
