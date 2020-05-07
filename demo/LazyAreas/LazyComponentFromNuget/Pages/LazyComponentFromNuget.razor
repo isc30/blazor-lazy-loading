@@ -1,0 +1,18 @@
+﻿@page "/lazy-component-from-nuget"
+
+<h1>Lazy Component from NuGet</h1>
+<p>
+    The following component is rendered from a nuget package (Faso.Blazor.SpinKit in this case).
+    The nuget DLL will only be loaded in the context of this page.
+</p>
+
+@*
+    Works fine out of the box
+*@
+<Faso.Blazor.SpinKit.SpinKitWave />
+
+@*
+    Requires the Module to have:
+    + <BLLManifestAssemblies Include="Faso.Blazor.SpinKit" />
+*@
+<Lazy Name="Faso.Blazor.SpinKit.SpinKitWave" />

@@ -1,0 +1,13 @@
+<Project>
+    <!-- Use Local NuGet package -->
+    <ItemGroup Condition="$(BLLUseLocalNugetPackages)">
+        <PackageReference Include="BlazorLazyLoading.Module" Version="$(BLLVersion)" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!-- Use Project reference -->
+    <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\nuget\BlazorLazyLoading.Module\BlazorLazyLoading.Module.csproj" PrivateAssets="all" />
+    </ItemGroup>
+    <Import Condition="!$(BLLUseLocalNugetPackages)" Project="$(MSBuildThisFileDirectory)..\nuget\BlazorLazyLoading.Module\build\BlazorLazyLoading.Module.props" />
+    <Import Condition="!$(BLLUseLocalNugetPackages)" Project="$(MSBuildThisFileDirectory)..\nuget\BlazorLazyLoading.Module\build\BlazorLazyLoading.Module.targets" />
+</Project>

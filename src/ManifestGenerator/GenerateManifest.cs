@@ -16,6 +16,8 @@ namespace BlazorLazyLoading
     {
         private readonly ICollection<IManifestGenerator> _manifestGenerators;
 
+        private Logger _logger;
+
         [Required]
         public string[] AssemblyNames { get; set; } = Array.Empty<string>();
 
@@ -27,10 +29,12 @@ namespace BlazorLazyLoading
 
         public GenerateManifest()
         {
+            _logger = new Logger(Log);
+
             _manifestGenerators = new IManifestGenerator[]
             {
-                new ComponentManifestGenerator(),
-                new RouteManifestGenerator(),
+                new ComponentManifestGenerator(_logger),
+                new RouteManifestGenerator(_logger),
             };
         }
 
@@ -41,21 +45,21 @@ namespace BlazorLazyLoading
             var manifest = new Dictionary<string, IDictionary>();
 
             var dlls = ResolveAvailableDlls().ToList();
-            using var dllMetadataContext = CreateDllMetadataContext(dlls);
+            using var metadataLoadContext = CreateDllMetadataLoadContext(dlls);
 
             foreach (string assemblyName in AssemblyNames)
             {
                 try
                 {
-                    LogDebug($"Generating manifest for {assemblyName}");
-                    Assembly assembly = dllMetadataContext.LoadFromAssemblyName(assemblyName);
-                    LogDebug($"Assembly loaded: {assemblyName}");
+                    _logger.Debug($"Generating manifest for {assemblyName}");
+                    Assembly assembly = metadataLoadContext.LoadFromAssemblyName(assemblyName);
+                    _logger.Debug($"Assembly loaded: {assemblyName}");
 
-                    Dictionary<string, object>? manifestSections = ExecuteManifestGenerators(assembly);
+                    Dictionary<string, object>? manifestSections = ExecuteManifestGenerators(assembly, metadataLoadContext);
 
                     if (manifestSections == null)
                     {
-                        LogDebug($"Skipping Lazy Module '{assemblyName}' as it has no relevant manifest sections");
+                        _logger.Debug($"Skipping Lazy Module '{assemblyName}' as it has no relevant manifest sections");
                         continue;
                     }
 
@@ -64,11 +68,11 @@ namespace BlazorLazyLoading
                     var manifestDescriptions = manifestSections.Select(s =>
                         "'" + s.Key + "'" + (s.Value is ICollection c ? ": " + c.Count : string.Empty) + "");
 
-                    LogInfo($"Lazy Module '{assemblyName}' generated with: {{ {string.Join(", ", manifestDescriptions)} }}");
+                    _logger.Info($"Lazy Module '{assemblyName}' generated with: {{ {string.Join(", ", manifestDescriptions)} }}");
                 }
                 catch (Exception ex)
                 {
-                    LogError(ex.Message);
+                    _logger.Error(ex.Message);
                     return false;
                 }
             }
@@ -106,19 +110,19 @@ namespace BlazorLazyLoading
                 .ToList();
         }
 
-        private MetadataLoadContext CreateDllMetadataContext(IEnumerable<string> dlls)
+        private MetadataLoadContext CreateDllMetadataLoadContext(IEnumerable<string> dlls)
         {
             var resolver = new PathAssemblyResolver(dlls);
             return new MetadataLoadContext(resolver);
         }
 
-        private Dictionary<string, object>? ExecuteManifestGenerators(Assembly assembly)
+        private Dictionary<string, object>? ExecuteManifestGenerators(Assembly assembly, MetadataLoadContext metadataLoadContext)
         {
             var manifestSections = new Dictionary<string, object>();
 
             foreach (var manifestGenerator in _manifestGenerators)
             {
-                var manifestSection = manifestGenerator.GenerateManifest(assembly);
+                var manifestSection = manifestGenerator.GenerateManifest(assembly, metadataLoadContext);
 
                 if (manifestSection == null)
                 {
@@ -139,21 +143,6 @@ namespace BlazorLazyLoading
             return manifestSections.Any()
                 ? manifestSections
                 : null;
-        }
-
-        private void LogDebug(string message, params object[] args)
-        {
-            Log.LogMessage(MessageImportance.Normal, message, args);
-        }
-
-        private void LogInfo(string message, params object[] args)
-        {
-            Log.LogMessage(MessageImportance.High, message, args);
-        }
-
-        private void LogError(string message, params object[] args)
-        {
-            Log.LogError(message, args);
         }
     }
 }

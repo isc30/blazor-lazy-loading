@@ -4,15 +4,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
-    <!-- Use Local NuGet package -->
-    <ItemGroup Condition="$(BLLUseLocalNugetPackages)">
-        <PackageReference Include="BlazorLazyLoading.Server" Version="$(BLLVersion)" PrivateAssets="all" />
-    </ItemGroup>
-
-    <!-- Use Project reference -->
-    <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
-        <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Server\BlazorLazyLoading.Server.csproj" PrivateAssets="all" />
-    </ItemGroup>
+    <Import Project="../BlazorLazyLoading.Server.props" />
 
     <!-- Extra dependencies -->
     <ItemGroup>

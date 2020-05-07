@@ -10,10 +10,12 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.2" />
     </ItemGroup>
 
-    <Import Project="../BlazorLazyLoading.Components.props" />
-    
     <ItemGroup>
-      <ProjectReference Include="..\Core\Core.csproj" />
+        <PackageReference Include="Faso.Blazor.SpinKit" Version="1.0.1" />
+        <BLLManifestAssemblies Include="Faso.Blazor.SpinKit" />
     </ItemGroup>
+
+    <Import Project="../../BlazorLazyLoading.Module.props" />
+    <Import Project="../../BlazorLazyLoading.Components.props" />
 
 </Project>
