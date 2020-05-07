@@ -9,7 +9,10 @@
     <a href="https://www.nuget.org/packages?q=BlazorLazyLoading&prerel=false"><img src="https://img.shields.io/nuget/dt/BlazorLazyLoading.Components?color=brightgreen&label=downloads&logo=nuget)](https://www.nuget.org/packages?q=BlazorLazyLoading&prerel=false" /></a>
     <a href="https://www.nuget.org/packages?q=BlazorLazyLoading&prerel=false"><img src="https://img.shields.io/nuget/vpre/BlazorLazyLoading.Components?color=yellow&label=dev&logo=nuget)](https://www.nuget.org/packages?q=BlazorLazyLoading&prerel=false" /></a>
 </p>
+<br/>
 
-Automatic Lazy Loading support for Blazor WebAssembly and Blazor Server!
+Automatic Lazy Loading support for Blazor WebAssembly and Blazor Server!<br/><br/>
 
 [![Documentation / Wiki](doc/img/documentation.png?raw=true)](https://github.com/isc30/blazor-lazy-loading/wiki)
+
+[![Demo](doc/img/demo.png?raw=true)](https://isc30.github.io/blazor-lazy-loading/)
