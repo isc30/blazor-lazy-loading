@@ -33,6 +33,7 @@ namespace BlazorLazyLoading
 
             _manifestGenerators = new IManifestGenerator[]
             {
+                new ModuleHintManifestGenerator(_logger),
                 new ComponentManifestGenerator(_logger),
                 new RouteManifestGenerator(_logger),
             };
