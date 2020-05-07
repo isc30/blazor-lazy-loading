@@ -42,7 +42,7 @@
 
     <UsingTask TaskName="GenerateManifest" AssemblyFile="$(_BLLNugetPackageBuildBinDirectory)ManifestGenerator.dll" />
 
-    <Target Name="GenerateManifest" AfterTargets="CopyDependencies" Condition="$(BLLGenerateLazyManifest)">
+    <Target Name="GenerateManifest" AfterTargets="CopyDependencies" Condition="$(BLLGenerateManifest)">
 
         <PropertyGroup>
             <ProjectOutDir>$(MSBuildProjectDirectory)/$(OutDir)</ProjectOutDir>

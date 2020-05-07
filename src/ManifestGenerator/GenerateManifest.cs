@@ -68,7 +68,7 @@ namespace BlazorLazyLoading
                     var manifestDescriptions = manifestSections.Select(s =>
                         "'" + s.Key + "'" + (s.Value is ICollection c ? ": " + c.Count : string.Empty) + "");
 
-                    _logger.Info($"Manifest for '{assemblyName}' generated containing: {{ {string.Join(", ", manifestDescriptions)} }}");
+                    _logger.Info($"Manifest for '{assemblyName}' generated: {{ {string.Join(", ", manifestDescriptions)} }}");
                 }
                 catch (Exception ex)
                 {

@@ -1,9 +1,9 @@
 ﻿<Project>
 
     <PropertyGroup>
-        <BLLGenerateLazyManifest Condition="'$(BLLGenerateLazyManifest)' == ''">true</BLLGenerateLazyManifest>
+        <BLLGenerateManifest Condition="'$(BLLGenerateManifest)' == ''">true</BLLGenerateManifest>
         <RestoreProjectStyle Condition="'$(RestoreProjectStyle)' == ''">PackageReference</RestoreProjectStyle>
-        <CopyLocalLockFileAssemblies Condition="'$(CopyLocalLockFileAssemblies)' == ''">$(BLLGenerateLazyManifest)</CopyLocalLockFileAssemblies>
+        <CopyLocalLockFileAssemblies Condition="'$(CopyLocalLockFileAssemblies)' == ''">$(BLLGenerateManifest)</CopyLocalLockFileAssemblies>
     </PropertyGroup>
 
     <ItemGroup>
