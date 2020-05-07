@@ -1,3 +1,3 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="_content/Logger" Path="/home/runner/work/blazor-lazy-loading/blazor-lazy-loading/demo/Logger/wwwroot/" />
+  <ContentRoot BasePath="_content/LazyComponentFromNuget" Path="/home/runner/work/blazor-lazy-loading/blazor-lazy-loading/demo/LazyAreas/LazyComponentFromNuget/wwwroot/" />
 </StaticWebAssets>
