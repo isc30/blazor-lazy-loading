@@ -6,10 +6,17 @@ namespace BlazorLazyLoading.ManifestGenerators
 {
     public sealed class ComponentManifestGenerator : IManifestGenerator
     {
-        public Dictionary<string, object>? GenerateManifest(Assembly assembly)
+        private readonly Logger _logger;
+
+        public ComponentManifestGenerator(Logger logger)
+        {
+            _logger = logger;
+        }
+
+        public Dictionary<string, object>? GenerateManifest(Assembly assembly, MetadataLoadContext metadataLoadContext)
         {
             var componentTypes = assembly.GetTypes()
-                .Where(t => t.GetInterfaces().Any(i => i.FullName == "Microsoft.AspNetCore.Components.IComponent"));
+                .Where(t => !t.IsAbstract && t.GetInterfaces().Any(i => i.FullName == "Microsoft.AspNetCore.Components.IComponent"));
 
             var components = new List<ComponentManifest>();
 

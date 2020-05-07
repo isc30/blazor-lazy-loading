@@ -10,15 +10,7 @@
         <BlazorLinkerDescriptor Include="LinkerConfig.xml" />
     </ItemGroup>
 
-    <!-- Use Local NuGet package -->
-    <ItemGroup Condition="$(BLLUseLocalNugetPackages)">
-        <PackageReference Include="BlazorLazyLoading.Wasm" Version="$(BLLVersion)" PrivateAssets="all" />
-    </ItemGroup>
-
-    <!-- Use Project reference -->
-    <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
-        <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj" PrivateAssets="all" />
-    </ItemGroup>
+    <Import Project="../BlazorLazyLoading.Wasm.props" />
 
     <!-- Extra dependencies -->
     <ItemGroup>

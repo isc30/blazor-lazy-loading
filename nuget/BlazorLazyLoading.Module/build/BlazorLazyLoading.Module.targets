@@ -2,19 +2,19 @@
 
     <Target Name="CreateGitIgnore" BeforeTargets="PrepareForBuild">
         <WriteLinesToFile
-            Condition="!Exists('$(ModuleWwwRootDirectory).gitignore')"
-            File="$(ModuleWwwRootDirectory).gitignore"
-            Lines="$(ModuleLazyDirectoryName)/;$(ModuleLazyManifestFile)"/>
+            Condition="!Exists('$(_BLLModuleWwwRootDirectory).gitignore')"
+            File="$(_BLLModuleWwwRootDirectory).gitignore"
+            Lines="$(_BLLModuleLazyDirectoryName)/;$(_BLLModuleLazyManifestFile)"/>
     </Target>
 
     <Target Name="CleanBin" BeforeTargets="Clean;Rebuild;Build">
         <ItemGroup>
-            <FilesToDelete Include="$(ModuleLazyDirectory)**/*.*" />
-            <FilesToDelete Include="$(ModuleManifestPath)" />
+            <_FilesToDelete Include="$(_BLLModuleLazyDirectory)**/*.*" />
+            <_FilesToDelete Include="$(_BLLModuleManifestPath)" />
         </ItemGroup>
         
-        <RemoveDir Directories="$(ModuleLazyDirectory)" />
-        <Delete Files="@(FilesToDelete)" />
+        <RemoveDir Directories="$(_BLLModuleLazyDirectory)" />
+        <Delete Files="@(_FilesToDelete)" />
     </Target>
 
     <!-- Ensure all DLLs and PDBs are available -->
@@ -32,32 +32,28 @@
 
         <Copy
             SourceFiles="@(OutputFiles)"
-            DestinationFolder="$(ModuleLazyDirectory)"
+            DestinationFolder="$(_BLLModuleLazyDirectory)"
             OverwriteReadOnlyFiles="true"
             SkipUnchangedFiles="false" />
 
     </Target>
 
     <!-- Create Lazy Manifest -->
-    
+
     <UsingTask TaskName="GenerateManifest" AssemblyFile="$(_BLLNugetPackageBuildBinDirectory)ManifestGenerator.dll" />
 
-    <Target Name="GenerateManifest" AfterTargets="CopyDependencies" Condition="$(BLLGenerateLazyManifest)">
+    <Target Name="GenerateManifest" AfterTargets="CopyDependencies" Condition="$(BLLGenerateManifest)">
 
         <PropertyGroup>
             <ProjectOutDir>$(MSBuildProjectDirectory)/$(OutDir)</ProjectOutDir>
         </PropertyGroup>
 
-        <ItemGroup>
-            <BLLManifestGeneratorAssemblyNames Include="@(ProjectReference->'%(Name)')" />
-        </ItemGroup>
-
-        <Message Importance="normal" Text="BLLManifestGeneratorAssemblyNames: @(BLLManifestGeneratorAssemblyNames)" />
+        <Message Importance="normal" Text="Generating manifest for: @(BLLManifestAssemblies)" />
         
         <GenerateManifest
-            AssemblyNames="@(BLLManifestGeneratorAssemblyNames)"
-            AssemblyPaths="$(ProjectOutDir);@(BLLManifestGeneratorAssemblyPaths)"
-            ManifestOutputPath="$(ModuleManifestPath)" />
+            AssemblyNames="@(BLLManifestAssemblies)"
+            AssemblyPaths="$(ProjectOutDir);@(BLLManifestAssemblyPaths)"
+            ManifestOutputPath="$(_BLLModuleManifestPath)" />
 
     </Target>
 

@@ -5,21 +5,17 @@
         <RazorLangVersion>3.0</RazorLangVersion>
     </PropertyGroup>
 
-    <!-- Modules -->
     <ItemGroup>
-        <ProjectReference Include="..\Logger\Logger.csproj" Name="Logger" />
-    </ItemGroup>
-    
-    <!-- Use Local NuGet package -->
-    <ItemGroup Condition="$(BLLUseLocalNugetPackages)">
-        <PackageReference Include="BlazorLazyLoading.Module" Version="$(BLLVersion)" PrivateAssets="all" />
+        <ProjectReference Include="..\Logger\Logger.csproj" />
+        <ProjectReference Include="..\LazyAreas\LazyComponentFromNuget\LazyComponentFromNuget.csproj" />
     </ItemGroup>
 
-    <!-- Use Project reference -->
-    <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
-        <ProjectReference Include="..\..\nuget\BlazorLazyLoading.Module\BlazorLazyLoading.Module.csproj" PrivateAssets="all" />
+    <!-- Extra Assemblies in the Manifest -->
+    <ItemGroup>
+        <BLLManifestAssemblies Include="Logger" />
+        <BLLManifestAssemblies Include="LazyComponentFromNuget" />
     </ItemGroup>
-    <Import Condition="!$(BLLUseLocalNugetPackages)" Project="..\..\nuget\BlazorLazyLoading.Module\build\BlazorLazyLoading.Module.props" />
-    <Import Condition="!$(BLLUseLocalNugetPackages)" Project="..\..\nuget\BlazorLazyLoading.Module\build\BlazorLazyLoading.Module.targets" />
+
+    <Import Project="../BlazorLazyLoading.Module.props" />
 
 </Project>
