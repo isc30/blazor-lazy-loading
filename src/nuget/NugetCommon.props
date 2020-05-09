@@ -8,8 +8,8 @@
     </ItemGroup>
     
     <PropertyGroup>
-        <PackageOutputDir>$(MSBuildThisFileDirectory)..\output\nuget</PackageOutputDir>
-        <PackageOutputPath>$(MSBuildThisFileDirectory)..\output\nuget</PackageOutputPath>
+        <PackageOutputDir>$(RepoDir)output\nuget</PackageOutputDir>
+        <PackageOutputPath>$(RepoDir)output\nuget</PackageOutputPath>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -68,7 +68,7 @@
         </ItemGroup>
         
         <WriteLinesToFile
-            File="$(MSBuildThisFileDirectory)../demo/LocalNugetVersion.props"
+            File="$(RepoDir)demo/LocalNugetVersion.props"
             Lines="@(LocalNugetVersionProps)"
             Overwrite="true" />
     </Target>

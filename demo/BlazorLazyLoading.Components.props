@@ -6,6 +6,6 @@
 
     <!-- Use Project reference -->
     <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
-        <ProjectReference Include="$(MSBuildThisFileDirectory)..\nuget\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" />
+        <ProjectReference Include="$(SolutionDir)..\src\nuget\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj" />
     </ItemGroup>
 </Project>
