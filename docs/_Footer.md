@@ -1,1 +1,1 @@
-test - *[https://github.com/isc30/blazor-lazy-loading](https://github.com/isc30/blazor-lazy-loading)*
+*[GitHub BlazorLazyLoading](https://github.com/isc30/blazor-lazy-loading)*
