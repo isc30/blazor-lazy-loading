@@ -2239,35 +2239,35 @@
     "BlazorLazyLoading.Components/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-lN8r45VgCECBKg72wsp5OCByS0d9ojQ+yXwEcRsOJ1F0iuMWPCxPyU4GmfIBfdtzppKQNtMKPKzRR5Rpy0UIQQ==",
+      "sha512": "sha512-rYhFt/tQboxHdVqPOcWEgpgPuv16+jdBj7SnZrZnDYF5y/hbNk+NLLWhUe45QUUZzIrVFOyDesjFMVM/rQhHsg==",
       "path": "blazorlazyloading.components/1.1.1",
       "hashPath": "blazorlazyloading.components.1.1.1.nupkg.sha512"
     },
     "BlazorLazyLoading.Module/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-KKbX/iuxGYl4VOaePTKZnqOpTgvcDzx9m4aG6x1VGPb3Td9rtvhNnXfrAszUbPen9VLCTAob8x3C947oevgQYw==",
+      "sha512": "sha512-zB3PgobTsQtDCtIFDEH9ilLE7KDrruvS6fEL3hcIjGfSP6JQ6O+weu4na1HgSPx0OATcDcWgrz1DuRd+/h2laA==",
       "path": "blazorlazyloading.module/1.1.1",
       "hashPath": "blazorlazyloading.module.1.1.1.nupkg.sha512"
     },
     "BlazorLazyLoading._internals.AssemblyLoader/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Ca3oHnigcdHdxXIv+lcfHsPQ+X0noMs/X3ahv3c8+4KsH1N3PKV5mZhaxaW99jMC8YCxN5+I1GvWZFTK2+eb9Q==",
+      "sha512": "sha512-U1yElb2+jfPDfblaoWVIAB5m4w9Nuu+s361S4iyzl/9bbmfKJb5AQKubugCmq3dFVTx4X9BMfym0/EYEDjWXuQ==",
       "path": "blazorlazyloading._internals.assemblyloader/1.1.1",
       "hashPath": "blazorlazyloading._internals.assemblyloader.1.1.1.nupkg.sha512"
     },
     "BlazorLazyLoading._internals.LazyComponents/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TIa3k6N0ZoQL4ubPysLsglhOXCSeS7MqiP15QFv4w30TW0bb9d3vWsQDxO6LF6cmG1eMFjovqDTREyqG+iZS8A==",
+      "sha512": "sha512-RFYex/lCagdds2jmWgsLvppv/8gE6THcwzV2xM6S+bk6HqfBOUY7vASBNbmUcWi/TkamAuHnXSdRFgoJnlgn/Q==",
       "path": "blazorlazyloading._internals.lazycomponents/1.1.1",
       "hashPath": "blazorlazyloading._internals.lazycomponents.1.1.1.nupkg.sha512"
     },
     "BlazorLazyLoading._internals.ManifestReader/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qB3xWNxo1REgvSyooKhbA83QtV4cEg52zSRdaqkV75ILh6rmy1DXlk3WlNDiY8XrlKAeB9/8D91uSR8RdgZqog==",
+      "sha512": "sha512-qC4qiucqYAS0cFeySi1YHN0nXYrIrB6VOsskejaLzb+MrXcBS/zNitYffY/Xdd7vEXq+Ai0an8DG/Q+K7EWfFw==",
       "path": "blazorlazyloading._internals.manifestreader/1.1.1",
       "hashPath": "blazorlazyloading._internals.manifestreader.1.1.1.nupkg.sha512"
     },
