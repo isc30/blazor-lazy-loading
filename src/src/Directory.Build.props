@@ -1,0 +1,14 @@
+<Project>
+
+    <!--
+        Enable hierarchical 'Directory.Build.props'
+        This must be imported at the top of the file
+    -->
+    <Import
+        Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"
+        Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
+
+    <!-- automatically create "Internal" packages -->
+    <Import Project="$(MSBuildThisFileDirectory)../nuget/NugetCommon.props" />
+
+</Project>

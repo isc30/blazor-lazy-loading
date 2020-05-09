@@ -6,6 +6,6 @@
 
     <!-- Use Project reference -->
     <ItemGroup Condition="!$(BLLUseLocalNugetPackages)">
-        <ProjectReference Include="$(MSBuildThisFileDirectory)..\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj" PrivateAssets="all" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\src\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj" PrivateAssets="all" />
     </ItemGroup>
 </Project>

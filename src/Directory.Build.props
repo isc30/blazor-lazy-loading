@@ -8,7 +8,14 @@
         Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"
         Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
 
-    <!-- automatically create "Internal" packages -->
-    <Import Project="$(MSBuildThisFileDirectory)../nuget/NugetCommon.props" />
+    <PropertyGroup>
+        <!-- Polyfill $(SolutionDir) -->
+        <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
+    </PropertyGroup>
+
+    <!-- Convert $(BLLUseLocalNugetPackages) to bool -->
+    <PropertyGroup>
+        <BLLUseLocalNugetPackages Condition="'$(BLLUseLocalNugetPackages)' == ''">false</BLLUseLocalNugetPackages>
+    </PropertyGroup>
 
 </Project>

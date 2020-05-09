@@ -26,7 +26,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{AE8E1C
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
 		GitVersion.yml = GitVersion.yml
 		nuget.config = nuget.config
 	EndProjectSection
@@ -51,9 +50,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Manifest", "Manifest", "{2B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{38184F2E-7DDA-4F92-B730-85637350E56F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerHost", "demo\ServerHost\ServerHost.csproj", "{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerHost", "..\demo\ServerHost\ServerHost.csproj", "{2EF3EB2F-0E00-4554-8EDC-7CEEE5C7B899}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmHost", "demo\WasmHost\WasmHost.csproj", "{D2DF44FE-098D-48EF-925B-F71DFDD7134D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WasmHost", "..\demo\WasmHost\WasmHost.csproj", "{D2DF44FE-098D-48EF-925B-F71DFDD7134D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

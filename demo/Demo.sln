@@ -19,17 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorLazyLoading", "BlazorLazyLoading", "{2DFA918F-9417-49B8-9FDA-E2231179978C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Module", "..\nuget\BlazorLazyLoading.Module\BlazorLazyLoading.Module.csproj", "{E3E28F5C-3F96-4634-9528-10C23F2478DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Module", "..\src\nuget\BlazorLazyLoading.Module\BlazorLazyLoading.Module.csproj", "{E3E28F5C-3F96-4634-9528-10C23F2478DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Server", "..\nuget\BlazorLazyLoading.Server\BlazorLazyLoading.Server.csproj", "{6C5945E8-44F9-4898-AB78-FF0D85F5515B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Server", "..\src\nuget\BlazorLazyLoading.Server\BlazorLazyLoading.Server.csproj", "{6C5945E8-44F9-4898-AB78-FF0D85F5515B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Wasm", "..\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj", "{B78FC2FE-F107-49AB-95FC-E7F4559C879A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Wasm", "..\src\nuget\BlazorLazyLoading.Wasm\BlazorLazyLoading.Wasm.csproj", "{B78FC2FE-F107-49AB-95FC-E7F4559C879A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Components", "..\src\nuget\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj", "{83419656-8137-4AEB-9A5B-74C7B85621F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModulesHost", "ModulesHost\ModulesHost.csproj", "{9B062109-5E21-46CD-BDD1-315529E585E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{2587AE99-7624-47E4-B6B8-79EC67346F67}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLazyLoading.Components", "..\nuget\BlazorLazyLoading.Components\BlazorLazyLoading.Components.csproj", "{83419656-8137-4AEB-9A5B-74C7B85621F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{E503BF43-DE57-4DB6-AF93-A5F765C94154}"
 EndProject

@@ -1,13 +1,7 @@
 <Project>
 
     <PropertyGroup>
-        <!-- Polyfill $(SolutionDir) -->
-        <SolutionDir Condition="'$(SolutionDir)' == ''">$(MSBuildThisFileDirectory)</SolutionDir>
-    </PropertyGroup>
-
-    <!-- Convert $(BLLUseLocalNugetPackages) to bool -->
-    <PropertyGroup>
-        <BLLUseLocalNugetPackages Condition="'$(BLLUseLocalNugetPackages)' == ''">false</BLLUseLocalNugetPackages>
+        <RepoDir Condition="'$(RepoDir)' == ''">$(MSBuildThisFileDirectory)</RepoDir>
     </PropertyGroup>
 
 </Project>

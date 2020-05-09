@@ -26,16 +26,16 @@ jobs:
         dotnet-version: 3.1.200
 
     - name: Restore library
-      run: dotnet restore BlazorLazyLoading.sln -p:BLLUseLocalNugetPackages=true
+      run: dotnet restore src/BlazorLazyLoading.sln -p:BLLUseLocalNugetPackages=true
 
     - name: Build library
-      run: dotnet build BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
+      run: dotnet build src/BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
   
     - name: Test library
-      run: dotnet test BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
+      run: dotnet test src/BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Pack library
-      run: dotnet pack BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
+      run: dotnet pack src/BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Restore demo
       run: dotnet restore demo/Demo.sln -p:BLLUseLocalNugetPackages=true
