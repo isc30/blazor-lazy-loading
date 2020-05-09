@@ -1,0 +1,24 @@
+name: 'Publish Wiki'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Deploy wiki
+      uses: jamesives/github-pages-deploy-action@3.4.9
+      with:
+        FOLDER: docs
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        REPOSITORY_NAME: isc30/blazor-lazy-loading.wiki.git
+        BRANCH: master
