@@ -1,0 +1,1 @@
+*[GitHub BlazorLazyLoading](https://github.com/isc30/blazor-lazy-loading)*
