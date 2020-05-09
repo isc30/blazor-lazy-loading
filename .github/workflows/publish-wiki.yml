@@ -20,5 +20,5 @@ jobs:
       with:
         FOLDER: docs
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        REPOSITORY_NAME: isc30/blazor-lazy-loading.wiki.git
+        REPOSITORY_NAME: isc30/blazor-lazy-loading.wiki
         BRANCH: master
