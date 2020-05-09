@@ -33,25 +33,25 @@ jobs:
         dotnet-version: 3.1.200
 
     - name: Restore library
-      run: dotnet restore src/BlazorLazyLoading.sln -p:BLLUseLocalNugetPackages=true
+      run: dotnet restore src/BlazorLazyLoading.sln --disable-parallel -p:BLLUseLocalNugetPackages=true
 
     - name: Build library
-      run: dotnet build src/BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
+      run: dotnet build src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
   
     - name: Test library
-      run: dotnet test src/BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
+      run: dotnet test src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
 
     - name: Pack library
-      run: dotnet pack src/BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
+      run: dotnet pack src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
 
     - name: Restore demo
-      run: dotnet restore demo/Demo.sln -p:BLLUseLocalNugetPackages=true
+      run: dotnet restore demo/Demo.sln --disable-parallel -p:BLLUseLocalNugetPackages=true
 
     - name: Build demo
-      run: dotnet build demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true
+      run: dotnet build demo/Demo.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
 
     - name: Publish demo
-      run: dotnet publish demo/ServerHost/ServerHost.csproj -c Release -p:BLLUseLocalNugetPackages=true -o output/demo
+      run: dotnet publish demo/ServerHost/ServerHost.csproj -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true -o output/demo
 
     - name: Test demo
       run: dotnet test demo/Demo.sln -c Release
