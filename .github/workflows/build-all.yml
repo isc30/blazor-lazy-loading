@@ -49,6 +49,14 @@ jobs:
     - name: Test demo
       run: dotnet test demo/Demo.sln -c Release
 
+    - name: Deploy wiki
+      uses: jamesives/github-pages-deploy-action@3.4.8
+      with:
+        FOLDER: docs
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        REPOSITORY_NAME: isc30/blazor-lazy-loading.wiki
+        BRANCH: master
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v1
       with:
