@@ -32,7 +32,7 @@ jobs:
       run: dotnet build src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
   
     - name: Test library
-      run: dotnet test src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
+      run: dotnet test src/BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Pack library
       run: dotnet pack src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
@@ -47,7 +47,7 @@ jobs:
       run: dotnet publish demo/ServerHost/ServerHost.csproj -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true -o output/demo
 
     - name: Test demo
-      run: dotnet test demo/Demo.sln -c Release --disable-parallel
+      run: dotnet test demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v1

@@ -39,7 +39,7 @@ jobs:
       run: dotnet build src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
   
     - name: Test library
-      run: dotnet test src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
+      run: dotnet test src/BlazorLazyLoading.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Pack library
       run: dotnet pack src/BlazorLazyLoading.sln -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true
@@ -54,7 +54,7 @@ jobs:
       run: dotnet publish demo/ServerHost/ServerHost.csproj -c Release --disable-parallel -p:BLLUseLocalNugetPackages=true -o output/demo
 
     - name: Test demo
-      run: dotnet test demo/Demo.sln -c Release
+      run: dotnet test demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Push package to NuGet
       run: dotnet nuget push output/nuget/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
