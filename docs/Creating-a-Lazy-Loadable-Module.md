@@ -2,6 +2,7 @@ A lazy loadable module is just a **.NET assembly (project)** with few extra step
 
 In order to covert your csproj to a lazy loadable module, it will require:
 - To use `Microsoft.NET.Sdk.Razor` as SDK *(RazorLib project)*.
+- To target `netstandard2.1`
 
 After checking that, just add:
 ```xml
