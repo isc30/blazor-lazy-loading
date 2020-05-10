@@ -1,8 +1,11 @@
 name: 'Publish Wiki'
 
 on:
+  push:
+    branches:
+      - master
   release:
-    types: [published, edited]
+    types: [published]
     branches:
       - master
 
