@@ -24,7 +24,8 @@
     ".NETStandard,Version=v2.1": {
       "ModulesHost/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Module": "1.2.0-beta.18",
+          "AssemblyWithStartup": "1.0.0",
+          "BlazorLazyLoading.Module": "1.2.0-beta.20",
           "LazyComponentFromNuget": "1.0.0",
           "Logger": "1.0.0",
           "Microsoft.Win32.Primitives": "4.0.3.0",
@@ -758,17 +759,17 @@
           "System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "BlazorLazyLoading.Components/1.2.0-beta.18": {
+      "BlazorLazyLoading.Components/1.2.0-beta.20": {
         "dependencies": {
-          "BlazorLazyLoading._internals.LazyComponents": "1.2.0-beta.18",
-          "BlazorLazyLoading._internals.ManifestReader": "1.2.0-beta.18"
+          "BlazorLazyLoading._internals.LazyComponents": "1.2.0-beta.20",
+          "BlazorLazyLoading._internals.ManifestReader": "1.2.0-beta.20"
         },
         "compile": {
           "lib/netstandard2.1/BlazorLazyLoading.Components.dll": {}
         }
       },
-      "BlazorLazyLoading.Module/1.2.0-beta.18": {},
-      "BlazorLazyLoading._internals.AssemblyLoader/1.2.0-beta.18": {
+      "BlazorLazyLoading.Module/1.2.0-beta.20": {},
+      "BlazorLazyLoading._internals.AssemblyLoader/1.2.0-beta.20": {
         "dependencies": {
           "System.Reflection.Metadata": "1.8.0"
         },
@@ -776,10 +777,10 @@
           "lib/netstandard2.1/AssemblyLoader.dll": {}
         }
       },
-      "BlazorLazyLoading._internals.LazyComponents/1.2.0-beta.18": {
+      "BlazorLazyLoading._internals.LazyComponents/1.2.0-beta.20": {
         "dependencies": {
-          "BlazorLazyLoading._internals.AssemblyLoader": "1.2.0-beta.18",
-          "BlazorLazyLoading._internals.ManifestReader": "1.2.0-beta.18",
+          "BlazorLazyLoading._internals.AssemblyLoader": "1.2.0-beta.20",
+          "BlazorLazyLoading._internals.ManifestReader": "1.2.0-beta.20",
           "Microsoft.AspNetCore.Components": "3.1.2",
           "Microsoft.AspNetCore.Components.Web": "3.1.2",
           "Newtonsoft.Json": "9.0.1"
@@ -788,9 +789,9 @@
           "lib/netstandard2.1/LazyComponents.dll": {}
         }
       },
-      "BlazorLazyLoading._internals.ManifestReader/1.2.0-beta.18": {
+      "BlazorLazyLoading._internals.ManifestReader/1.2.0-beta.20": {
         "dependencies": {
-          "BlazorLazyLoading._internals.AssemblyLoader": "1.2.0-beta.18",
+          "BlazorLazyLoading._internals.AssemblyLoader": "1.2.0-beta.20",
           "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
@@ -1303,6 +1304,15 @@
           "System.Xml.ReaderWriter": "4.0.11"
         }
       },
+      "AssemblyWithStartup/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.2",
+          "Microsoft.AspNetCore.Components.Web": "3.1.2"
+        },
+        "compile": {
+          "AssemblyWithStartup.dll": {}
+        }
+      },
       "Core/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.2",
@@ -1314,7 +1324,7 @@
       },
       "LazyComponentFromNuget/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Components": "1.2.0-beta.18",
+          "BlazorLazyLoading.Components": "1.2.0-beta.20",
           "Faso.Blazor.SpinKit": "1.0.1",
           "Microsoft.AspNetCore.Components": "3.1.2",
           "Microsoft.AspNetCore.Components.Web": "3.1.2"
@@ -1325,7 +1335,7 @@
       },
       "Logger/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Components": "1.2.0-beta.18",
+          "BlazorLazyLoading.Components": "1.2.0-beta.20",
           "Core": "1.0.0",
           "Microsoft.AspNetCore.Components": "3.1.2",
           "Microsoft.AspNetCore.Components.Web": "3.1.2"
@@ -1338,7 +1348,8 @@
     ".NETStandard,Version=v2.1/": {
       "ModulesHost/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Module": "1.2.0-beta.18",
+          "AssemblyWithStartup": "1.0.0",
+          "BlazorLazyLoading.Module": "1.2.0-beta.20",
           "LazyComponentFromNuget": "1.0.0",
           "Logger": "1.0.0",
           "Microsoft.Win32.Primitives": "4.0.3.0",
@@ -1467,54 +1478,54 @@
           "ModulesHost.dll": {}
         }
       },
-      "BlazorLazyLoading.Components/1.2.0-beta.18": {
+      "BlazorLazyLoading.Components/1.2.0-beta.20": {
         "dependencies": {
-          "BlazorLazyLoading._internals.LazyComponents": "1.2.0-beta.18",
-          "BlazorLazyLoading._internals.ManifestReader": "1.2.0-beta.18"
+          "BlazorLazyLoading._internals.LazyComponents": "1.2.0-beta.20",
+          "BlazorLazyLoading._internals.ManifestReader": "1.2.0-beta.20"
         },
         "runtime": {
           "lib/netstandard2.1/BlazorLazyLoading.Components.dll": {
-            "assemblyVersion": "1.2.0.18",
-            "fileVersion": "1.2.0.18"
+            "assemblyVersion": "1.2.0.20",
+            "fileVersion": "1.2.0.20"
           }
         }
       },
-      "BlazorLazyLoading.Module/1.2.0-beta.18": {},
-      "BlazorLazyLoading._internals.AssemblyLoader/1.2.0-beta.18": {
+      "BlazorLazyLoading.Module/1.2.0-beta.20": {},
+      "BlazorLazyLoading._internals.AssemblyLoader/1.2.0-beta.20": {
         "dependencies": {
           "System.Reflection.Metadata": "1.8.0"
         },
         "runtime": {
           "lib/netstandard2.1/AssemblyLoader.dll": {
-            "assemblyVersion": "1.2.0.18",
-            "fileVersion": "1.2.0.18"
+            "assemblyVersion": "1.2.0.20",
+            "fileVersion": "1.2.0.20"
           }
         }
       },
-      "BlazorLazyLoading._internals.LazyComponents/1.2.0-beta.18": {
+      "BlazorLazyLoading._internals.LazyComponents/1.2.0-beta.20": {
         "dependencies": {
-          "BlazorLazyLoading._internals.AssemblyLoader": "1.2.0-beta.18",
-          "BlazorLazyLoading._internals.ManifestReader": "1.2.0-beta.18",
+          "BlazorLazyLoading._internals.AssemblyLoader": "1.2.0-beta.20",
+          "BlazorLazyLoading._internals.ManifestReader": "1.2.0-beta.20",
           "Microsoft.AspNetCore.Components": "3.1.2",
           "Microsoft.AspNetCore.Components.Web": "3.1.2",
           "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
           "lib/netstandard2.1/LazyComponents.dll": {
-            "assemblyVersion": "1.2.0.18",
-            "fileVersion": "1.2.0.18"
+            "assemblyVersion": "1.2.0.20",
+            "fileVersion": "1.2.0.20"
           }
         }
       },
-      "BlazorLazyLoading._internals.ManifestReader/1.2.0-beta.18": {
+      "BlazorLazyLoading._internals.ManifestReader/1.2.0-beta.20": {
         "dependencies": {
-          "BlazorLazyLoading._internals.AssemblyLoader": "1.2.0-beta.18",
+          "BlazorLazyLoading._internals.AssemblyLoader": "1.2.0-beta.20",
           "Newtonsoft.Json": "9.0.1"
         },
         "runtime": {
           "lib/netstandard2.1/ManifestReader.dll": {
-            "assemblyVersion": "1.2.0.18",
-            "fileVersion": "1.2.0.18"
+            "assemblyVersion": "1.2.0.20",
+            "fileVersion": "1.2.0.20"
           }
         }
       },
@@ -2197,6 +2208,15 @@
           }
         }
       },
+      "AssemblyWithStartup/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.2",
+          "Microsoft.AspNetCore.Components.Web": "3.1.2"
+        },
+        "runtime": {
+          "AssemblyWithStartup.dll": {}
+        }
+      },
       "Core/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.2",
@@ -2208,7 +2228,7 @@
       },
       "LazyComponentFromNuget/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Components": "1.2.0-beta.18",
+          "BlazorLazyLoading.Components": "1.2.0-beta.20",
           "Faso.Blazor.SpinKit": "1.0.1",
           "Microsoft.AspNetCore.Components": "3.1.2",
           "Microsoft.AspNetCore.Components.Web": "3.1.2"
@@ -2219,7 +2239,7 @@
       },
       "Logger/1.0.0": {
         "dependencies": {
-          "BlazorLazyLoading.Components": "1.2.0-beta.18",
+          "BlazorLazyLoading.Components": "1.2.0-beta.20",
           "Core": "1.0.0",
           "Microsoft.AspNetCore.Components": "3.1.2",
           "Microsoft.AspNetCore.Components.Web": "3.1.2"
@@ -2236,40 +2256,40 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BlazorLazyLoading.Components/1.2.0-beta.18": {
+    "BlazorLazyLoading.Components/1.2.0-beta.20": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-WMg0d7fgG/XJWKnI6PRv/IxYrClyhqXlgT004t4+qF+frK1vlu+ztjY5GEu1m4ot6hmWEL0fHnqE9l0aomBeSw==",
-      "path": "blazorlazyloading.components/1.2.0-beta.18",
-      "hashPath": "blazorlazyloading.components.1.2.0-beta.18.nupkg.sha512"
+      "sha512": "sha512-nFJz7dvIyuHTrc5QaoggT/hRUhUPrTKOYzcn0bU5CICgRo4pZRnn073yJzw7oDJbDVtIzm6Ht97+0Dy1c4u7Ng==",
+      "path": "blazorlazyloading.components/1.2.0-beta.20",
+      "hashPath": "blazorlazyloading.components.1.2.0-beta.20.nupkg.sha512"
     },
-    "BlazorLazyLoading.Module/1.2.0-beta.18": {
+    "BlazorLazyLoading.Module/1.2.0-beta.20": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SE9mdM5A8D2P0cHtEGtsrg2hhW2F7TZXCjqHbiOcdx9qG86+iHydk22wTLwyOOQ86yW5AkTRQHhw91FAtUQasw==",
-      "path": "blazorlazyloading.module/1.2.0-beta.18",
-      "hashPath": "blazorlazyloading.module.1.2.0-beta.18.nupkg.sha512"
+      "sha512": "sha512-xeXPG1rtS0gU0Oh86ZoAiF0V5ryRFbZL/28ii3dj8vl+jxTFQ7DUFFJm22KNN9QNSAjNd9ircXdvJkLXnlWAJw==",
+      "path": "blazorlazyloading.module/1.2.0-beta.20",
+      "hashPath": "blazorlazyloading.module.1.2.0-beta.20.nupkg.sha512"
     },
-    "BlazorLazyLoading._internals.AssemblyLoader/1.2.0-beta.18": {
+    "BlazorLazyLoading._internals.AssemblyLoader/1.2.0-beta.20": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-f9HA4zKZBQlrmwwuBb2L8NAFinWeQdRrJJa+31PWIYQXSh2Q6ylzQYm/UHOjqg676Q7HfhYKEOXcEkIZOVDvTQ==",
-      "path": "blazorlazyloading._internals.assemblyloader/1.2.0-beta.18",
-      "hashPath": "blazorlazyloading._internals.assemblyloader.1.2.0-beta.18.nupkg.sha512"
+      "sha512": "sha512-LJtv/uSiY8p7QBeAqrMt2zeuMXW3bVFqSqnVSaGXI+TJcGrwF7TGHv7rFHsyyKe8fpeR+v7rS+1YDxmlGE9KGw==",
+      "path": "blazorlazyloading._internals.assemblyloader/1.2.0-beta.20",
+      "hashPath": "blazorlazyloading._internals.assemblyloader.1.2.0-beta.20.nupkg.sha512"
     },
-    "BlazorLazyLoading._internals.LazyComponents/1.2.0-beta.18": {
+    "BlazorLazyLoading._internals.LazyComponents/1.2.0-beta.20": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fPKkGayAJTvB7Y2Ozv3VsZXxdDcF7s6vLUonypR+p7qM11mmng0c5w9yyN/1Zl/3LGRLKR02qx7oPcgQbAAx5w==",
-      "path": "blazorlazyloading._internals.lazycomponents/1.2.0-beta.18",
-      "hashPath": "blazorlazyloading._internals.lazycomponents.1.2.0-beta.18.nupkg.sha512"
+      "sha512": "sha512-hLkxpom1CQgEZxigM/WOgKfPOB8MACqGp+tryhadQZI/eEqP3OP9N8A+V7tFXDKcZnj2Qwo6BDkZ38OcYIyMBg==",
+      "path": "blazorlazyloading._internals.lazycomponents/1.2.0-beta.20",
+      "hashPath": "blazorlazyloading._internals.lazycomponents.1.2.0-beta.20.nupkg.sha512"
     },
-    "BlazorLazyLoading._internals.ManifestReader/1.2.0-beta.18": {
+    "BlazorLazyLoading._internals.ManifestReader/1.2.0-beta.20": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Z4sj0xW3GpX3Pv+OWtcX0T33LJLj0ddqdogsaR6obQMqwYNuVzKCDNgyIW24BjMe1RgEg5y3mkw572lLn/IZ+w==",
-      "path": "blazorlazyloading._internals.manifestreader/1.2.0-beta.18",
-      "hashPath": "blazorlazyloading._internals.manifestreader.1.2.0-beta.18.nupkg.sha512"
+      "sha512": "sha512-Rfq1aBgpwiNOwgW9QcvA3IHlSqXjA7Jtp0hWsFvSsdifMp2yTTsdcE1DsVTtU6v+5vvEH8aU0NfelR9o+7rOSQ==",
+      "path": "blazorlazyloading._internals.manifestreader/1.2.0-beta.20",
+      "hashPath": "blazorlazyloading._internals.manifestreader.1.2.0-beta.20.nupkg.sha512"
     },
     "Faso.Blazor.SpinKit/1.0.1": {
       "type": "package",
@@ -2683,6 +2703,11 @@
       "sha512": "sha512-Mk2mKmPi0nWaoiYeotq1dgeNK1fqWh61+EK+w4Wu8SWuTYLzpUnschb59bJtGywaPq7SmTuPf44wrXRwbIrukg==",
       "path": "system.xml.xdocument/4.0.11",
       "hashPath": "system.xml.xdocument.4.0.11.nupkg.sha512"
+    },
+    "AssemblyWithStartup/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Core/1.0.0": {
       "type": "project",
