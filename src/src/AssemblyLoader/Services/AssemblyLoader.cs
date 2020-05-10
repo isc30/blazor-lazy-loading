@@ -20,6 +20,7 @@ namespace BlazorLazyLoading.Services
 
         private IAssemblyLoadContext? _assemblyLoadContext;
         private ConcurrentDictionary<AssemblyName, Task<Assembly?>> _loadingAssemblies;
+        private List<Func<Assembly, Task>> _onAssemblyLoad = new List<Func<Assembly, Task>>();
 
         public AssemblyLoader(
             IAssemblyDataProvider assemblyDataProvider,
@@ -30,6 +31,16 @@ namespace BlazorLazyLoading.Services
 
             _loadingAssemblies = new ConcurrentDictionary<AssemblyName, Task<Assembly?>>(
                 AssemblyByNameAndVersionComparer.Default);
+        }
+
+        public void SubscribeOnAssemblyLoad(Func<Assembly, Task> callback)
+        {
+            _onAssemblyLoad.Add(callback);
+        }
+
+        public void UnsubscribeOnAssemblyLoad(Func<Assembly, Task> callback)
+        {
+            _onAssemblyLoad.Remove(callback);
         }
 
         public void Dispose()
@@ -85,7 +96,9 @@ namespace BlazorLazyLoading.Services
                 ? new AssemblyLoaderContext(assemblyName)
                 : context.NewScope(assemblyName);
 
-            return await PerformAssemblyLoad(assemblyName, comparer, contextScope).ConfigureAwait(false);
+            Assembly? assembly = await PerformAssemblyLoad(assemblyName, comparer, contextScope).ConfigureAwait(false);
+
+            return assembly;
         }
 
         private bool TryGetAlreadyLoadingAssembly(
@@ -143,6 +156,11 @@ namespace BlazorLazyLoading.Services
             if (assembly != null)
             {
                 Debug.WriteLine($"Loaded Assembly: '{assemblyName}'");
+
+                foreach (var assemblyLoadCallback in _onAssemblyLoad)
+                {
+                    await assemblyLoadCallback.Invoke(assembly).ConfigureAwait(false);
+                }
             }
             else
             {

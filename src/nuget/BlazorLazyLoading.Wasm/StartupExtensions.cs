@@ -19,7 +19,8 @@ namespace BlazorLazyLoading.Wasm
             this IServiceCollection services,
             LazyLoadingOptions options)
         {
-            services.AddSingleton<IAssemblyLoader, AssemblyLoader>();
+            services.AddSingleton<IAssemblyLoader>(CreateAssemblyLoader);
+
             services.AddSingleton<IAssemblyLoadContextFactory, AppDomainAssemblyLoadContextFactory>();
             services.AddSingleton(typeof(IAssemblyDataLocator), options.AssemblyDataLocator ?? typeof(AssemblyDataLocator));
             services.AddSingleton<IContentFileReader, NetworkContentFileReader>();
@@ -32,6 +33,14 @@ namespace BlazorLazyLoading.Wasm
                 p => new LazyModuleHintsProvider(options.ModuleHints));
 
             return services;
+        }
+
+        private static IAssemblyLoader CreateAssemblyLoader(IServiceProvider p)
+        {
+            var assemblyLoader = ActivatorUtilities.CreateInstance<AssemblyLoader>(p);
+            assemblyLoader.SubscribeOnAssemblyLoad(a => AssemblyInitializer.ConfigureAssembly(a, p));
+
+            return assemblyLoader;
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace BlazorLazyLoading.Abstractions
@@ -8,5 +9,9 @@ namespace BlazorLazyLoading.Abstractions
         Assembly? GetLoadedAssemblyByName(AssemblyName assemblyName);
 
         Task<Assembly?> LoadAssemblyByNameAsync(AssemblyName assemblyName);
+
+        void SubscribeOnAssemblyLoad(Func<Assembly, Task> callback);
+
+        void UnsubscribeOnAssemblyLoad(Func<Assembly, Task> callback);
     }
 }

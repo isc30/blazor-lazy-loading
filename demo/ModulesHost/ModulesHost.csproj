@@ -8,12 +8,14 @@
     <ItemGroup>
         <ProjectReference Include="..\Logger\Logger.csproj" />
         <ProjectReference Include="..\LazyAreas\LazyComponentFromNuget\LazyComponentFromNuget.csproj" />
+        <ProjectReference Include="..\LazyAreas\AssemblyWithStartup\AssemblyWithStartup.csproj" />
     </ItemGroup>
 
     <!-- Extra Assemblies in the Manifest -->
     <ItemGroup>
         <BLLManifestAssemblies Include="Logger" />
         <BLLManifestAssemblies Include="LazyComponentFromNuget" />
+        <BLLManifestAssemblies Include="AssemblyWithStartup" />
     </ItemGroup>
 
     <Import Project="../BlazorLazyLoading.Module.props" />

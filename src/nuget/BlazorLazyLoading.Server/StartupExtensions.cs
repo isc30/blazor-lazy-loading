@@ -25,11 +25,11 @@ namespace BlazorLazyLoading.Server
         {
             if (options.UseAssemblyIsolation)
             {
-                services.AddScoped<IAssemblyLoader, AssemblyLoader>();
+                services.AddScoped<IAssemblyLoader>(CreateAssemblyLoader);
             }
             else
             {
-                services.AddSingleton<IAssemblyLoader, AssemblyLoader>();
+                services.AddSingleton<IAssemblyLoader>(CreateAssemblyLoader);
             }
 
             services.AddSingleton<IAssemblyLoadContextFactory, DisposableAssemblyLoadContextFactory>();
@@ -67,6 +67,14 @@ namespace BlazorLazyLoading.Server
             {
                 ContentTypeProvider = contentTypeMap,
             });
+        }
+
+        private static IAssemblyLoader CreateAssemblyLoader(IServiceProvider p)
+        {
+            var assemblyLoader = ActivatorUtilities.CreateInstance<AssemblyLoader>(p);
+            assemblyLoader.SubscribeOnAssemblyLoad(a => AssemblyInitializer.ConfigureAssembly(a, p));
+
+            return assemblyLoader;
         }
     }
 
