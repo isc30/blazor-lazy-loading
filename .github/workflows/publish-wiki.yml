@@ -23,4 +23,3 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         REPOSITORY_NAME: isc30/blazor-lazy-loading.wiki
         BRANCH: master
-Hola que tal soy Iván Sanz Carasa
