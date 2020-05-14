@@ -8,7 +8,8 @@
         Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))"
         Condition="Exists($([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../')))" />
 
-    <Import Project="LocalNugetVersion.props" />
+    <Import Project="LocalNugetVersion.props" Condition="Exists('LocalNugetVersion.props')" />
+    <Import Project="MissingLibraryError.props" Condition="!Exists('LocalNugetVersion.props')" />
 
     <PropertyGroup>
         <!-- Polyfill $(SolutionDir) -->

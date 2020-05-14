@@ -1,0 +1,5 @@
+<Project InitialTargets="PrintError">
+    <Target Name="PrintError">
+        <Error Text="In order to build the demo, the library needs to be built first: /src/BlazorLazyLoading.sln" />
+    </Target>
+</Project>
