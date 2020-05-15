@@ -1,7 +1,12 @@
 name: 'Features - PRs'
 
-on: [push, pull_request]
-  branches:
+on:
+  push:
+    branches:
+    - *
+    - !master # all branches except master
+  pull_request:
+    branches:
     - *
     - !master # all branches except master
 
