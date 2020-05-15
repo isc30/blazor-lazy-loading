@@ -46,7 +46,7 @@ namespace BlazorLazyLoading.Server
             services.AddSingleton<ILazyModuleHintsProvider>(
                 p => new LazyModuleHintsProvider(options.ModuleHints));
 
-            services.AddSingleton<IManifestLocator, ManifestLocator>();
+            services.AddSingleton(typeof(IManifestLocator), options.ManifestLocator ?? typeof(ManifestLocator));
             services.AddSingleton<IManifestRepository, ManifestRepository>();
 
             return services;
@@ -96,8 +96,13 @@ namespace BlazorLazyLoading.Server
         public bool UseAssemblyIsolation { get; set; } = true;
 
         /// <summary>
-        /// Configures a custom AssemblyDataLocator. The type must implement IAssemblyDataLocator.
+        /// Configures a custom IAssemblyDataLocator. The type must implement BlazorLazyLoading.Abstractions.IAssemblyDataLocator
         /// </summary>
         public Type? AssemblyDataLocator { get; set; } = null;
+
+        /// <summary>
+        /// Configures a custom IManifestLocator. The type must implement BlazorLazyLoading.Abstractions.IManifestLocator
+        /// </summary>
+        public Type? ManifestLocator { get; set; } = null;
     }
 }

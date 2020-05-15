@@ -20,34 +20,22 @@ namespace BlazorLazyLoading.Services
         }
 
         /// <inheritdoc/>
-        public IEnumerable<string> GetFindPaths(
+        public IEnumerable<AssemblyLocation> GetFindPaths(
             AssemblyName assemblyName,
             AssemblyLoaderContext context)
         {
             foreach (var module in _lazyModuleNamesProvider.ModuleNameHints)
             {
-                yield return $"_content/{module}/_lazy";
+                yield return CreateAssemblyLocation($"_content/{module}/_lazy", assemblyName);
             }
 
-            yield return $"_content/{assemblyName}/_lazy";
-            yield return $"_framework/_bin";
-
-            //List<AssemblyLoaderContext> branches = new List<AssemblyLoaderContext> { context };
-            //AssemblyLoaderContext contextRoot = context;
-
-            //while (contextRoot.Parent != null)
-            //{
-            //    contextRoot = contextRoot.Parent;
-            //    branches.Add(contextRoot);
-            //}
-
-            //branches.Reverse();
-            //branches.RemoveAt(0);
-
-            //foreach (var branch in branches)
-            //{
-            //    yield return $"_content/{branch.AssemblyName.Name}/_lazy";
-            //}
+            yield return CreateAssemblyLocation($"_content/{assemblyName}/_lazy", assemblyName);
+            yield return CreateAssemblyLocation($"_framework/_bin", assemblyName);
         }
+
+        private static AssemblyLocation CreateAssemblyLocation(string basePath, AssemblyName assembly)
+            => new AssemblyLocation(
+                $"{basePath}/{assembly.Name}.dll",
+                $"{basePath}/{assembly.Name}.pdb");
     }
 }

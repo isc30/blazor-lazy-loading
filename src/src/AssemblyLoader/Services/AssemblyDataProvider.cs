@@ -38,7 +38,7 @@ namespace BlazorLazyLoading.Services
 
             foreach (var path in paths)
             {
-                data = await GetAssemblyDataAsync(assemblyName, path).ConfigureAwait(false);
+                data = await GetAssemblyDataAsync(path).ConfigureAwait(false);
 
                 if (data != null)
                 {
@@ -51,14 +51,12 @@ namespace BlazorLazyLoading.Services
             return null;
         }
 
-        private async Task<AssemblyData?> GetAssemblyDataAsync(
-            AssemblyName assemblyName,
-            string basePath)
+        private async Task<AssemblyData?> GetAssemblyDataAsync(AssemblyLocation location)
         {
-            Task<byte[]?> dll = _contentFileReader.ReadBytesOrNullAsync(basePath, $"{assemblyName.Name}.dll");
+            Task<byte[]?> dll = _contentFileReader.ReadBytesOrNullAsync(location.DllPath);
 
-            Task<byte[]?> pdb = Debugger.IsAttached
-                ? _contentFileReader.ReadBytesOrNullAsync(basePath, $"{assemblyName.Name}.pdb")
+            Task<byte[]?> pdb = Debugger.IsAttached && location.PdbPath != null
+                ? _contentFileReader.ReadBytesOrNullAsync(location.PdbPath)
                 : Task.FromResult<byte[]?>(null);
 
             await Task.WhenAll(dll, pdb).ConfigureAwait(false);

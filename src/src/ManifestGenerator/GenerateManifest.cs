@@ -59,16 +59,23 @@ namespace BlazorLazyLoading
 
                     if (manifestSections == null)
                     {
-                        _logger.Debug($"Skipping Lazy Module '{assemblyName}' as it has no relevant manifest sections");
-                        continue;
+                        _logger.Debug($"Lazy Module '{assemblyName}' has no relevant manifest sections");
+                        manifestSections = new Dictionary<string, object>();
                     }
 
                     manifest.Add(assemblyName, manifestSections);
 
-                    var manifestDescriptions = manifestSections.Select(s =>
-                        "'" + s.Key + "'" + (s.Value is ICollection c ? ": " + c.Count : string.Empty) + "");
+                    if (manifestSections.Any())
+                    {
+                        var manifestDescriptions = manifestSections.Select(
+                            s => "'" + s.Key + "'" + (s.Value is ICollection c ? ": " + c.Count : string.Empty) + "");
 
-                    _logger.Info($"Manifest for '{assemblyName}' generated: {{ {string.Join(", ", manifestDescriptions)} }}");
+                        _logger.Info($"Manifest for '{assemblyName}' generated: {{ {string.Join(", ", manifestDescriptions)} }}");
+                    }
+                    else
+                    {
+                        _logger.Info($"Manifest for '{assemblyName}' generated with no content");
+                    }
                 }
                 catch (Exception ex)
                 {
