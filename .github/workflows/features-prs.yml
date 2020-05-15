@@ -1,4 +1,4 @@
-name: 'Features / PRs'
+name: 'Features - PRs'
 
 on: [push, pull_request]
   branches:

@@ -4,7 +4,7 @@
   </a>
 </p>
 <p align="center">
-    <a href="https://github.com/isc30/blazor-lazy-loading/actions?query=workflow%3A%22Release+/+Beta%22"><img src="https://img.shields.io/github/workflow/status/isc30/blazor-lazy-loading/Release%20/%20Beta/master?logo=github" /></a>
+    <a href="https://github.com/isc30/blazor-lazy-loading/actions?query=workflow%3A%22Release+-+Beta%22"><img src="https://img.shields.io/github/workflow/status/isc30/blazor-lazy-loading/Release%20-%20Beta/master?logo=github" /></a>
     <a href="https://www.nuget.org/packages?q=BlazorLazyLoading&prerel=false"><img src="https://img.shields.io/nuget/v/BlazorLazyLoading.Components?color=brightgreen&label=stable&logo=nuget" /></a>
     <a href="https://www.nuget.org/packages?q=BlazorLazyLoading&prerel=false"><img src="https://img.shields.io/nuget/dt/BlazorLazyLoading.Components?color=brightgreen&label=downloads&logo=nuget" /></a>
     <a href="https://www.nuget.org/packages?q=BlazorLazyLoading&prerel=true"><img src="https://img.shields.io/nuget/vpre/BlazorLazyLoading.Components?color=yellow&label=dev&logo=nuget" /></a>
