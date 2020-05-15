@@ -1,4 +1,4 @@
-name: 'Publish Wiki'
+name: 'Wiki'
 
 on:
   release:
