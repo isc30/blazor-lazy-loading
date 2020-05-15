@@ -20,7 +20,7 @@ namespace BlazorLazyLoading.Models
         public readonly List<AssemblyLoaderContext> Children = new List<AssemblyLoaderContext>();
 
         /// Constructs the AssemblyLoaderContext
-        public AssemblyLoaderContext(AssemblyName name)
+        internal AssemblyLoaderContext(AssemblyName name)
         {
             AssemblyName = name;
         }
@@ -34,7 +34,7 @@ namespace BlazorLazyLoading.Models
         /// <summary>
         /// Creates a new scope for the current AssemblyLoaderContext
         /// </summary>
-        public AssemblyLoaderContext NewScope(AssemblyName name)
+        internal AssemblyLoaderContext NewScope(AssemblyName name)
         {
             var scope = new AssemblyLoaderContext(name, this);
             Children.Add(scope);

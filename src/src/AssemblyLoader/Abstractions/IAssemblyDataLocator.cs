@@ -10,8 +10,8 @@ namespace BlazorLazyLoading.Abstractions
     public interface IAssemblyDataLocator
     {
         /// <summary>
-        /// Returns a list of possible paths to look for the assembly data (dll)
+        /// Returns a list of possible locations from where the assembly data can be retrieved
         /// </summary>
-        public IEnumerable<string> GetFindPaths(AssemblyName assemblyName, AssemblyLoaderContext context);
+        public IEnumerable<AssemblyLocation> GetFindPaths(AssemblyName assemblyName, AssemblyLoaderContext context);
     }
 }

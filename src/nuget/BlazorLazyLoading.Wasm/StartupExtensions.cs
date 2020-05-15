@@ -26,7 +26,7 @@ namespace BlazorLazyLoading.Wasm
             services.AddSingleton<IContentFileReader, NetworkContentFileReader>();
             services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
 
-            services.AddSingleton<IManifestLocator, ManifestLocator>();
+            services.AddSingleton(typeof(IManifestLocator), options.ManifestLocator ?? typeof(ManifestLocator));
             services.AddSingleton<IManifestRepository, ManifestRepository>();
 
             services.AddSingleton<ILazyModuleHintsProvider>(
@@ -55,8 +55,13 @@ namespace BlazorLazyLoading.Wasm
         public IEnumerable<string> ModuleHints { get; set; } = Array.Empty<string>();
 
         /// <summary>
-        /// Configures a custom AssemblyDataLocator. The type must implement IAssemblyDataLocator.
+        /// Configures a custom IAssemblyDataLocator. The type must implement BlazorLazyLoading.Abstractions.IAssemblyDataLocator
         /// </summary>
         public Type? AssemblyDataLocator { get; set; } = null;
+
+        /// <summary>
+        /// Configures a custom IManifestLocator. The type must implement BlazorLazyLoading.Abstractions.IManifestLocator
+        /// </summary>
+        public Type? ManifestLocator { get; set; } = null;
     }
 }
