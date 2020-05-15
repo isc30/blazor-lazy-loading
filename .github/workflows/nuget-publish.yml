@@ -60,7 +60,7 @@ jobs:
       run: dotnet nuget push output/nuget/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
 
     - name: Push package to GitHub
-      run: dotnet nuget push output/nuget/**/*.nupkg --source "github" --skip-duplicate
+      run: dotnet nuget push output/nuget/**/*.nupkg --api-key ${{ secrets.ACCESS_TOKEN }} --source https://nuget.pkg.github.com/isc30/index.json --skip-duplicate
 
     - name: Prepare for Github Pages deployment
       run: find output/demo -name "*.gitignore" -type f -print0 | xargs -0 /bin/rm -f
