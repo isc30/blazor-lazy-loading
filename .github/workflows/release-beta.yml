@@ -3,11 +3,11 @@ name: 'Release - Beta'
 on:
   push:
     branches:
-      - master
+      - 'master'
   release:
     types: [published]
     branches:
-      - master
+      - 'master'
 
 env:
   # Workaround for GitVersionTask bug in combination with .NET Core SDK 3.1.200

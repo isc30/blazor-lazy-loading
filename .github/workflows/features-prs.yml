@@ -3,12 +3,12 @@ name: 'Features - PRs'
 on:
   push:
     branches:
-      - *
-      - !master # all branches except master
+      - '*''
+      - '!master' # all branches except master
   pull_request:
     branches:
-      - *
-      - !master # all branches except master
+      - '*''
+      - '!master' # all branches except master
 
 env:
   # Workaround for GitVersionTask bug in combination with .NET Core SDK 3.1.200
