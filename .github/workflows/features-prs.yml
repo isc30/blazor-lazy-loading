@@ -3,11 +3,11 @@ name: 'Features - PRs'
 on:
   push:
     branches:
-      - '*''
+      - '*'
       - '!master' # all branches except master
   pull_request:
     branches:
-      - '*''
+      - '*'
       - '!master' # all branches except master
 
 env:
