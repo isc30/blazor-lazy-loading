@@ -102,5 +102,25 @@ namespace BlazorLazyLoading.Wasm.Services
                 return null;
             }
         }
+
+        public Assembly? Load(AssemblyName assemblyName)
+        {
+            try
+            {
+                lock (_domainLock)
+                {
+                    if (_domain == null)
+                    {
+                        return null;
+                    }
+
+                    return _domain.Load(assemblyName);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

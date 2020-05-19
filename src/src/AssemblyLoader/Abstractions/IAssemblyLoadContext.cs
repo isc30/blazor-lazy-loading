@@ -12,5 +12,7 @@ namespace BlazorLazyLoading.Abstractions
         ICollection<Assembly> OwnAssemblies { get; }
 
         Assembly? Load(AssemblyData assemblyData);
+
+        Assembly? Load(AssemblyName assemblyName);
     }
 }

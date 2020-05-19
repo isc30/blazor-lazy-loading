@@ -82,6 +82,25 @@ namespace BlazorLazyLoading.Server.Services
             return null;
         }
 
+        public Assembly? Load(AssemblyName assemblyName)
+        {
+            try
+            {
+                lock (_assemblyLoadContextLock)
+                {
+                    if (_assemblyLoadContext == null)
+                    {
+                        return null;
+                    }
+
+                    return _assemblyLoadContext.LoadFromAssemblyName(assemblyName);
+                }
+            }
+            catch { }
+
+            return null;
+        }
+
         [MethodImpl(MethodImplOptions.NoInlining)]
         public void Dispose()
         {

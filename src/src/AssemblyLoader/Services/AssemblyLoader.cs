@@ -182,6 +182,19 @@ namespace BlazorLazyLoading.Services
             IAssemblyComparer comparer,
             AssemblyLoaderContext context)
         {
+            if (_assemblyLoadContext == null)
+            {
+                return null;
+            }
+
+            // Try loading the assembly by name (this works when the assembly is part of the bootloader, but never used explicitly)
+            Assembly? assembly = _assemblyLoadContext.Load(assemblyName);
+
+            if (assembly != null)
+            {
+                return assembly;
+            }
+
             AssemblyData? data = await _assemblyDataProvider.GetAssemblyDataAsync(assemblyName, context).ConfigureAwait(false);
 
             if (data == null)
@@ -193,11 +206,6 @@ namespace BlazorLazyLoading.Services
             var dependencies = await ResolveDependencies(assemblyName, data, context).ConfigureAwait(false);
 
             if (dependencies == null)
-            {
-                return null;
-            }
-
-            if (_assemblyLoadContext == null)
             {
                 return null;
             }
