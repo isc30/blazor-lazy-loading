@@ -2,7 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
     </PropertyGroup>
+
+    <ItemGroup>
+        <BlazorLinkerDescriptor Include="LinkerConfig.xml" />
+    </ItemGroup>
 
     <Import Project="../BlazorLazyLoading.Server.props" />
 

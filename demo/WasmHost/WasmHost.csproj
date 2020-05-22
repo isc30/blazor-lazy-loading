@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <RazorLangVersion>3.0</RazorLangVersion>
-        <BlazorWebAssemblyEnableLinking>true</BlazorWebAssemblyEnableLinking>
+        <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <Import Project="../BlazorLazyLoading.Wasm.props" />
+    <Import Project="../BlazorLazyLoading.Components.props" />
 
     <!-- Extra dependencies -->
     <ItemGroup>
@@ -22,8 +23,8 @@
 
     <!-- Modules -->
     <ItemGroup>
-      <ProjectReference Include="..\Core\Core.csproj" />
-      <ProjectReference Include="..\ModulesHost\ModulesHost.csproj" />
+        <ProjectReference Include="..\Core\Core.csproj" />
+        <ProjectReference Include="..\ModulesHost\ModulesHost.csproj" Private="false" />
     </ItemGroup>
 
 </Project>
