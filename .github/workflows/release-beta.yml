@@ -57,13 +57,13 @@ jobs:
       run: dotnet test demo/Demo.sln -c Release -p:BLLUseLocalNugetPackages=true
 
     - name: Push package to NuGet
-      run: dotnet nuget push output/nuget/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json output/nuget/**/*.nupkg
 
     - name: Add GitHub NuGet Source
       run: dotnet nuget add source https://nuget.pkg.github.com/isc30/index.json --name "github" --username isc30 --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
 
     - name: Push package to GitHub
-      run: dotnet nuget push output/nuget/**/*.nupkg --source "github" --skip-duplicate
+      run: dotnet nuget push --skip-duplicate --source "github" output/nuget/**/*.nupkg
 
     - name: Prepare for Github Pages deployment
       run: find output/demo -name "*.gitignore" -type f -print0 | xargs -0 /bin/rm -f
