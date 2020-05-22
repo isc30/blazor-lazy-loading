@@ -9,6 +9,8 @@
         <ProjectReference Include="..\Logger\Logger.csproj" />
         <ProjectReference Include="..\LazyAreas\LazyComponentFromNuget\LazyComponentFromNuget.csproj" />
         <ProjectReference Include="..\LazyAreas\AssemblyWithStartup\AssemblyWithStartup.csproj" />
+        <ProjectReference Include="..\LazyAreas\StaticResources\StaticResources.csproj" />
+        <ProjectReference Include="..\LazyAreas\StaticResources\StaticResources.csproj" />
     </ItemGroup>
 
     <!-- Extra Assemblies in the Manifest -->
@@ -16,6 +18,7 @@
         <BLLManifestAssemblies Include="Logger" />
         <BLLManifestAssemblies Include="LazyComponentFromNuget" />
         <BLLManifestAssemblies Include="AssemblyWithStartup" />
+        <BLLManifestAssemblies Include="StaticResources" />
     </ItemGroup>
 
     <Import Project="../BlazorLazyLoading.Module.props" />

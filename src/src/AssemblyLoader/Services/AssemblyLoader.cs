@@ -14,7 +14,7 @@ using BlazorLazyLoading.Models;
 
 namespace BlazorLazyLoading.Services
 {
-    public sealed class AssemblyLoader : IAssemblyLoader, IDisposable
+    public sealed class AssemblyLoader : IAssemblyLoader
     {
         private readonly IAssemblyDataProvider _assemblyDataProvider;
 
@@ -24,10 +24,10 @@ namespace BlazorLazyLoading.Services
 
         public AssemblyLoader(
             IAssemblyDataProvider assemblyDataProvider,
-            IAssemblyLoadContextFactory assemblyLoadContextFactory)
+            IAssemblyLoadContext assemblyLoadContext)
         {
             _assemblyDataProvider = assemblyDataProvider;
-            _assemblyLoadContext = assemblyLoadContextFactory.Create(Guid.NewGuid().ToString());
+            _assemblyLoadContext = assemblyLoadContext;
 
             _loadingAssemblies = new ConcurrentDictionary<AssemblyName, Task<Assembly?>>(
                 AssemblyByNameAndVersionComparer.Default);
@@ -41,15 +41,6 @@ namespace BlazorLazyLoading.Services
         public void UnsubscribeOnAssemblyLoad(Func<Assembly, Task> callback)
         {
             _onAssemblyLoad.Remove(callback);
-        }
-
-        public void Dispose()
-        {
-            if (_assemblyLoadContext != null)
-            {
-                _assemblyLoadContext.Dispose();
-                _assemblyLoadContext = null;
-            }
         }
 
         public Assembly? GetLoadedAssemblyByName(AssemblyName assemblyName)

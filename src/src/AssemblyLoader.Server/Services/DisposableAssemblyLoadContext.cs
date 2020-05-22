@@ -43,15 +43,14 @@ namespace BlazorLazyLoading.Server.Services
             }
         }
 
-        public DisposableAssemblyLoadContext(
-            string name)
+        public DisposableAssemblyLoadContext()
         {
             // visual studio crashes randomly when unloading assemblies with the debugger attached
             // https://github.com/dotnet/runtime/issues/535
             _canBeUnloaded = !Debugger.IsAttached;
 
             _assemblyLoadContext = new AssemblyLoadContext(
-                name: name,
+                name: Guid.NewGuid().ToString(),
                 isCollectible: _canBeUnloaded);
         }
 

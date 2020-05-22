@@ -6,16 +6,36 @@
 
 Welcome to your new app.
 
+<p>
+    Pass NoAssemblyAvailableFromStart: @_noAssemblyAvailableFromStart<br/>
+    Pass AssemblyLoadedLater: @_assemblyLoadedLater
+</p>
+
 <SurveyPrompt Title="How is Blazor working for you?" />
 
 @code
-{ 
+{
     [Inject]
-    public IAssemblyLoader AssemblyLoader { get; set; }
+    private IAssemblyLoader AssemblyLoader { get; set; }
+
+    [Inject]
+    private IAssemblyLoadContext AssemblyLoadContext { get; set; }
+
+    private bool? _noAssemblyAvailableFromStart = null;
+    private bool? _assemblyLoadedLater = null;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+
+        var assembly = AssemblyLoadContext.Load(new AssemblyName
+        {
+            Name = "Logger",
+            Version = null,
+        });
+
+        _noAssemblyAvailableFromStart = assembly == null;
+        StateHasChanged();
 
         var a = await AssemblyLoader
             .LoadAssemblyByNameAsync(new AssemblyName
@@ -26,9 +46,13 @@ Welcome to your new app.
 
         if (a == null)
         {
+            _assemblyLoadedLater = false;
             Console.Error.WriteLine("Assembly 'Logger' failed to load");
+
             return;
         }
+
+        _assemblyLoadedLater = true;
 
         a.GetType("MyLogger.Logger").GetMethod("Log").Invoke(null, new[] { "Lazy! Oh Yeah!" });
     }

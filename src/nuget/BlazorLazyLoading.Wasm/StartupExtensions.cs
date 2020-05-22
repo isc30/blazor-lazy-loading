@@ -20,8 +20,7 @@ namespace BlazorLazyLoading.Wasm
             LazyLoadingOptions options)
         {
             services.AddSingleton<IAssemblyLoader>(CreateAssemblyLoader);
-
-            services.AddSingleton<IAssemblyLoadContextFactory, AppDomainAssemblyLoadContextFactory>();
+            services.AddSingleton<IAssemblyLoadContext, AppDomainAssemblyLoadContext>();
             services.AddSingleton(typeof(IAssemblyDataLocator), options.AssemblyDataLocator ?? typeof(AssemblyDataLocator));
             services.AddSingleton<IContentFileReader, NetworkContentFileReader>();
             services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();

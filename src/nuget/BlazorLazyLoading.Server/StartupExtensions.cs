@@ -26,13 +26,14 @@ namespace BlazorLazyLoading.Server
             if (options.UseAssemblyIsolation)
             {
                 services.AddScoped<IAssemblyLoader>(CreateAssemblyLoader);
+                services.AddScoped<IAssemblyLoadContext, DisposableAssemblyLoadContext>();
             }
             else
             {
                 services.AddSingleton<IAssemblyLoader>(CreateAssemblyLoader);
+                services.AddSingleton<IAssemblyLoadContext, DisposableAssemblyLoadContext>();
             }
 
-            services.AddSingleton<IAssemblyLoadContextFactory, DisposableAssemblyLoadContextFactory>();
             services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
             services.AddSingleton(typeof(IAssemblyDataLocator), options.AssemblyDataLocator ?? typeof(AssemblyDataLocator));
 
