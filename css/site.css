@@ -163,8 +163,8 @@ app {
     }
 
     .sidebar {
-        width: 250px;
-        height: 100vh;
+        width: 300px;
+        min-height: 100vh;
         position: sticky;
         top: 0;
     }
