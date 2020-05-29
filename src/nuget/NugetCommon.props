@@ -37,7 +37,7 @@
         <Message Text="GitVersion: $(Version)" Importance="high" />
     </Target>
 
-    <Target Name="SetNuspecProperties" BeforeTargets="Build;Pack;Restore" DependsOnTargets="GetVersion">
+    <Target Name="SetNuspecProperties" AfterTargets="GetVersion">
         <Message Importance="normal" Text="Stamping MsBuild vars into Nuspec" />
         <PropertyGroup>
             <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>
