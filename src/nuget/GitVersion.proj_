@@ -1,6 +1,7 @@
 ﻿<Project>
 
     <PropertyGroup>
+        <Temp Condition="'$(Temp)' == ''">/tmp</Temp>
         <BaseIntermediateOutputPath>$(Temp)/$(SolutionName)/GitVersion/obj</BaseIntermediateOutputPath>
         <OutputPath>$(Temp)/$(SolutionName)/GitVersion/bin</OutputPath>
     </PropertyGroup>
