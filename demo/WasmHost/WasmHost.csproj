@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
         <RazorLangVersion>3.0</RazorLangVersion>
-        <BlazorWebAssemblyEnableLinking>false</BlazorWebAssemblyEnableLinking>
+        <BlazorWebAssemblyEnableLinking>true</BlazorWebAssemblyEnableLinking>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,7 +24,7 @@
     <!-- Modules -->
     <ItemGroup>
         <ProjectReference Include="..\Core\Core.csproj" />
-        <ProjectReference Include="..\ModulesHost\ModulesHost.csproj" Private="false" />
+        <ProjectReference Include="..\ModulesHost\ModulesHost.csproj" />
     </ItemGroup>
 
 </Project>
