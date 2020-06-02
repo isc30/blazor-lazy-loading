@@ -22,8 +22,8 @@ namespace BlazorLazyLoading.Wasm
             services.AddSingleton<IAssemblyLoader>(CreateAssemblyLoader);
             services.AddSingleton<IAssemblyLoadContext, AppDomainAssemblyLoadContext>();
             services.AddSingleton(typeof(IAssemblyDataLocator), options.AssemblyDataLocator ?? typeof(AssemblyDataLocator));
+            services.AddSingleton(typeof(IAssemblyDataProvider), options.AssemblyDataProvider ?? typeof(AssemblyDataProvider));
             services.AddSingleton<IContentFileReader, NetworkContentFileReader>();
-            services.AddSingleton<IAssemblyDataProvider, AssemblyDataProvider>();
 
             services.AddSingleton(typeof(IManifestLocator), options.ManifestLocator ?? typeof(ManifestLocator));
             services.AddSingleton<IManifestRepository, ManifestRepository>();
@@ -52,6 +52,11 @@ namespace BlazorLazyLoading.Wasm
         /// Specifies a list of Module Names (hints) to download DLLs from them and use their manifest to locate lazy resources
         /// </summary>
         public IEnumerable<string> ModuleHints { get; set; } = Array.Empty<string>();
+
+        /// <summary>
+        /// Configures a custom IAssemblyDataProvider. The type must implement BlazorLazyLoading.Abstractions.IAssemblyDataProvider
+        /// </summary>
+        public Type? AssemblyDataProvider { get; set; } = null;
 
         /// <summary>
         /// Configures a custom IAssemblyDataLocator. The type must implement BlazorLazyLoading.Abstractions.IAssemblyDataLocator
