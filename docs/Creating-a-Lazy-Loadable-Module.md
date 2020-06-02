@@ -6,7 +6,7 @@ In order to covert your csproj to a lazy loadable module, it will require:
 
 After checking that, just add:
 ```xml
-<PackageReference Include="BlazorLazyLoading.Module" Version="1.2.0" PrivateAssets="all" />
+<PackageReference Include="BlazorLazyLoading.Module" Version="1.3.0" PrivateAssets="all" />
 ```
 
 and... **done!** This project is now a module and can be lazy loaded 😄
@@ -44,7 +44,7 @@ Steps:
 
 1. Create a new Module project **without any content or dependencies** (*I personally recommend `ModulesHost` as for the name*) and add a reference to **BlazorLazyLoading.Module**:
     ```xml
-    <PackageReference Include="BlazorLazyLoading.Module" Version="1.2.0" PrivateAssets="all" />
+    <PackageReference Include="BlazorLazyLoading.Module" Version="1.3.0" PrivateAssets="all" />
     ```
 
 1. Reference all the RazorLib projects that you want to lazy load by using `ProjectReference` or `PackageReference`. For example:

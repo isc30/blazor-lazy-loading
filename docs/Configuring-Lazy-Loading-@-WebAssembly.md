@@ -3,7 +3,7 @@ The following nuget package includes everything you need to support lazy loading
 It can be installed by adding the following line inside the host csproj:
 
 ```xml
-<PackageReference Include="BlazorLazyLoading.Wasm" Version="1.2.0" PrivateAssets="all" />
+<PackageReference Include="BlazorLazyLoading.Wasm" Version="1.3.0" PrivateAssets="all" />
 ```
 
 It will also require to be initialized from **Program.cs** by adding the following lines:<br/>
