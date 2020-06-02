@@ -47,6 +47,8 @@ The recommendation here would be something like this, but you might need to adap
 
 Done! Lazy Loading is now configured 😄
 
+> Due to a bug in Blazor's linker, the user assemblies will be downloaded as part of the boot but not in memory. The library handles this case gracefully so it shouldn't be a problem until the linker gets fixed. [More info...](https://github.com/isc30/blazor-lazy-loading/issues/60)
+
 # LazyLoadingOptions
 
 * #### ModuleHints
