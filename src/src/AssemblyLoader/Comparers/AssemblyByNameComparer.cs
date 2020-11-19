@@ -7,12 +7,12 @@ namespace BlazorLazyLoading.Comparers
     {
         public static readonly AssemblyByNameComparer Default = new AssemblyByNameComparer();
 
-        public bool Equals(Assembly x, Assembly y)
+        public bool Equals(Assembly? x, Assembly? y)
         {
             return GetHashCode(x) == GetHashCode(y);
         }
 
-        public bool Equals(AssemblyName x, AssemblyName y)
+        public bool Equals(AssemblyName? x, AssemblyName? y)
         {
             return GetHashCode(x) == GetHashCode(y);
         }

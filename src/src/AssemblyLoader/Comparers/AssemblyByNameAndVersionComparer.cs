@@ -7,25 +7,30 @@ namespace BlazorLazyLoading.Comparers
     {
         public static readonly AssemblyByNameAndVersionComparer Default = new AssemblyByNameAndVersionComparer();
 
-        public bool Equals(Assembly x, Assembly y)
+        public bool Equals(Assembly? x, Assembly? y)
         {
             return GetHashCode(x) == GetHashCode(y);
         }
 
-        public bool Equals(AssemblyName x, AssemblyName y)
+        public bool Equals(AssemblyName? x, AssemblyName? y)
         {
             return GetHashCode(x) == GetHashCode(y);
         }
 
-        public int GetHashCode(Assembly obj)
+        public int GetHashCode(Assembly? obj)
         {
-            return GetHashCode(obj.GetName());
+            return GetHashCode(obj?.GetName());
         }
 
-        public int GetHashCode(AssemblyName obj)
+        public int GetHashCode(AssemblyName? obj)
         {
+            if (obj == null)
+            {
+                return -1;
+            }
+
             return HashCode.Combine(
-                obj.Name.ToLowerInvariant(),
+                obj.Name?.ToLowerInvariant(),
                 obj.Version?.ToString() ?? "0.0.0.0");
         }
     }

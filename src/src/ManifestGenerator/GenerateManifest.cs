@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -40,6 +41,9 @@ namespace BlazorLazyLoading
 
         public override bool Execute()
         {
+            // debug msbuild task
+            Debugger.Launch();
+
             SanitizeInput();
 
             var manifest = new Dictionary<string, IDictionary>();

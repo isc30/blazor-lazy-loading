@@ -20,7 +20,7 @@ namespace BlazorLazyLoading.ManifestGenerators
 
             var routes = componentTypes.SelectMany(t => t.GetCustomAttributesData()
                 .Where(a => a.AttributeType.FullName == "Microsoft.AspNetCore.Components.RouteAttribute")
-                .Select(a => new RouteManifest((string)a.ConstructorArguments[0].Value, t.FullName)))
+                .Select(a => new RouteManifest((string)a.ConstructorArguments[0].Value!, t.FullName!)))
                 .ToList();
 
             if (!routes.Any())

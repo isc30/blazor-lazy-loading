@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -22,17 +23,19 @@ namespace BlazorLazyLoading.ManifestGenerators
 
             foreach (var component in componentTypes)
             {
+                string componentFullName = component.FullName ?? throw new InvalidOperationException("Type FullName not available");
+
                 var lazyNameAttribute = component.GetCustomAttributesData()
                     .SingleOrDefault(a => a.AttributeType.FullName == "BlazorLazyLoading.LazyNameAttribute");
 
                 if (lazyNameAttribute == null)
                 {
-                    components.Add(new ComponentManifest(component.FullName, null));
+                    components.Add(new ComponentManifest(componentFullName, null));
                     continue;
                 }
 
-                var lazyName = (string)lazyNameAttribute.ConstructorArguments[0].Value;
-                components.Add(new ComponentManifest(component.FullName, lazyName));
+                var lazyName = (string?)lazyNameAttribute.ConstructorArguments[0].Value;
+                components.Add(new ComponentManifest(componentFullName, lazyName));
             }
 
             if (!components.Any())
