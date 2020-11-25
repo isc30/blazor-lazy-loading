@@ -15,24 +15,38 @@ namespace BlazorLazyLoading.ManifestGenerators
 
         public Dictionary<string, object>? GenerateManifest(Assembly assembly, MetadataLoadContext metadataLoadContext)
         {
-            var componentTypes = assembly.GetTypes()
-                .Where(t => !t.IsAbstract && t.GetInterfaces().Any(i => i.FullName == "Microsoft.AspNetCore.Components.IComponent"));
-
+            var types = assembly.GetTypes();
             var components = new List<ComponentManifest>();
 
-            foreach (var component in componentTypes)
+            foreach (var type in types)
             {
-                var lazyNameAttribute = component.GetCustomAttributesData()
+                bool isComponent = true;
+
+                // after net5, some assemblies crash when trying to enumerate their types :)
+                try
+                {
+                    isComponent = type.GetInterface("Microsoft.AspNetCore.Components.IComponent", false) != null;
+                }
+                catch
+                {
+                }
+
+                if (type.IsAbstract || !isComponent)
+                {
+                    continue;
+                }
+
+                var lazyNameAttribute = type.GetCustomAttributesData()
                     .SingleOrDefault(a => a.AttributeType.FullName == "BlazorLazyLoading.LazyNameAttribute");
 
                 if (lazyNameAttribute == null)
                 {
-                    components.Add(new ComponentManifest(component.FullName, null));
+                    components.Add(new ComponentManifest(type.FullName, null));
                     continue;
                 }
 
                 var lazyName = (string)lazyNameAttribute.ConstructorArguments[0].Value;
-                components.Add(new ComponentManifest(component.FullName, lazyName));
+                components.Add(new ComponentManifest(type.FullName, lazyName));
             }
 
             if (!components.Any())

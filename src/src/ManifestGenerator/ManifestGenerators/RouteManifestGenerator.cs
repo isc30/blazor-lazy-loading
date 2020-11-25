@@ -16,7 +16,21 @@ namespace BlazorLazyLoading.ManifestGenerators
         public Dictionary<string, object>? GenerateManifest(Assembly assembly, MetadataLoadContext metadataLoadContext)
         {
             var componentTypes = assembly.GetTypes()
-                .Where(t => !t.IsAbstract && t.GetInterfaces().Any(i => i.FullName == "Microsoft.AspNetCore.Components.IComponent"));
+                .Where(type =>
+                {
+                    bool isComponent = true;
+
+                    // after net5, some assemblies crash when trying to enumerate their types :)
+                    try
+                    {
+                        isComponent = type.GetInterface("Microsoft.AspNetCore.Components.IComponent", false) != null;
+                    }
+                    catch
+                    {
+                    }
+
+                    return !type.IsAbstract && isComponent;
+                });
 
             var routes = componentTypes.SelectMany(t => t.GetCustomAttributesData()
                 .Where(a => a.AttributeType.FullName == "Microsoft.AspNetCore.Components.RouteAttribute")

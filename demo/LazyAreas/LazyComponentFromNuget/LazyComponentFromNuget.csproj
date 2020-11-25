@@ -10,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Faso.Blazor.SpinKit" Version="1.0.1" />
+        <PackageReference Include="BlazorPro.Spinkit" Version="1.2.0" />
     </ItemGroup>
 
     <Import Project="../../BlazorLazyLoading.Components.props" />

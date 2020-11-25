@@ -2,14 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <RazorLangVersion>3.0</RazorLangVersion>
     </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Logger\Logger.csproj" />
         <ProjectReference Include="..\LazyAreas\LazyComponentFromNuget\LazyComponentFromNuget.csproj" />
-        <ProjectReference Include="..\LazyAreas\AssemblyWithStartup\AssemblyWithStartup.csproj" />
-        <ProjectReference Include="..\LazyAreas\StaticResources\StaticResources.csproj" />
+		<ProjectReference Include="..\LazyAreas\AssemblyWithStartup\AssemblyWithStartup.csproj" />
         <ProjectReference Include="..\LazyAreas\StaticResources\StaticResources.csproj" />
     </ItemGroup>
 
@@ -17,8 +15,8 @@
     <ItemGroup>
         <BLLManifestAssemblies Include="Logger" />
         <BLLManifestAssemblies Include="LazyComponentFromNuget" />
-        <BLLManifestAssemblies Include="AssemblyWithStartup" />
-        <BLLManifestAssemblies Include="StaticResources" />
+		<BLLManifestAssemblies Include="AssemblyWithStartup" />
+		<BLLManifestAssemblies Include="StaticResources" />
     </ItemGroup>
 
     <Import Project="../BlazorLazyLoading.Module.props" />

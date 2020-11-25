@@ -5,15 +5,15 @@
         <BlazorWebAssemblyEnableLinking>true</BlazorWebAssemblyEnableLinking>
     </PropertyGroup>
 
-    <ItemGroup>
+    <!--<ItemGroup>
         <BlazorLinkerDescriptor Include="LinkerConfig.xml" />
-    </ItemGroup>
+    </ItemGroup>-->
 
     <Import Project="../BlazorLazyLoading.Server.props" />
 
     <!-- Extra dependencies -->
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0-rc1.20223.4" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.0" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
