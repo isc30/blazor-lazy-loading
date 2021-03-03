@@ -13,6 +13,10 @@
 
 Automatic Lazy Loading support for Blazor WebAssembly and Blazor Server!<br/><br/>
 
+> This project targetted pre-net5 Blazor. Support for `net5` is in development (currently stopped).
+> 
+> If you wish to finish the work required to support `net5`, please contact me at `contribute@ivansanz.com`
+
 [![Documentation / Wiki](docs/img/documentation.png?raw=true)](https://github.com/isc30/blazor-lazy-loading/wiki)
 
 [![Demo](docs/img/demo.png?raw=true)](https://isc30.github.io/blazor-lazy-loading/)
