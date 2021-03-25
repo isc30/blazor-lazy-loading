@@ -1,0 +1,18 @@
+﻿<Project>
+
+    <PropertyGroup>
+        <Temp Condition="'$(Temp)' == ''">/tmp</Temp>
+        <BaseIntermediateOutputPath>$(Temp)/$(SolutionName)/GitVersion/obj</BaseIntermediateOutputPath>
+        <OutputPath>$(Temp)/$(SolutionName)/GitVersion/bin</OutputPath>
+    </PropertyGroup>
+    <Import Project="$(MSBuildBinPath)/Microsoft.Common.CurrentVersion.targets" />
+    <Import Project="$(BaseIntermediateOutputPath)/$(MSBuildThisFileName)$(MSBuildThisFileExtension).nuget.g.targets" Condition="Exists('$(BaseIntermediateOutputPath)/$(MSBuildThisFileName)$(MSBuildThisFileExtension).nuget.g.targets')" />
+    <ItemGroup>
+        <PackageReference Include="GitVersionTask" Version="5.3.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    <Target Name="Build" DependsOnTargets="GetVersion;WriteVersionInfoToBuildLog" Returns="$(GitVersion_NuGetVersion)" />
+    
+</Project>
