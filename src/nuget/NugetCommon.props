@@ -1,11 +1,4 @@
 <Project>
-
-    <ItemGroup>
-        <PackageReference Include="GitVersionTask" Version="5.2.4">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
     
     <PropertyGroup>
         <PackageOutputDir>$(RepoDir)output\nuget</PackageOutputDir>
@@ -32,7 +25,19 @@
         <Copyright>Ivan Sanz Carasa (isc30)</Copyright>
     </PropertyGroup>
 
-    <Target Name="SetNuspecProperties" BeforeTargets="Build;Pack;Restore">
+    <Target Name="GetVersion" BeforeTargets="DispatchToInnerBuilds;BeforeBuild;CoreBuild;GetAssemblyVersion;CoreCompile;GenerateNuspec;Pack">
+        <!-- Keep restore separate and include extra property to prevent caching (restore and other targets in same MSBuild call is not a scenario supported by MSBuild) -->
+        <MSBuild Projects="$(MSBuildThisFileDirectory)GitVersion.proj_" Targets="Restore" Properties="SolutionDir=$(SolutionDir);SolutionName=$(SolutionName);Restoring=true" />
+        <MSBuild Projects="$(MSBuildThisFileDirectory)GitVersion.proj_" Targets="Build" Properties="SolutionDir=$(SolutionDir);SolutionName=$(SolutionName)">
+            <Output TaskParameter="TargetOutputs" PropertyName="Version" />
+        </MSBuild>
+        <PropertyGroup>
+            <PackageVersion>$(Version)</PackageVersion>
+        </PropertyGroup>
+        <Message Text="GitVersion: $(Version)" Importance="high" />
+    </Target>
+
+    <Target Name="SetNuspecProperties" AfterTargets="GetVersion">
         <Message Importance="normal" Text="Stamping MsBuild vars into Nuspec" />
         <PropertyGroup>
             <NuspecProperties>$(NuspecProperties);configuration=$(Configuration)</NuspecProperties>

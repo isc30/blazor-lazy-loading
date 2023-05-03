@@ -12,6 +12,7 @@
     <Import Project="$(MSBuildThisFileDirectory)NugetCommon.props" />
 
     <!-- set package icon -->
+    <!-- we only want the icon on main packages, not internal -->
     <PropertyGroup>
         <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
